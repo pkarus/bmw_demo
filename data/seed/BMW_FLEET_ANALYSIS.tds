@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Tableau compatibility notice:
+- Generated TDS schema version 18.1 is validated against Tableau Desktop 2025.2
+- Connection customization schema version 1 enables CAP_* settings to take effect.
+- Update these versions if your Tableau client requires a different schema.-->
+<datasource xmlns:user="http://www.tableausoftware.com/xml/user" formatted-name="federated.0dd3629d009942a4a9f9387c7c" inline="true" version="18.1">
+  <document-format-change-manifest>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy/>
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType/>
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel/>
+  </document-format-change-manifest>
+  <connection class="federated">
+    <named-connections>
+      <named-connection caption="sfseeurope-demo531.snowflakecomputing.com" name="snowflake.41753f45cec34ec7a05f06079c">
+        <connection authentication="Username Password" class="snowflake" dbname="BMW_DEMO" odbc-connect-string-extras="" one-time-sql="" schema="DFA" server="sfseeurope-demo531.snowflakecomputing.com" service="DATA_ENGINEER" username="" warehouse="AICOLLEGE">
+          <connection-customization class="snowflake" enabled="true" version="1">
+            <vendor name="snowflake"/>
+            <driver name="snowflake"/>
+            <customizations>
+              <customization name="CAP_ODBC_METADATA_SUPPRESS_EXECUTED_QUERY" value="yes"/>
+              <customization name="CAP_ODBC_METADATA_SUPPRESS_PREPARED_QUERY" value="yes"/>
+              <customization name="CAP_ODBC_METADATA_SUPPRESS_SELECT_STAR" value="yes"/>
+              <customization name="CAP_ODBC_METADATA_SUPPRESS_SQLCOLUMNS_API" value="no"/>
+              <customization name="CAP_ESCAPE_UNDERSCORE_IN_NAMES" value="no"/>
+              <customization name="CAP_DISABLE_ESCAPE_UNDERSCORE_IN_CATALOG" value="yes"/>
+              <customization name="CAP_CREATE_TEMP_TABLES" value="no"/>
+              <customization name="CAP_SELECT_INTO" value="no"/>
+              <customization name="CAP_SELECT_TOP_INTO" value="no"/>
+              <customization name="CAP_QUERY_ALLOW_PARTIAL_AGGREGATION" value="no"/>
+            </customizations>
+          </connection-customization>
+        </connection>
+      </named-connection>
+    </named-connections>
+    <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection="snowflake.41753f45cec34ec7a05f06079c" name="BMW_FLEET_ANALYSIS" table="[BMW_DEMO].[DFA].[BMW_FLEET_ANALYSIS]" type="table"/>
+    <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection="snowflake.41753f45cec34ec7a05f06079c" name="BMW_FLEET_ANALYSIS" table="[BMW_DEMO].[DFA].[BMW_FLEET_ANALYSIS]" type="table"/>
+    <metadata-records>
+      <metadata-record class="column">
+        <remote-name>AVG_SERVICE_COST</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AVG_SERVICE_COST]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>AVG_SERVICE_COST</remote-alias>
+        <ordinal>1</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>8</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>COST</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[COST]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>COST</remote-alias>
+        <ordinal>2</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>2</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_CENTER</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[SERVICE_CENTER]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_CENTER</remote-alias>
+        <ordinal>3</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_DATE</remote-name>
+        <remote-type>7</remote-type>
+        <local-name>[SERVICE_DATE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_DATE</remote-alias>
+        <ordinal>4</ordinal>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_NOTES</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[SERVICE_NOTES]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_NOTES</remote-alias>
+        <ordinal>5</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_TYPE</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[SERVICE_TYPE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_TYPE</remote-alias>
+        <ordinal>6</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_YEAR</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[SERVICE_YEAR]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_YEAR</remote-alias>
+        <ordinal>7</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>4</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>TOTAL_SERVICE_COST</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[TOTAL_SERVICE_COST]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>TOTAL_SERVICE_COST</remote-alias>
+        <ordinal>8</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>2</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>TOTAL_SERVICE_EVENTS</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[TOTAL_SERVICE_EVENTS]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>TOTAL_SERVICE_EVENTS</remote-alias>
+        <ordinal>9</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Min</aggregation>
+        <precision>18</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>WARRANTY_COVERED</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[WARRANTY_COVERED]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>WARRANTY_COVERED</remote-alias>
+        <ordinal>10</ordinal>
+        <local-type>boolean</local-type>
+        <aggregation>Count</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>WARRANTY_SERVICE_COUNT</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[WARRANTY_SERVICE_COUNT]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>WARRANTY_SERVICE_COUNT</remote-alias>
+        <ordinal>11</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Min</aggregation>
+        <precision>13</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>ACCIDENT_DATE</remote-name>
+        <remote-type>7</remote-type>
+        <local-name>[ACCIDENT_DATE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>ACCIDENT_DATE</remote-alias>
+        <ordinal>12</ordinal>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>ACCIDENT_REPAIR_COST</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ACCIDENT_REPAIR_COST]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>ACCIDENT_REPAIR_COST</remote-alias>
+        <ordinal>13</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>2</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>ACCIDENT_TYPE</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[ACCIDENT_TYPE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>ACCIDENT_TYPE</remote-alias>
+        <ordinal>14</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>AVG_FUEL_CONSUMPTION</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AVG_FUEL_CONSUMPTION]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>AVG_FUEL_CONSUMPTION</remote-alias>
+        <ordinal>15</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>7</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>AVG_MILEAGE</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AVG_MILEAGE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>AVG_MILEAGE</remote-alias>
+        <ordinal>16</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>6</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>AVG_POWER_KW</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AVG_POWER_KW]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>AVG_POWER_KW</remote-alias>
+        <ordinal>17</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>24</precision>
+        <scale>6</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>AVG_PREVIOUS_OWNERS</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[AVG_PREVIOUS_OWNERS]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>AVG_PREVIOUS_OWNERS</remote-alias>
+        <ordinal>18</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>6</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>CONSUMPTION</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[CONSUMPTION]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>CONSUMPTION</remote-alias>
+        <ordinal>19</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>1</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>DELIVERY_DATE</remote-name>
+        <remote-type>7</remote-type>
+        <local-name>[DELIVERY_DATE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>DELIVERY_DATE</remote-alias>
+        <ordinal>20</ordinal>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>EMISSION_STANDARD</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[EMISSION_STANDARD]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>EMISSION_STANDARD</remote-alias>
+        <ordinal>21</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>ENGINE_TYPE</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[ENGINE_TYPE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>ENGINE_TYPE</remote-alias>
+        <ordinal>22</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>FACTORY</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FACTORY]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>FACTORY</remote-alias>
+        <ordinal>23</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>FUEL_TYPE</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[FUEL_TYPE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>FUEL_TYPE</remote-alias>
+        <ordinal>24</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>MAX_MILEAGE</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[MAX_MILEAGE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>MAX_MILEAGE</remote-alias>
+        <ordinal>25</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>MODEL</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[MODEL]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>MODEL</remote-alias>
+        <ordinal>26</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>ODOMETER</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[ODOMETER]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>ODOMETER</remote-alias>
+        <ordinal>27</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>OWNER_COUNT</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[OWNER_COUNT]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>OWNER_COUNT</remote-alias>
+        <ordinal>28</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>38</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>POWER_KW</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[POWER_KW]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>POWER_KW</remote-alias>
+        <ordinal>29</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>6</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>POWER_PS</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[POWER_PS]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>POWER_PS</remote-alias>
+        <ordinal>30</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>6</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>PRODUCTION_DATE</remote-name>
+        <remote-type>7</remote-type>
+        <local-name>[PRODUCTION_DATE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>PRODUCTION_DATE</remote-alias>
+        <ordinal>31</ordinal>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>PRODUCTION_YEAR</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[PRODUCTION_YEAR]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>PRODUCTION_YEAR</remote-alias>
+        <ordinal>32</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Sum</aggregation>
+        <precision>4</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>RECALL_STATUS</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[RECALL_STATUS]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>RECALL_STATUS</remote-alias>
+        <ordinal>33</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>REGISTRATION_DATE</remote-name>
+        <remote-type>7</remote-type>
+        <local-name>[REGISTRATION_DATE]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>REGISTRATION_DATE</remote-alias>
+        <ordinal>34</ordinal>
+        <local-type>date</local-type>
+        <aggregation>Year</aggregation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>SERVICE_RECORDS_STATUS</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[SERVICE_RECORDS_STATUS]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>SERVICE_RECORDS_STATUS</remote-alias>
+        <ordinal>35</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>TOTAL_REPAIR_COST</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[TOTAL_REPAIR_COST]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>TOTAL_REPAIR_COST</remote-alias>
+        <ordinal>36</ordinal>
+        <local-type>real</local-type>
+        <aggregation>Min</aggregation>
+        <precision>38</precision>
+        <scale>2</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>TOTAL_VEHICLES</remote-name>
+        <remote-type>131</remote-type>
+        <local-name>[TOTAL_VEHICLES]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>TOTAL_VEHICLES</remote-alias>
+        <ordinal>37</ordinal>
+        <local-type>integer</local-type>
+        <aggregation>Min</aggregation>
+        <precision>18</precision>
+        <scale>0</scale>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>TRANSMISSION</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[TRANSMISSION]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>TRANSMISSION</remote-alias>
+        <ordinal>38</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+      <metadata-record class="column">
+        <remote-name>VIN_ID</remote-name>
+        <remote-type>129</remote-type>
+        <local-name>[VIN_ID]</local-name>
+        <parent-name>[BMW_FLEET_ANALYSIS]</parent-name>
+        <remote-alias>VIN_ID</remote-alias>
+        <ordinal>39</ordinal>
+        <local-type>string</local-type>
+        <aggregation>Count</aggregation>
+        <width>16777216</width>
+        <collation flag="0" name="binary"/>
+        <attributes>
+          <attribute datatype="string" name="TypeIsVarchar">"true"</attribute>
+        </attributes>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+      </metadata-record>
+    </metadata-records>
+  </connection>
+  <aliases enabled="yes"/>
+  <column aggregation="Min" caption="Avg Service Cost_1956ebe9888d4c4dad11" datatype="real" hidden="true" name="[AVG_SERVICE_COST]" role="measure" type="quantitative"/>
+  <column caption="Avg Service Cost" datatype="real" name="[Calculation_a70e504b65cf46688a68]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [AVG_SERVICE_COST])"/>
+  </column>
+  <column aggregation="Sum" caption="Cost" datatype="real" name="[COST]" role="measure" type="quantitative"/>
+  <column caption="Service Center" datatype="string" name="[SERVICE_CENTER]" role="dimension" type="nominal"/>
+  <column caption="Service Date" datatype="date" name="[SERVICE_DATE]" role="dimension" type="ordinal"/>
+  <column caption="Service Notes" datatype="string" name="[SERVICE_NOTES]" role="dimension" type="nominal"/>
+  <column caption="Service Type" datatype="string" name="[SERVICE_TYPE]" role="dimension" type="nominal"/>
+  <column caption="Service Year" datatype="integer" name="[SERVICE_YEAR]" role="dimension" type="nominal"/>
+  <column aggregation="Min" caption="Total Service Cost_e480e8ca2c184ba8b7a6" datatype="real" hidden="true" name="[TOTAL_SERVICE_COST]" role="measure" type="quantitative"/>
+  <column caption="Total Service Cost" datatype="real" name="[Calculation_d5a815a209174b509291]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [TOTAL_SERVICE_COST])"/>
+  </column>
+  <column aggregation="Min" caption="Total Service Events_ba9233cce4f240da8922" datatype="integer" hidden="true" name="[TOTAL_SERVICE_EVENTS]" role="measure" type="quantitative"/>
+  <column caption="Total Service Events" datatype="integer" name="[Calculation_eac39b0a703c44e08d72]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_INT(&quot;AGG(%1)&quot;, [TOTAL_SERVICE_EVENTS])"/>
+  </column>
+  <column caption="Warranty Covered" datatype="boolean" name="[WARRANTY_COVERED]" role="dimension" type="nominal"/>
+  <column aggregation="Min" caption="Warranty Service Count_b33b42f1a4054a9794ed" datatype="integer" hidden="true" name="[WARRANTY_SERVICE_COUNT]" role="measure" type="quantitative"/>
+  <column caption="Warranty Service Count" datatype="integer" name="[Calculation_825a678908454018bd3e]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_INT(&quot;AGG(%1)&quot;, [WARRANTY_SERVICE_COUNT])"/>
+  </column>
+  <column caption="Accident Date" datatype="date" name="[ACCIDENT_DATE]" role="dimension" type="ordinal"/>
+  <column aggregation="Sum" caption="Accident Repair Cost" datatype="real" name="[ACCIDENT_REPAIR_COST]" role="measure" type="quantitative"/>
+  <column caption="Accident Type" datatype="string" name="[ACCIDENT_TYPE]" role="dimension" type="nominal"/>
+  <column aggregation="Min" caption="Avg Fuel Consumption_8d07931382b444109fe7" datatype="real" hidden="true" name="[AVG_FUEL_CONSUMPTION]" role="measure" type="quantitative"/>
+  <column caption="Avg Fuel Consumption" datatype="real" name="[Calculation_d569e86d2a8147b998c8]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [AVG_FUEL_CONSUMPTION])"/>
+  </column>
+  <column aggregation="Min" caption="Avg Mileage_fcaf7dbd01174069bcd2" datatype="real" hidden="true" name="[AVG_MILEAGE]" role="measure" type="quantitative"/>
+  <column caption="Avg Mileage" datatype="real" name="[Calculation_8cb85573a5ed44b9a314]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [AVG_MILEAGE])"/>
+  </column>
+  <column aggregation="Min" caption="Avg Power Kw_0eb28070b7244c439948" datatype="real" hidden="true" name="[AVG_POWER_KW]" role="measure" type="quantitative"/>
+  <column caption="Avg Power Kw" datatype="real" name="[Calculation_a06e297972fc4d3ca37f]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [AVG_POWER_KW])"/>
+  </column>
+  <column aggregation="Min" caption="Avg Previous Owners_4aa952e148f841c1a8dc" datatype="real" hidden="true" name="[AVG_PREVIOUS_OWNERS]" role="measure" type="quantitative"/>
+  <column caption="Avg Previous Owners" datatype="real" name="[Calculation_45c0ef5c03da450aba55]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [AVG_PREVIOUS_OWNERS])"/>
+  </column>
+  <column aggregation="Sum" caption="Consumption" datatype="real" name="[CONSUMPTION]" role="measure" type="quantitative"/>
+  <column caption="Delivery Date" datatype="date" name="[DELIVERY_DATE]" role="dimension" type="ordinal"/>
+  <column caption="Emission Standard" datatype="string" name="[EMISSION_STANDARD]" role="dimension" type="nominal"/>
+  <column caption="Engine Type" datatype="string" name="[ENGINE_TYPE]" role="dimension" type="nominal"/>
+  <column caption="Factory" datatype="string" name="[FACTORY]" role="dimension" type="nominal"/>
+  <column caption="Fuel Type" datatype="string" name="[FUEL_TYPE]" role="dimension" type="nominal"/>
+  <column aggregation="Min" caption="Max Mileage_6672b55929c6448a9afd" datatype="integer" hidden="true" name="[MAX_MILEAGE]" role="measure" type="quantitative"/>
+  <column caption="Max Mileage" datatype="integer" name="[Calculation_78bdd4a3e6534215b58e]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_INT(&quot;AGG(%1)&quot;, [MAX_MILEAGE])"/>
+  </column>
+  <column caption="Model" datatype="string" name="[MODEL]" role="dimension" type="nominal"/>
+  <column aggregation="Sum" caption="Odometer" datatype="integer" name="[ODOMETER]" role="measure" type="quantitative"/>
+  <column aggregation="Sum" caption="Owner Count" datatype="integer" name="[OWNER_COUNT]" role="measure" type="quantitative"/>
+  <column aggregation="Sum" caption="Power Kw" datatype="integer" name="[POWER_KW]" role="measure" type="quantitative"/>
+  <column aggregation="Sum" caption="Power Ps" datatype="integer" name="[POWER_PS]" role="measure" type="quantitative"/>
+  <column caption="Production Date" datatype="date" name="[PRODUCTION_DATE]" role="dimension" type="ordinal"/>
+  <column caption="Production Year" datatype="integer" name="[PRODUCTION_YEAR]" role="dimension" type="nominal"/>
+  <column caption="Recall Status" datatype="string" name="[RECALL_STATUS]" role="dimension" type="nominal"/>
+  <column caption="Registration Date" datatype="date" name="[REGISTRATION_DATE]" role="dimension" type="ordinal"/>
+  <column caption="Service Records Status" datatype="string" name="[SERVICE_RECORDS_STATUS]" role="dimension" type="nominal"/>
+  <column aggregation="Min" caption="Total Repair Cost_7a5157b7b12a4642bc5a" datatype="real" hidden="true" name="[TOTAL_REPAIR_COST]" role="measure" type="quantitative"/>
+  <column caption="Total Repair Cost" datatype="real" name="[Calculation_da18ffa25b3247a48124]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_REAL(&quot;AGG(%1)&quot;, [TOTAL_REPAIR_COST])"/>
+  </column>
+  <column aggregation="Min" caption="Total Vehicles_b8ebb828de314f729dee" datatype="integer" hidden="true" name="[TOTAL_VEHICLES]" role="measure" type="quantitative"/>
+  <column caption="Total Vehicles" datatype="integer" name="[Calculation_a6519e35cb1a4d16b0bb]" role="measure" type="quantitative">
+    <calculation class="tableau" formula="RAWSQLAGG_INT(&quot;AGG(%1)&quot;, [TOTAL_VEHICLES])"/>
+  </column>
+  <column caption="Transmission" datatype="string" name="[TRANSMISSION]" role="dimension" type="nominal"/>
+  <column caption="Vin Id" datatype="string" name="[VIN_ID]" role="dimension" type="nominal"/>
+  <_.fcp.SchemaViewerObjectModel.false...folder name="Bmw Vehicle Service Events">
+    <folder-item name="[AVG_SERVICE_COST]" type="field"/>
+    <folder-item name="[Calculation_a70e504b65cf46688a68]" type="field"/>
+    <folder-item name="[COST]" type="field"/>
+    <folder-item name="[SERVICE_CENTER]" type="field"/>
+    <folder-item name="[SERVICE_DATE]" type="field"/>
+    <folder-item name="[SERVICE_NOTES]" type="field"/>
+    <folder-item name="[SERVICE_TYPE]" type="field"/>
+    <folder-item name="[SERVICE_YEAR]" type="field"/>
+    <folder-item name="[TOTAL_SERVICE_COST]" type="field"/>
+    <folder-item name="[Calculation_d5a815a209174b509291]" type="field"/>
+    <folder-item name="[TOTAL_SERVICE_EVENTS]" type="field"/>
+    <folder-item name="[Calculation_eac39b0a703c44e08d72]" type="field"/>
+    <folder-item name="[WARRANTY_COVERED]" type="field"/>
+    <folder-item name="[WARRANTY_SERVICE_COUNT]" type="field"/>
+    <folder-item name="[Calculation_825a678908454018bd3e]" type="field"/>
+  </_.fcp.SchemaViewerObjectModel.false...folder>
+  <_.fcp.SchemaViewerObjectModel.false...folder name="Bmw Vehicles">
+    <folder-item name="[ACCIDENT_DATE]" type="field"/>
+    <folder-item name="[ACCIDENT_REPAIR_COST]" type="field"/>
+    <folder-item name="[ACCIDENT_TYPE]" type="field"/>
+    <folder-item name="[AVG_FUEL_CONSUMPTION]" type="field"/>
+    <folder-item name="[Calculation_d569e86d2a8147b998c8]" type="field"/>
+    <folder-item name="[AVG_MILEAGE]" type="field"/>
+    <folder-item name="[Calculation_8cb85573a5ed44b9a314]" type="field"/>
+    <folder-item name="[AVG_POWER_KW]" type="field"/>
+    <folder-item name="[Calculation_a06e297972fc4d3ca37f]" type="field"/>
+    <folder-item name="[AVG_PREVIOUS_OWNERS]" type="field"/>
+    <folder-item name="[Calculation_45c0ef5c03da450aba55]" type="field"/>
+    <folder-item name="[CONSUMPTION]" type="field"/>
+    <folder-item name="[DELIVERY_DATE]" type="field"/>
+    <folder-item name="[EMISSION_STANDARD]" type="field"/>
+    <folder-item name="[ENGINE_TYPE]" type="field"/>
+    <folder-item name="[FACTORY]" type="field"/>
+    <folder-item name="[FUEL_TYPE]" type="field"/>
+    <folder-item name="[MAX_MILEAGE]" type="field"/>
+    <folder-item name="[Calculation_78bdd4a3e6534215b58e]" type="field"/>
+    <folder-item name="[MODEL]" type="field"/>
+    <folder-item name="[ODOMETER]" type="field"/>
+    <folder-item name="[OWNER_COUNT]" type="field"/>
+    <folder-item name="[POWER_KW]" type="field"/>
+    <folder-item name="[POWER_PS]" type="field"/>
+    <folder-item name="[PRODUCTION_DATE]" type="field"/>
+    <folder-item name="[PRODUCTION_YEAR]" type="field"/>
+    <folder-item name="[RECALL_STATUS]" type="field"/>
+    <folder-item name="[REGISTRATION_DATE]" type="field"/>
+    <folder-item name="[SERVICE_RECORDS_STATUS]" type="field"/>
+    <folder-item name="[TOTAL_REPAIR_COST]" type="field"/>
+    <folder-item name="[Calculation_da18ffa25b3247a48124]" type="field"/>
+    <folder-item name="[TOTAL_VEHICLES]" type="field"/>
+    <folder-item name="[Calculation_a6519e35cb1a4d16b0bb]" type="field"/>
+    <folder-item name="[TRANSMISSION]" type="field"/>
+    <folder-item name="[VIN_ID]" type="field"/>
+  </_.fcp.SchemaViewerObjectModel.false...folder>
+  <_.fcp.SchemaViewerObjectModel.true...folders-common>
+    <folder name="Bmw Vehicle Service Events">
+      <folder-item name="[AVG_SERVICE_COST]" type="field"/>
+      <folder-item name="[Calculation_a70e504b65cf46688a68]" type="field"/>
+      <folder-item name="[COST]" type="field"/>
+      <folder-item name="[SERVICE_CENTER]" type="field"/>
+      <folder-item name="[SERVICE_DATE]" type="field"/>
+      <folder-item name="[SERVICE_NOTES]" type="field"/>
+      <folder-item name="[SERVICE_TYPE]" type="field"/>
+      <folder-item name="[SERVICE_YEAR]" type="field"/>
+      <folder-item name="[TOTAL_SERVICE_COST]" type="field"/>
+      <folder-item name="[Calculation_d5a815a209174b509291]" type="field"/>
+      <folder-item name="[TOTAL_SERVICE_EVENTS]" type="field"/>
+      <folder-item name="[Calculation_eac39b0a703c44e08d72]" type="field"/>
+      <folder-item name="[WARRANTY_COVERED]" type="field"/>
+      <folder-item name="[WARRANTY_SERVICE_COUNT]" type="field"/>
+      <folder-item name="[Calculation_825a678908454018bd3e]" type="field"/>
+    </folder>
+    <folder name="Bmw Vehicles">
+      <folder-item name="[ACCIDENT_DATE]" type="field"/>
+      <folder-item name="[ACCIDENT_REPAIR_COST]" type="field"/>
+      <folder-item name="[ACCIDENT_TYPE]" type="field"/>
+      <folder-item name="[AVG_FUEL_CONSUMPTION]" type="field"/>
+      <folder-item name="[Calculation_d569e86d2a8147b998c8]" type="field"/>
+      <folder-item name="[AVG_MILEAGE]" type="field"/>
+      <folder-item name="[Calculation_8cb85573a5ed44b9a314]" type="field"/>
+      <folder-item name="[AVG_POWER_KW]" type="field"/>
+      <folder-item name="[Calculation_a06e297972fc4d3ca37f]" type="field"/>
+      <folder-item name="[AVG_PREVIOUS_OWNERS]" type="field"/>
+      <folder-item name="[Calculation_45c0ef5c03da450aba55]" type="field"/>
+      <folder-item name="[CONSUMPTION]" type="field"/>
+      <folder-item name="[DELIVERY_DATE]" type="field"/>
+      <folder-item name="[EMISSION_STANDARD]" type="field"/>
+      <folder-item name="[ENGINE_TYPE]" type="field"/>
+      <folder-item name="[FACTORY]" type="field"/>
+      <folder-item name="[FUEL_TYPE]" type="field"/>
+      <folder-item name="[MAX_MILEAGE]" type="field"/>
+      <folder-item name="[Calculation_78bdd4a3e6534215b58e]" type="field"/>
+      <folder-item name="[MODEL]" type="field"/>
+      <folder-item name="[ODOMETER]" type="field"/>
+      <folder-item name="[OWNER_COUNT]" type="field"/>
+      <folder-item name="[POWER_KW]" type="field"/>
+      <folder-item name="[POWER_PS]" type="field"/>
+      <folder-item name="[PRODUCTION_DATE]" type="field"/>
+      <folder-item name="[PRODUCTION_YEAR]" type="field"/>
+      <folder-item name="[RECALL_STATUS]" type="field"/>
+      <folder-item name="[REGISTRATION_DATE]" type="field"/>
+      <folder-item name="[SERVICE_RECORDS_STATUS]" type="field"/>
+      <folder-item name="[TOTAL_REPAIR_COST]" type="field"/>
+      <folder-item name="[Calculation_da18ffa25b3247a48124]" type="field"/>
+      <folder-item name="[TOTAL_VEHICLES]" type="field"/>
+      <folder-item name="[Calculation_a6519e35cb1a4d16b0bb]" type="field"/>
+      <folder-item name="[TRANSMISSION]" type="field"/>
+      <folder-item name="[VIN_ID]" type="field"/>
+    </folder>
+  </_.fcp.SchemaViewerObjectModel.true...folders-common>
+  <layout dim-ordering="alphabetic" measure-ordering="alphabetic" show-structure="false"/>
+  <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    <objects>
+      <object caption="BMW_FLEET_ANALYSIS" id="SV (BMW_FLEET_ANALYSIS)_B69CAE6A084B41C19674DCD88451DCFB">
+        <properties context="">
+          <relation connection="snowflake.41753f45cec34ec7a05f06079c" name="BMW_FLEET_ANALYSIS" table="[BMW_DEMO].[DFA].[BMW_FLEET_ANALYSIS]" type="table"/>
+        </properties>
+      </object>
+    </objects>
+  </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+</datasource>

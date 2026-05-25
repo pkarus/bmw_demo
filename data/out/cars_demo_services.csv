@@ -1,0 +1,763 @@
+service_event_id,vin,service_date,service_type,service_centre,service_cost,warranty,notes
+13414,WBA00000000000275,2021-04-09,Annual Service,BMW Leipzig Service,798.00,FALSE,Notes: routine
+13415,WBA00000000000158,2020-03-13,Inspection,BMW Miami Service,475.00,FALSE,Notes: inspection
+13416,WBA00000000000006,2021-01-15,Annual Service,BMW Leipzig Service,516.00,FALSE,Notes: inspection
+13417,WBA00000000000266,2018-02-06,Brake Service,BMW Regensburg Service,1011.00,FALSE,Notes: software update
+13418,WBA00000000000032,2020-07-30,Brake Service,BMW Los Angeles Service,0.00,TRUE,Notes: inspection
+13419,WBA00000000000004,2021-11-17,Battery Service,BMW New York Service,548.00,FALSE,Notes: routine
+13420,WBA00000000000297,2025-12-31,Inspection,BMW Frankfurt Service,238.00,FALSE,Notes: routine
+13421,WBA00000000000089,2020-09-22,Oil Service,BMW Monterrey Service,917.00,FALSE,Notes: inspection
+13422,WBA00000000000158,2020-09-30,Annual Service,BMW New York Service,0.00,TRUE,Notes: software update
+13423,WBA00000000000100,2023-04-26,Oil Service,BMW Frankfurt Service,382.00,FALSE,Notes: software update
+13424,WBA00000000000227,2023-03-06,Inspection,BMW Regensburg Service,380.00,FALSE,Notes: inspection
+13425,WBA00000000000045,2024-05-20,Oil Service,BMW New York Service,576.00,FALSE,Notes: routine
+13426,WBA00000000000002,2017-04-24,Annual Service,BMW Munich Service,316.00,FALSE,Notes: software update
+13427,WBA00000000000282,2025-05-30,Oil Service,BMW New York Service,521.00,FALSE,Notes: inspection
+13465,WBA00000000000037,2019-08-23,Battery Service,BMW Cologne Service,925.00,FALSE,Notes: routine
+13466,WBA00000000000237,2024-08-17,Battery Service,BMW Berlin Service,729.00,FALSE,Notes: inspection
+13467,WBA00000000000200,2020-07-13,Inspection,BMW Munich Service,0.00,TRUE,Notes: software update
+13468,WBA00000000000153,2018-05-21,Annual Service,BMW Stuttgart Service,658.00,FALSE,Notes: routine
+13469,WBA00000000000218,2019-10-15,Brake Service,BMW Hamburg Service,1026.00,FALSE,Notes: routine
+13470,WBA00000000000059,2016-05-19,Oil Service,BMW Miami Service,320.00,FALSE,Notes: software update
+13471,WBA00000000000023,2020-11-12,Annual Service,BMW Regensburg Service,0.00,TRUE,Notes: routine
+13472,WBA00000000000112,2025-06-17,Oil Service,BMW Cologne Service,1095.00,FALSE,Notes: inspection
+13542,WBA00000000000138,2025-12-31,Annual Service,BMW Hamburg Service,195.00,FALSE,Notes: routine
+13543,WBA00000000000091,2020-12-04,Battery Service,BMW Munich Service,326.00,FALSE,Notes: software update
+13544,WBA00000000000214,2016-11-05,Brake Service,BMW Stuttgart Service,268.00,FALSE,Notes: inspection
+13545,WBA00000000000053,2021-06-02,Oil Service,BMW Miami Service,1039.00,FALSE,Notes: inspection
+13546,WBA00000000000150,2025-12-17,Battery Service,BMW Spartanburg Service,391.00,FALSE,Notes: inspection
+13547,WBA00000000000044,2025-12-31,Annual Service,BMW Chicago Service,82.00,FALSE,Notes: software update
+13548,WBA00000000000044,2025-09-05,Oil Service,BMW Dallas Service,108.00,FALSE,Notes: inspection
+13549,WBA00000000000061,2022-09-10,Oil Service,BMW Regensburg Service,1046.00,FALSE,Notes: software update
+13550,WBA00000000000035,2017-03-27,Annual Service,BMW Frankfurt Service,788.00,FALSE,Notes: routine
+13551,WBA00000000000074,2022-12-06,Oil Service,BMW Stuttgart Service,0.00,TRUE,Notes: routine
+13552,WBA00000000000225,2025-12-31,Battery Service,BMW Hamburg Service,528.00,FALSE,Notes: software update
+13553,WBA00000000000008,2022-04-07,Oil Service,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+13554,WBA00000000000004,2022-07-06,Oil Service,BMW Miami Service,451.00,FALSE,Notes: inspection
+13603,WBA00000000000269,2019-05-18,Brake Service,BMW Miami Service,606.00,FALSE,Notes: routine
+13604,WBA00000000000065,2022-04-10,Inspection,BMW New York Service,0.00,TRUE,Notes: software update
+13605,WBA00000000000121,2020-04-28,Annual Service,BMW Frankfurt Service,1136.00,FALSE,Notes: routine
+13606,WBA00000000000063,2016-11-10,Annual Service,BMW Spartanburg Service,824.00,FALSE,Notes: inspection
+13607,WBA00000000000259,2025-12-31,Annual Service,BMW Leipzig Service,737.00,FALSE,Notes: software update
+13608,WBA00000000000232,2025-12-31,Battery Service,BMW Dallas Service,978.00,FALSE,Notes: inspection
+13609,WBA00000000000166,2024-07-03,Oil Service,BMW New York Service,265.00,FALSE,Notes: routine
+13610,WBA00000000000156,2024-05-19,Brake Service,BMW Los Angeles Service,890.00,FALSE,Notes: software update
+13611,WBA00000000000223,2018-12-08,Brake Service,BMW Leipzig Service,692.00,FALSE,Notes: inspection
+13612,WBA00000000000220,2020-11-03,Brake Service,BMW Leipzig Service,673.00,FALSE,Notes: inspection
+13613,WBA00000000000024,2017-12-16,Oil Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13758,WBA00000000000060,2018-06-15,Annual Service,BMW Hamburg Service,1198.00,FALSE,Notes: routine
+13759,WBA00000000000246,2025-12-31,Battery Service,BMW New York Service,0.00,TRUE,Notes: software update
+13760,WBA00000000000004,2022-05-06,Annual Service,BMW Chicago Service,216.00,FALSE,Notes: software update
+13761,WBA00000000000203,2020-05-28,Oil Service,BMW Frankfurt Service,937.00,FALSE,Notes: inspection
+13762,WBA00000000000266,2016-09-06,Oil Service,BMW Frankfurt Service,1122.00,FALSE,Notes: inspection
+13763,WBA00000000000002,2016-09-05,Inspection,BMW Hamburg Service,807.00,FALSE,Notes: routine
+13764,WBA00000000000043,2016-09-29,Oil Service,BMW Chicago Service,0.00,TRUE,Notes: routine
+13765,WBA00000000000056,2025-03-02,Inspection,BMW Los Angeles Service,386.00,FALSE,Notes: routine
+13766,WBA00000000000291,2020-02-26,Brake Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+13767,WBA00000000000056,2024-07-29,Annual Service,BMW Los Angeles Service,1128.00,FALSE,Notes: software update
+13768,WBA00000000000182,2025-12-31,Battery Service,BMW Chicago Service,113.00,FALSE,Notes: software update
+13769,WBA00000000000027,2017-12-27,Battery Service,BMW Berlin Service,473.00,FALSE,Notes: inspection
+13770,WBA00000000000294,2025-12-31,Oil Service,BMW Regensburg Service,738.00,FALSE,Notes: routine
+13771,WBA00000000000001,2017-08-26,Brake Service,BMW Munich Service,1120.00,FALSE,Notes: inspection
+13772,WBA00000000000114,2024-05-20,Battery Service,BMW Berlin Service,493.00,FALSE,Notes: routine
+13773,WBA00000000000109,2023-09-27,Inspection,BMW Stuttgart Service,932.00,FALSE,Notes: routine
+13842,WBA00000000000037,2018-07-13,Oil Service,BMW Hamburg Service,1118.00,FALSE,Notes: software update
+13843,WBA00000000000162,2020-07-02,Battery Service,BMW Frankfurt Service,222.00,FALSE,Notes: inspection
+13844,WBA00000000000219,2023-10-19,Inspection,BMW Leipzig Service,0.00,TRUE,Notes: routine
+13845,WBA00000000000207,2025-12-31,Annual Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13846,WBA00000000000035,2018-02-05,Annual Service,BMW Stuttgart Service,659.00,FALSE,Notes: software update
+13847,WBA00000000000121,2020-03-31,Brake Service,BMW Frankfurt Service,959.00,FALSE,Notes: inspection
+13848,WBA00000000000079,2025-12-31,Brake Service,BMW Hamburg Service,489.00,FALSE,Notes: routine
+13849,WBA00000000000287,2021-02-18,Oil Service,BMW Munich Service,1143.00,FALSE,Notes: software update
+13850,WBA00000000000043,2017-04-06,Battery Service,BMW Miami Service,327.00,FALSE,Notes: inspection
+13851,WBA00000000000275,2020-12-30,Battery Service,BMW Cologne Service,794.00,FALSE,Notes: inspection
+13852,WBA00000000000219,2024-02-19,Inspection,BMW Cologne Service,382.00,FALSE,Notes: software update
+13932,WBA00000000000231,2024-01-13,Battery Service,BMW Spartanburg Service,572.00,FALSE,Notes: software update
+13933,WBA00000000000125,2021-11-17,Brake Service,BMW Spartanburg Service,331.00,FALSE,Notes: inspection
+13934,WBA00000000000068,2021-10-10,Battery Service,BMW Regensburg Service,1044.00,FALSE,Notes: inspection
+13935,WBA00000000000228,2024-06-06,Brake Service,BMW Leipzig Service,1115.00,FALSE,Notes: software update
+13936,WBA00000000000132,2020-09-20,Inspection,BMW Cologne Service,98.00,FALSE,Notes: routine
+13937,WBA00000000000180,2015-12-30,Battery Service,BMW Leipzig Service,1198.00,FALSE,Notes: software update
+13938,WBA00000000000165,2017-07-03,Brake Service,BMW Spartanburg Service,0.00,TRUE,Notes: inspection
+13939,WBA00000000000183,2025-02-22,Inspection,BMW Regensburg Service,1104.00,FALSE,Notes: software update
+13940,WBA00000000000092,2025-11-08,Inspection,BMW Frankfurt Service,563.00,FALSE,Notes: software update
+13994,WBA00000000000230,2020-11-24,Oil Service,BMW Munich Service,1050.00,FALSE,Notes: routine
+13995,WBA00000000000292,2018-05-15,Battery Service,BMW Stuttgart Service,311.00,FALSE,Notes: software update
+13996,WBA00000000000286,2022-04-20,Brake Service,BMW Los Angeles Service,192.00,FALSE,Notes: routine
+13997,WBA00000000000050,2024-07-20,Inspection,BMW Leipzig Service,1077.00,FALSE,Notes: routine
+13998,WBA00000000000038,2017-05-16,Brake Service,BMW Los Angeles Service,433.00,FALSE,Notes: inspection
+13999,WBA00000000000055,2023-03-15,Inspection,BMW Dallas Service,527.00,FALSE,Notes: routine
+14000,WBA00000000000265,2019-09-25,Annual Service,BMW Frankfurt Service,260.00,FALSE,Notes: routine
+14001,WBA00000000000165,2016-08-18,Inspection,BMW New York Service,0.00,TRUE,Notes: routine
+14002,WBA00000000000031,2023-12-30,Inspection,BMW Guadalajara Service,348.00,FALSE,Notes: software update
+14003,WBA00000000000238,2020-11-05,Inspection,BMW Hamburg Service,268.00,FALSE,Notes: routine
+14004,WBA00000000000086,2023-11-23,Inspection,BMW Leipzig Service,163.00,FALSE,Notes: software update
+14005,WBA00000000000116,2024-09-13,Oil Service,BMW Frankfurt Service,0.00,TRUE,Notes: routine
+14006,WBA00000000000123,2019-06-16,Oil Service,BMW Munich Service,502.00,FALSE,Notes: inspection
+14007,WBA00000000000254,2019-05-30,Inspection,BMW Miami Service,610.00,FALSE,Notes: routine
+14008,WBA00000000000031,2024-06-05,Annual Service,BMW Monterrey Service,546.00,FALSE,Notes: routine
+14009,WBA00000000000131,2025-04-19,Inspection,BMW Munich Service,1021.00,FALSE,Notes: software update
+14010,WBA00000000000286,2022-10-29,Oil Service,BMW Miami Service,0.00,TRUE,Notes: routine
+14011,WBA00000000000256,2023-12-24,Annual Service,BMW Regensburg Service,290.00,FALSE,Notes: software update
+14012,WBA00000000000024,2018-07-28,Oil Service,BMW Leipzig Service,0.00,TRUE,Notes: software update
+13401,WBA00000000000091,2021-05-04,Brake Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+13402,WBA00000000000198,2021-09-12,Battery Service,BMW Monterrey Service,790.00,FALSE,Notes: software update
+13403,WBA00000000000242,2021-08-14,Annual Service,BMW Los Angeles Service,512.00,FALSE,Notes: routine
+13404,WBA00000000000089,2020-10-25,Inspection,BMW San Luis Potosí Service,1029.00,FALSE,Notes: software update
+13405,WBA00000000000206,2025-12-31,Battery Service,BMW San Luis Potosí Service,337.00,FALSE,Notes: routine
+13406,WBA00000000000085,2015-07-27,Oil Service,BMW Los Angeles Service,338.00,FALSE,Notes: routine
+13407,WBA00000000000265,2018-01-14,Oil Service,BMW Cologne Service,0.00,TRUE,Notes: routine
+13408,WBA00000000000165,2016-11-30,Oil Service,BMW Spartanburg Service,337.00,FALSE,Notes: inspection
+13409,WBA00000000000122,2017-05-24,Annual Service,BMW Hamburg Service,410.00,FALSE,Notes: software update
+13410,WBA00000000000167,2022-05-19,Inspection,BMW Los Angeles Service,0.00,TRUE,Notes: inspection
+13411,WBA00000000000175,2017-06-22,Oil Service,BMW Regensburg Service,825.00,FALSE,Notes: routine
+13412,WBA00000000000074,2023-01-30,Brake Service,BMW Berlin Service,674.00,FALSE,Notes: software update
+13413,WBA00000000000267,2018-07-30,Oil Service,BMW Berlin Service,1098.00,FALSE,Notes: inspection
+13555,WBA00000000000012,2020-11-28,Annual Service,BMW Spartanburg Service,527.00,FALSE,Notes: inspection
+13556,WBA00000000000192,2025-12-31,Battery Service,BMW Chicago Service,0.00,TRUE,Notes: software update
+13557,WBA00000000000175,2016-02-29,Battery Service,BMW Stuttgart Service,0.00,TRUE,Notes: inspection
+13558,WBA00000000000028,2019-07-08,Oil Service,BMW Munich Service,773.00,FALSE,Notes: inspection
+13559,WBA00000000000062,2016-01-18,Inspection,BMW Monterrey Service,1060.00,FALSE,Notes: inspection
+13560,WBA00000000000163,2023-08-25,Oil Service,BMW Dallas Service,682.00,FALSE,Notes: inspection
+13561,WBA00000000000252,2017-12-19,Oil Service,BMW Munich Service,222.00,FALSE,Notes: inspection
+13562,WBA00000000000114,2023-05-22,Annual Service,BMW Hamburg Service,932.00,FALSE,Notes: inspection
+13637,WBA00000000000287,2021-11-12,Annual Service,BMW Cologne Service,468.00,FALSE,Notes: routine
+13638,WBA00000000000241,2025-12-31,Brake Service,BMW Stuttgart Service,296.00,FALSE,Notes: routine
+13639,WBA00000000000191,2020-09-26,Battery Service,BMW Cologne Service,556.00,FALSE,Notes: inspection
+13640,WBA00000000000204,2023-05-18,Inspection,BMW Leipzig Service,808.00,FALSE,Notes: inspection
+13641,WBA00000000000194,2020-08-04,Battery Service,BMW Stuttgart Service,901.00,FALSE,Notes: routine
+13642,WBA00000000000001,2018-04-13,Brake Service,BMW Munich Service,843.00,FALSE,Notes: inspection
+13643,WBA00000000000033,2024-01-05,Inspection,BMW New York Service,0.00,TRUE,Notes: software update
+13644,WBA00000000000235,2019-12-19,Annual Service,BMW Monterrey Service,384.00,FALSE,Notes: inspection
+13645,WBA00000000000075,2022-09-08,Annual Service,BMW Dallas Service,538.00,FALSE,Notes: software update
+13646,WBA00000000000195,2021-08-05,Annual Service,BMW Leipzig Service,437.00,FALSE,Notes: software update
+13647,WBA00000000000171,2019-12-20,Battery Service,BMW New York Service,795.00,FALSE,Notes: routine
+13648,WBA00000000000092,2025-12-31,Brake Service,BMW Cologne Service,1154.00,FALSE,Notes: routine
+13649,WBA00000000000066,2019-02-24,Inspection,BMW Chicago Service,936.00,FALSE,Notes: routine
+13650,WBA00000000000029,2025-12-31,Battery Service,BMW Berlin Service,937.00,FALSE,Notes: software update
+13746,WBA00000000000184,2024-09-25,Annual Service,BMW Leipzig Service,416.00,FALSE,Notes: inspection
+13747,WBA00000000000082,2025-12-31,Inspection,BMW Spartanburg Service,0.00,TRUE,Notes: inspection
+13748,WBA00000000000246,2025-12-31,Annual Service,BMW New York Service,750.00,FALSE,Notes: software update
+13749,WBA00000000000070,2019-05-19,Battery Service,BMW Frankfurt Service,0.00,TRUE,Notes: inspection
+13750,WBA00000000000096,2025-12-31,Oil Service,BMW Spartanburg Service,913.00,FALSE,Notes: software update
+13751,WBA00000000000146,2018-01-08,Inspection,BMW Munich Service,1098.00,FALSE,Notes: routine
+13752,WBA00000000000142,2025-03-27,Inspection,BMW San Luis Potosí Service,581.00,FALSE,Notes: routine
+13753,WBA00000000000289,2023-05-18,Oil Service,BMW Regensburg Service,568.00,FALSE,Notes: software update
+13754,WBA00000000000027,2019-10-03,Annual Service,BMW Leipzig Service,0.00,TRUE,Notes: inspection
+13755,WBA00000000000157,2022-12-15,Annual Service,BMW Hamburg Service,1124.00,FALSE,Notes: routine
+13756,WBA00000000000099,2023-07-05,Brake Service,BMW Berlin Service,0.00,TRUE,Notes: routine
+13757,WBA00000000000295,2018-05-17,Brake Service,BMW Guadalajara Service,345.00,FALSE,Notes: inspection
+13833,WBA00000000000196,2025-12-31,Inspection,BMW Spartanburg Service,835.00,FALSE,Notes: inspection
+13834,WBA00000000000194,2021-06-29,Brake Service,BMW Regensburg Service,921.00,FALSE,Notes: inspection
+13835,WBA00000000000215,2020-08-28,Oil Service,BMW New York Service,595.00,FALSE,Notes: software update
+13836,WBA00000000000017,2025-06-22,Oil Service,BMW Berlin Service,0.00,TRUE,Notes: routine
+13837,WBA00000000000104,2021-08-24,Brake Service,BMW Los Angeles Service,521.00,FALSE,Notes: inspection
+13838,WBA00000000000017,2025-12-31,Oil Service,BMW Frankfurt Service,665.00,FALSE,Notes: software update
+13839,WBA00000000000126,2025-11-28,Annual Service,BMW Leipzig Service,695.00,FALSE,Notes: software update
+13840,WBA00000000000264,2017-07-09,Annual Service,BMW Frankfurt Service,0.00,TRUE,Notes: routine
+13841,WBA00000000000072,2018-08-16,Brake Service,BMW Stuttgart Service,1183.00,FALSE,Notes: software update
+13941,WBA00000000000228,2023-03-03,Inspection,BMW Berlin Service,425.00,FALSE,Notes: inspection
+13942,WBA00000000000213,2025-12-31,Inspection,BMW Berlin Service,325.00,FALSE,Notes: software update
+13943,WBA00000000000296,2017-10-24,Oil Service,BMW Regensburg Service,420.00,FALSE,Notes: software update
+13944,WBA00000000000172,2025-12-31,Annual Service,BMW Berlin Service,0.00,TRUE,Notes: inspection
+13945,WBA00000000000096,2025-12-31,Battery Service,BMW Spartanburg Service,352.00,FALSE,Notes: software update
+13946,WBA00000000000297,2025-10-18,Battery Service,BMW Munich Service,378.00,FALSE,Notes: software update
+13947,WBA00000000000160,2019-07-15,Oil Service,BMW Miami Service,0.00,TRUE,Notes: inspection
+13948,WBA00000000000059,2015-12-25,Oil Service,BMW Dallas Service,832.00,FALSE,Notes: routine
+13949,WBA00000000000078,2025-12-31,Inspection,BMW Cologne Service,511.00,FALSE,Notes: software update
+14013,WBA00000000000300,2016-10-25,Oil Service,BMW Monterrey Service,751.00,FALSE,Notes: routine
+14014,WBA00000000000207,2025-12-31,Oil Service,BMW Frankfurt Service,204.00,FALSE,Notes: inspection
+14015,WBA00000000000183,2023-09-04,Oil Service,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+14016,WBA00000000000078,2025-12-31,Brake Service,BMW Frankfurt Service,1165.00,FALSE,Notes: routine
+14017,WBA00000000000178,2025-12-31,Oil Service,BMW Munich Service,696.00,FALSE,Notes: inspection
+14018,WBA00000000000132,2020-09-01,Annual Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+14019,WBA00000000000117,2017-06-13,Oil Service,BMW Berlin Service,0.00,TRUE,Notes: routine
+14020,WBA00000000000205,2017-10-05,Brake Service,BMW Dallas Service,227.00,FALSE,Notes: software update
+14021,WBA00000000000089,2020-08-16,Oil Service,BMW Mexico City Service,306.00,FALSE,Notes: inspection
+14067,WBA00000000000296,2016-12-17,Oil Service,BMW Stuttgart Service,471.00,FALSE,Notes: inspection
+14068,WBA00000000000040,2018-10-15,Oil Service,BMW Stuttgart Service,0.00,TRUE,Notes: inspection
+14069,WBA00000000000167,2022-05-20,Annual Service,BMW Miami Service,449.00,FALSE,Notes: routine
+14070,WBA00000000000112,2023-10-28,Battery Service,BMW Stuttgart Service,748.00,FALSE,Notes: software update
+14071,WBA00000000000099,2023-04-11,Oil Service,BMW Munich Service,493.00,FALSE,Notes: software update
+14072,WBA00000000000019,2017-12-10,Oil Service,BMW Stuttgart Service,124.00,FALSE,Notes: routine
+14073,WBA00000000000162,2019-11-21,Annual Service,BMW Leipzig Service,245.00,FALSE,Notes: routine
+14074,WBA00000000000103,2021-01-26,Oil Service,BMW Dallas Service,746.00,FALSE,Notes: routine
+14075,WBA00000000000229,2018-11-12,Battery Service,BMW Berlin Service,375.00,FALSE,Notes: routine
+14076,WBA00000000000107,2020-04-28,Inspection,BMW Cologne Service,946.00,FALSE,Notes: software update
+14077,WBA00000000000275,2022-07-12,Inspection,BMW Berlin Service,553.00,FALSE,Notes: routine
+14078,WBA00000000000297,2025-12-31,Oil Service,BMW Frankfurt Service,999.00,FALSE,Notes: inspection
+14079,WBA00000000000281,2025-07-12,Inspection,BMW Hamburg Service,99.00,FALSE,Notes: routine
+14080,WBA00000000000003,2017-07-31,Brake Service,BMW Leipzig Service,0.00,TRUE,Notes: routine
+14081,WBA00000000000284,2022-04-03,Inspection,BMW Stuttgart Service,563.00,FALSE,Notes: inspection
+13473,WBA00000000000156,2025-08-19,Battery Service,BMW New York Service,248.00,FALSE,Notes: software update
+13474,WBA00000000000051,2016-06-08,Brake Service,BMW Berlin Service,951.00,FALSE,Notes: routine
+13475,WBA00000000000225,2025-08-17,Inspection,BMW Stuttgart Service,0.00,TRUE,Notes: inspection
+13476,WBA00000000000195,2023-01-24,Brake Service,BMW Stuttgart Service,970.00,FALSE,Notes: routine
+13477,WBA00000000000267,2017-03-08,Inspection,BMW Leipzig Service,877.00,FALSE,Notes: software update
+13478,WBA00000000000087,2019-03-22,Inspection,BMW Cologne Service,1045.00,FALSE,Notes: inspection
+13479,WBA00000000000193,2025-12-31,Battery Service,BMW Dallas Service,225.00,FALSE,Notes: software update
+13480,WBA00000000000092,2025-12-31,Inspection,BMW Cologne Service,543.00,FALSE,Notes: inspection
+13481,WBA00000000000056,2024-10-26,Brake Service,BMW Los Angeles Service,447.00,FALSE,Notes: software update
+13482,WBA00000000000047,2020-11-27,Oil Service,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+13483,WBA00000000000106,2023-08-11,Battery Service,BMW Miami Service,474.00,FALSE,Notes: software update
+13484,WBA00000000000300,2017-11-01,Annual Service,BMW San Luis Potosí Service,861.00,FALSE,Notes: software update
+13485,WBA00000000000112,2024-08-03,Brake Service,BMW Frankfurt Service,0.00,TRUE,Notes: software update
+13486,WBA00000000000070,2018-09-22,Battery Service,BMW Berlin Service,315.00,FALSE,Notes: software update
+13487,WBA00000000000170,2016-10-27,Brake Service,BMW Guadalajara Service,1191.00,FALSE,Notes: inspection
+13488,WBA00000000000203,2020-01-20,Oil Service,BMW Cologne Service,731.00,FALSE,Notes: inspection
+13489,WBA00000000000148,2025-12-31,Annual Service,BMW Munich Service,1018.00,FALSE,Notes: inspection
+13490,WBA00000000000207,2025-10-12,Inspection,BMW Frankfurt Service,0.00,TRUE,Notes: software update
+13506,WBA00000000000190,2023-08-02,Oil Service,BMW Cologne Service,705.00,FALSE,Notes: inspection
+13507,WBA00000000000019,2017-01-31,Inspection,BMW Hamburg Service,814.00,FALSE,Notes: routine
+13508,WBA00000000000240,2020-12-10,Battery Service,BMW Hamburg Service,207.00,FALSE,Notes: routine
+13509,WBA00000000000282,2024-05-21,Battery Service,BMW Spartanburg Service,727.00,FALSE,Notes: inspection
+13510,WBA00000000000145,2022-05-03,Oil Service,BMW Spartanburg Service,0.00,TRUE,Notes: inspection
+13511,WBA00000000000146,2016-07-04,Battery Service,BMW Hamburg Service,0.00,TRUE,Notes: software update
+13512,WBA00000000000169,2023-06-05,Battery Service,BMW Monterrey Service,887.00,FALSE,Notes: software update
+13513,WBA00000000000191,2020-10-11,Oil Service,BMW Stuttgart Service,1155.00,FALSE,Notes: software update
+13514,WBA00000000000035,2017-05-14,Battery Service,BMW Frankfurt Service,604.00,FALSE,Notes: routine
+13515,WBA00000000000071,2018-12-18,Brake Service,BMW Stuttgart Service,1186.00,FALSE,Notes: software update
+13516,WBA00000000000161,2016-07-25,Battery Service,BMW Berlin Service,1042.00,FALSE,Notes: software update
+13517,WBA00000000000026,2022-09-07,Annual Service,BMW Berlin Service,1182.00,FALSE,Notes: software update
+13518,WBA00000000000255,2019-12-18,Annual Service,BMW Cologne Service,826.00,FALSE,Notes: software update
+13519,WBA00000000000197,2024-10-19,Brake Service,BMW Mexico City Service,557.00,FALSE,Notes: routine
+13520,WBA00000000000232,2025-12-31,Oil Service,BMW Miami Service,135.00,FALSE,Notes: software update
+13521,WBA00000000000011,2022-12-21,Inspection,BMW Guadalajara Service,0.00,TRUE,Notes: routine
+13522,WBA00000000000051,2017-07-29,Oil Service,BMW Hamburg Service,654.00,FALSE,Notes: software update
+13523,WBA00000000000219,2024-05-15,Oil Service,BMW Munich Service,698.00,FALSE,Notes: routine
+13524,WBA00000000000095,2018-08-05,Battery Service,BMW Hamburg Service,0.00,TRUE,Notes: routine
+13525,WBA00000000000192,2025-05-02,Brake Service,BMW Los Angeles Service,761.00,FALSE,Notes: inspection
+13651,WBA00000000000009,2022-08-05,Annual Service,BMW Munich Service,317.00,FALSE,Notes: inspection
+13652,WBA00000000000061,2022-02-08,Brake Service,BMW Munich Service,323.00,FALSE,Notes: routine
+13653,WBA00000000000155,2024-11-01,Oil Service,BMW Hamburg Service,317.00,FALSE,Notes: software update
+13654,WBA00000000000064,2024-08-18,Brake Service,BMW Cologne Service,1079.00,FALSE,Notes: inspection
+13655,WBA00000000000145,2021-07-22,Inspection,BMW New York Service,765.00,FALSE,Notes: inspection
+13656,WBA00000000000031,2025-03-17,Oil Service,BMW Mexico City Service,157.00,FALSE,Notes: software update
+13657,WBA00000000000237,2023-03-08,Annual Service,BMW Stuttgart Service,1101.00,FALSE,Notes: inspection
+13658,WBA00000000000125,2022-02-07,Inspection,BMW New York Service,150.00,FALSE,Notes: routine
+13659,WBA00000000000087,2018-07-14,Oil Service,BMW Regensburg Service,556.00,FALSE,Notes: software update
+13660,WBA00000000000107,2018-12-27,Inspection,BMW Munich Service,1100.00,FALSE,Notes: inspection
+13661,WBA00000000000216,2025-04-23,Annual Service,BMW New York Service,0.00,TRUE,Notes: routine
+13662,WBA00000000000090,2020-01-29,Battery Service,BMW Frankfurt Service,158.00,FALSE,Notes: inspection
+13663,WBA00000000000103,2021-01-05,Inspection,BMW Spartanburg Service,872.00,FALSE,Notes: routine
+13709,WBA00000000000265,2018-11-26,Inspection,BMW Munich Service,0.00,TRUE,Notes: routine
+13710,WBA00000000000239,2017-04-20,Inspection,BMW Miami Service,434.00,FALSE,Notes: inspection
+13711,WBA00000000000098,2020-02-26,Annual Service,BMW Hamburg Service,817.00,FALSE,Notes: software update
+13712,WBA00000000000166,2023-06-13,Annual Service,BMW New York Service,0.00,TRUE,Notes: software update
+13713,WBA00000000000139,2017-05-09,Oil Service,BMW Berlin Service,1016.00,FALSE,Notes: software update
+13714,WBA00000000000203,2018-10-07,Brake Service,BMW Regensburg Service,0.00,TRUE,Notes: routine
+13715,WBA00000000000224,2021-12-31,Annual Service,BMW New York Service,574.00,FALSE,Notes: software update
+13716,WBA00000000000115,2025-04-04,Inspection,BMW Cologne Service,355.00,FALSE,Notes: software update
+13717,WBA00000000000288,2018-08-01,Brake Service,BMW Hamburg Service,660.00,FALSE,Notes: inspection
+13718,WBA00000000000030,2025-12-31,Oil Service,BMW Frankfurt Service,558.00,FALSE,Notes: inspection
+13719,WBA00000000000210,2021-12-04,Oil Service,BMW Chicago Service,808.00,FALSE,Notes: inspection
+13720,WBA00000000000251,2018-12-14,Brake Service,BMW Leipzig Service,587.00,FALSE,Notes: routine
+13721,WBA00000000000133,2024-10-24,Brake Service,BMW Berlin Service,0.00,TRUE,Notes: routine
+13787,WBA00000000000042,2024-05-20,Oil Service,BMW Mexico City Service,0.00,TRUE,Notes: software update
+13788,WBA00000000000273,2019-10-28,Inspection,BMW New York Service,554.00,FALSE,Notes: inspection
+13789,WBA00000000000292,2020-05-31,Inspection,BMW Frankfurt Service,1057.00,FALSE,Notes: routine
+13790,WBA00000000000143,2022-03-26,Inspection,BMW Frankfurt Service,828.00,FALSE,Notes: inspection
+13791,WBA00000000000040,2017-12-03,Battery Service,BMW Cologne Service,211.00,FALSE,Notes: software update
+13792,WBA00000000000174,2017-06-07,Brake Service,BMW Chicago Service,939.00,FALSE,Notes: routine
+13793,WBA00000000000100,2022-11-23,Brake Service,BMW Munich Service,851.00,FALSE,Notes: inspection
+13794,WBA00000000000066,2018-11-04,Inspection,BMW Los Angeles Service,750.00,FALSE,Notes: software update
+13795,WBA00000000000281,2025-12-31,Inspection,BMW Leipzig Service,911.00,FALSE,Notes: inspection
+13796,WBA00000000000060,2020-03-17,Inspection,BMW Stuttgart Service,421.00,FALSE,Notes: inspection
+13797,WBA00000000000106,2022-05-28,Brake Service,BMW Miami Service,175.00,FALSE,Notes: inspection
+13798,WBA00000000000131,2025-11-13,Oil Service,BMW Frankfurt Service,0.00,TRUE,Notes: routine
+13818,WBA00000000000265,2018-12-19,Annual Service,BMW Cologne Service,1053.00,FALSE,Notes: software update
+13819,WBA00000000000226,2025-09-18,Oil Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+13820,WBA00000000000231,2024-10-10,Battery Service,BMW Los Angeles Service,537.00,FALSE,Notes: software update
+13821,WBA00000000000249,2025-11-21,Brake Service,BMW Hamburg Service,947.00,FALSE,Notes: software update
+13822,WBA00000000000241,2024-10-31,Annual Service,BMW Cologne Service,849.00,FALSE,Notes: software update
+13823,WBA00000000000102,2019-07-16,Inspection,BMW Guadalajara Service,192.00,FALSE,Notes: inspection
+13824,WBA00000000000275,2020-10-23,Brake Service,BMW Stuttgart Service,658.00,FALSE,Notes: inspection
+13825,WBA00000000000023,2022-01-01,Inspection,BMW Hamburg Service,289.00,FALSE,Notes: inspection
+13826,WBA00000000000043,2018-07-13,Inspection,BMW Miami Service,1115.00,FALSE,Notes: inspection
+13827,WBA00000000000058,2018-12-19,Inspection,BMW Cologne Service,0.00,TRUE,Notes: routine
+13828,WBA00000000000224,2022-07-14,Oil Service,BMW Chicago Service,1156.00,FALSE,Notes: software update
+13829,WBA00000000000083,2023-04-19,Inspection,BMW Los Angeles Service,400.00,FALSE,Notes: routine
+13830,WBA00000000000184,2023-10-02,Annual Service,BMW Regensburg Service,0.00,TRUE,Notes: routine
+13831,WBA00000000000223,2019-01-08,Brake Service,BMW Leipzig Service,0.00,TRUE,Notes: software update
+13832,WBA00000000000232,2025-12-31,Brake Service,BMW Dallas Service,383.00,FALSE,Notes: software update
+13913,WBA00000000000270,2020-01-03,Inspection,BMW Dallas Service,997.00,FALSE,Notes: routine
+13914,WBA00000000000052,2022-05-03,Oil Service,BMW Frankfurt Service,989.00,FALSE,Notes: software update
+13915,WBA00000000000033,2024-02-29,Inspection,BMW Los Angeles Service,444.00,FALSE,Notes: software update
+13916,WBA00000000000284,2022-09-01,Oil Service,BMW Regensburg Service,1101.00,FALSE,Notes: software update
+13917,WBA00000000000291,2018-11-03,Brake Service,BMW Hamburg Service,745.00,FALSE,Notes: software update
+13918,WBA00000000000236,2017-08-08,Inspection,BMW Cologne Service,1149.00,FALSE,Notes: inspection
+13919,WBA00000000000073,2020-09-22,Inspection,BMW Leipzig Service,0.00,TRUE,Notes: software update
+13920,WBA00000000000120,2023-01-04,Battery Service,BMW Munich Service,0.00,TRUE,Notes: inspection
+13921,WBA00000000000232,2025-12-31,Battery Service,BMW Spartanburg Service,571.00,FALSE,Notes: software update
+13985,WBA00000000000204,2023-09-10,Battery Service,BMW Munich Service,206.00,FALSE,Notes: inspection
+13986,WBA00000000000039,2021-03-04,Battery Service,BMW Dallas Service,714.00,FALSE,Notes: software update
+13987,WBA00000000000218,2019-09-15,Oil Service,BMW Munich Service,772.00,FALSE,Notes: routine
+13988,WBA00000000000166,2022-10-25,Brake Service,BMW Los Angeles Service,0.00,TRUE,Notes: inspection
+13989,WBA00000000000014,2025-01-17,Brake Service,BMW Munich Service,0.00,TRUE,Notes: software update
+13990,WBA00000000000227,2022-03-15,Brake Service,BMW Leipzig Service,587.00,FALSE,Notes: software update
+13991,WBA00000000000079,2025-12-31,Inspection,BMW Cologne Service,473.00,FALSE,Notes: routine
+13992,WBA00000000000299,2015-08-04,Battery Service,BMW Munich Service,435.00,FALSE,Notes: software update
+13993,WBA00000000000026,2022-11-12,Annual Service,BMW Regensburg Service,1100.00,FALSE,Notes: software update
+13526,WBA00000000000022,2017-07-27,Annual Service,BMW Hamburg Service,939.00,FALSE,Notes: software update
+13527,WBA00000000000048,2023-05-13,Inspection,BMW Cologne Service,880.00,FALSE,Notes: routine
+13528,WBA00000000000064,2023-12-30,Brake Service,BMW Berlin Service,290.00,FALSE,Notes: routine
+13529,WBA00000000000022,2016-10-28,Brake Service,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+13530,WBA00000000000053,2022-12-21,Annual Service,BMW Los Angeles Service,0.00,TRUE,Notes: software update
+13531,WBA00000000000292,2019-01-17,Inspection,BMW Berlin Service,0.00,TRUE,Notes: routine
+13532,WBA00000000000110,2022-03-02,Brake Service,BMW Spartanburg Service,952.00,FALSE,Notes: software update
+13533,WBA00000000000164,2020-10-03,Oil Service,BMW Hamburg Service,314.00,FALSE,Notes: inspection
+13534,WBA00000000000166,2022-10-09,Inspection,BMW New York Service,1096.00,FALSE,Notes: software update
+13535,WBA00000000000276,2025-12-31,Annual Service,BMW Cologne Service,0.00,TRUE,Notes: routine
+13536,WBA00000000000121,2019-11-20,Battery Service,BMW Cologne Service,1050.00,FALSE,Notes: inspection
+13537,WBA00000000000173,2024-09-23,Battery Service,BMW Monterrey Service,641.00,FALSE,Notes: software update
+13538,WBA00000000000100,2022-09-27,Annual Service,BMW Berlin Service,389.00,FALSE,Notes: routine
+13539,WBA00000000000278,2024-09-01,Battery Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+13540,WBA00000000000055,2022-03-11,Oil Service,BMW Dallas Service,0.00,TRUE,Notes: software update
+13541,WBA00000000000186,2018-06-12,Battery Service,BMW Munich Service,1190.00,FALSE,Notes: inspection
+13624,WBA00000000000075,2022-02-04,Inspection,BMW Chicago Service,536.00,FALSE,Notes: routine
+13625,WBA00000000000298,2025-12-31,Annual Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13626,WBA00000000000015,2019-07-26,Annual Service,BMW Stuttgart Service,669.00,FALSE,Notes: inspection
+13627,WBA00000000000233,2019-10-21,Battery Service,BMW Los Angeles Service,95.00,FALSE,Notes: inspection
+13628,WBA00000000000223,2018-01-19,Annual Service,BMW Regensburg Service,1141.00,FALSE,Notes: software update
+13629,WBA00000000000293,2025-12-31,Annual Service,BMW Miami Service,553.00,FALSE,Notes: routine
+13630,WBA00000000000058,2019-08-14,Brake Service,BMW Regensburg Service,0.00,TRUE,Notes: routine
+13631,WBA00000000000015,2021-07-10,Oil Service,BMW Hamburg Service,979.00,FALSE,Notes: software update
+13632,WBA00000000000003,2018-09-02,Brake Service,BMW Hamburg Service,495.00,FALSE,Notes: routine
+13633,WBA00000000000286,2022-09-08,Battery Service,BMW Dallas Service,524.00,FALSE,Notes: software update
+13634,WBA00000000000013,2025-12-31,Brake Service,BMW Los Angeles Service,242.00,FALSE,Notes: software update
+13635,WBA00000000000171,2021-07-20,Brake Service,BMW Miami Service,758.00,FALSE,Notes: software update
+13636,WBA00000000000260,2022-11-19,Inspection,BMW Stuttgart Service,266.00,FALSE,Notes: routine
+13731,WBA00000000000106,2023-12-16,Inspection,BMW Miami Service,422.00,FALSE,Notes: routine
+13732,WBA00000000000047,2021-04-25,Inspection,BMW Frankfurt Service,327.00,FALSE,Notes: routine
+13733,WBA00000000000195,2022-08-03,Oil Service,BMW Leipzig Service,1157.00,FALSE,Notes: routine
+13734,WBA00000000000176,2018-05-23,Battery Service,BMW Berlin Service,285.00,FALSE,Notes: routine
+13735,WBA00000000000213,2025-12-31,Battery Service,BMW Munich Service,409.00,FALSE,Notes: software update
+13736,WBA00000000000006,2020-02-23,Brake Service,BMW Cologne Service,259.00,FALSE,Notes: routine
+13737,WBA00000000000013,2025-12-31,Battery Service,BMW Dallas Service,378.00,FALSE,Notes: inspection
+13738,WBA00000000000293,2025-12-31,Inspection,BMW Chicago Service,0.00,TRUE,Notes: inspection
+13739,WBA00000000000102,2017-04-16,Annual Service,BMW Guadalajara Service,395.00,FALSE,Notes: routine
+13740,WBA00000000000040,2018-12-22,Oil Service,BMW Berlin Service,1066.00,FALSE,Notes: software update
+13741,WBA00000000000149,2024-03-14,Oil Service,BMW Hamburg Service,733.00,FALSE,Notes: software update
+13742,WBA00000000000101,2020-09-16,Battery Service,BMW Berlin Service,896.00,FALSE,Notes: routine
+13743,WBA00000000000049,2017-02-28,Inspection,BMW Cologne Service,0.00,TRUE,Notes: inspection
+13744,WBA00000000000063,2018-08-03,Battery Service,BMW Chicago Service,819.00,FALSE,Notes: routine
+13745,WBA00000000000118,2023-02-18,Oil Service,BMW Miami Service,0.00,TRUE,Notes: inspection
+13799,WBA00000000000235,2019-09-27,Brake Service,BMW Guadalajara Service,233.00,FALSE,Notes: inspection
+13800,WBA00000000000214,2017-12-26,Battery Service,BMW Frankfurt Service,227.00,FALSE,Notes: software update
+13801,WBA00000000000127,2018-05-13,Inspection,BMW Dallas Service,1180.00,FALSE,Notes: routine
+13802,WBA00000000000231,2025-12-31,Oil Service,BMW Dallas Service,0.00,TRUE,Notes: routine
+13803,WBA00000000000190,2023-04-01,Brake Service,BMW Hamburg Service,426.00,FALSE,Notes: routine
+13804,WBA00000000000007,2020-09-06,Battery Service,BMW Leipzig Service,364.00,FALSE,Notes: inspection
+13805,WBA00000000000067,2019-06-04,Battery Service,BMW Munich Service,143.00,FALSE,Notes: routine
+13806,WBA00000000000127,2019-07-06,Oil Service,BMW Miami Service,902.00,FALSE,Notes: software update
+13807,WBA00000000000169,2024-02-11,Inspection,BMW Guadalajara Service,1119.00,FALSE,Notes: routine
+13853,WBA00000000000278,2024-12-02,Oil Service,BMW Hamburg Service,1012.00,FALSE,Notes: inspection
+13854,WBA00000000000120,2024-02-14,Inspection,BMW Munich Service,950.00,FALSE,Notes: software update
+13855,WBA00000000000050,2024-05-14,Annual Service,BMW Munich Service,0.00,TRUE,Notes: inspection
+13856,WBA00000000000152,2016-10-20,Inspection,BMW Regensburg Service,889.00,FALSE,Notes: software update
+13857,WBA00000000000215,2021-02-13,Annual Service,BMW Miami Service,582.00,FALSE,Notes: inspection
+13858,WBA00000000000059,2016-11-17,Oil Service,BMW New York Service,724.00,FALSE,Notes: routine
+13859,WBA00000000000111,2018-09-10,Brake Service,BMW Regensburg Service,1084.00,FALSE,Notes: software update
+13860,WBA00000000000151,2016-10-23,Battery Service,BMW Regensburg Service,1132.00,FALSE,Notes: inspection
+13861,WBA00000000000208,2023-10-20,Brake Service,BMW Munich Service,0.00,TRUE,Notes: inspection
+13862,WBA00000000000285,2023-11-30,Inspection,BMW Guadalajara Service,1188.00,FALSE,Notes: inspection
+13863,WBA00000000000023,2020-09-14,Brake Service,BMW Regensburg Service,1059.00,FALSE,Notes: routine
+13864,WBA00000000000243,2024-07-05,Brake Service,BMW Hamburg Service,0.00,TRUE,Notes: routine
+13865,WBA00000000000073,2022-01-31,Oil Service,BMW Regensburg Service,570.00,FALSE,Notes: routine
+13866,WBA00000000000264,2016-12-08,Inspection,BMW Cologne Service,898.00,FALSE,Notes: software update
+13867,WBA00000000000195,2023-04-09,Annual Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+13868,WBA00000000000229,2018-09-10,Battery Service,BMW Stuttgart Service,865.00,FALSE,Notes: routine
+13869,WBA00000000000113,2017-12-29,Annual Service,BMW Berlin Service,165.00,FALSE,Notes: software update
+13870,WBA00000000000068,2022-10-04,Battery Service,BMW Hamburg Service,156.00,FALSE,Notes: inspection
+13871,WBA00000000000187,2023-02-08,Oil Service,BMW Guadalajara Service,535.00,FALSE,Notes: routine
+13904,WBA00000000000139,2018-05-13,Oil Service,BMW Hamburg Service,636.00,FALSE,Notes: routine
+13905,WBA00000000000105,2021-02-06,Oil Service,BMW Frankfurt Service,0.00,TRUE,Notes: inspection
+13906,WBA00000000000144,2020-03-23,Oil Service,BMW Miami Service,1050.00,FALSE,Notes: inspection
+13907,WBA00000000000203,2020-06-19,Inspection,BMW Stuttgart Service,1033.00,FALSE,Notes: software update
+13908,WBA00000000000250,2016-03-22,Brake Service,BMW Leipzig Service,778.00,FALSE,Notes: routine
+13909,WBA00000000000007,2020-10-02,Brake Service,BMW Cologne Service,1104.00,FALSE,Notes: software update
+13910,WBA00000000000130,2018-06-21,Inspection,BMW Berlin Service,1005.00,FALSE,Notes: software update
+13911,WBA00000000000196,2025-12-31,Inspection,BMW Los Angeles Service,1170.00,FALSE,Notes: inspection
+13912,WBA00000000000076,2018-03-24,Inspection,BMW Cologne Service,353.00,FALSE,Notes: inspection
+13973,WBA00000000000066,2019-09-12,Battery Service,BMW Dallas Service,87.00,FALSE,Notes: inspection
+13974,WBA00000000000135,2022-01-18,Brake Service,BMW Munich Service,916.00,FALSE,Notes: software update
+13975,WBA00000000000148,2025-03-19,Annual Service,BMW Hamburg Service,162.00,FALSE,Notes: inspection
+13976,WBA00000000000241,2024-04-27,Inspection,BMW Stuttgart Service,528.00,FALSE,Notes: routine
+13977,WBA00000000000080,2024-11-25,Inspection,BMW Chicago Service,886.00,FALSE,Notes: software update
+13978,WBA00000000000029,2025-05-15,Inspection,BMW Frankfurt Service,1128.00,FALSE,Notes: routine
+13979,WBA00000000000248,2024-01-09,Oil Service,BMW Regensburg Service,233.00,FALSE,Notes: software update
+13980,WBA00000000000102,2019-01-31,Annual Service,BMW Mexico City Service,970.00,FALSE,Notes: routine
+14045,WBA00000000000258,2024-11-26,Oil Service,BMW Frankfurt Service,1066.00,FALSE,Notes: software update
+14046,WBA00000000000216,2025-12-31,Inspection,BMW Los Angeles Service,511.00,FALSE,Notes: routine
+14047,WBA00000000000250,2017-05-11,Brake Service,BMW Berlin Service,0.00,TRUE,Notes: routine
+14048,WBA00000000000059,2016-07-20,Inspection,BMW Miami Service,262.00,FALSE,Notes: software update
+14049,WBA00000000000296,2016-10-23,Inspection,BMW Stuttgart Service,500.00,FALSE,Notes: inspection
+14050,WBA00000000000144,2020-07-03,Brake Service,BMW Dallas Service,1101.00,FALSE,Notes: software update
+14051,WBA00000000000238,2019-12-10,Battery Service,BMW Berlin Service,756.00,FALSE,Notes: software update
+14052,WBA00000000000025,2016-08-10,Battery Service,BMW Miami Service,864.00,FALSE,Notes: inspection
+13491,WBA00000000000262,2020-02-06,Oil Service,BMW Leipzig Service,410.00,FALSE,Notes: software update
+13501,WBA00000000000259,2025-12-31,Inspection,BMW Stuttgart Service,108.00,FALSE,Notes: software update
+13502,WBA00000000000247,2023-05-31,Brake Service,BMW Leipzig Service,109.00,FALSE,Notes: software update
+13503,WBA00000000000239,2017-09-12,Battery Service,BMW New York Service,907.00,FALSE,Notes: routine
+13504,WBA00000000000246,2024-10-21,Inspection,BMW Spartanburg Service,0.00,TRUE,Notes: software update
+13505,WBA00000000000137,2021-11-07,Inspection,BMW San Luis Potosí Service,1008.00,FALSE,Notes: inspection
+13614,WBA00000000000209,2020-03-30,Oil Service,BMW Dallas Service,0.00,TRUE,Notes: routine
+13615,WBA00000000000270,2020-12-31,Battery Service,BMW Chicago Service,484.00,FALSE,Notes: inspection
+13616,WBA00000000000139,2017-04-17,Battery Service,BMW Frankfurt Service,293.00,FALSE,Notes: inspection
+13617,WBA00000000000038,2017-10-09,Annual Service,BMW Spartanburg Service,0.00,TRUE,Notes: inspection
+13618,WBA00000000000280,2025-04-24,Inspection,BMW Miami Service,0.00,TRUE,Notes: software update
+13619,WBA00000000000054,2019-04-26,Inspection,BMW Guadalajara Service,123.00,FALSE,Notes: inspection
+13620,WBA00000000000092,2025-12-31,Brake Service,BMW Regensburg Service,482.00,FALSE,Notes: inspection
+13621,WBA00000000000242,2021-06-18,Annual Service,BMW Spartanburg Service,1013.00,FALSE,Notes: inspection
+13622,WBA00000000000071,2017-08-08,Oil Service,BMW Stuttgart Service,952.00,FALSE,Notes: routine
+13623,WBA00000000000109,2023-08-15,Inspection,BMW Cologne Service,0.00,TRUE,Notes: routine
+13774,WBA00000000000130,2019-10-09,Annual Service,BMW Munich Service,653.00,FALSE,Notes: inspection
+13775,WBA00000000000229,2017-02-25,Annual Service,BMW Munich Service,747.00,FALSE,Notes: inspection
+13776,WBA00000000000208,2024-10-03,Inspection,BMW Cologne Service,0.00,TRUE,Notes: routine
+13777,WBA00000000000057,2022-04-26,Oil Service,BMW Hamburg Service,940.00,FALSE,Notes: inspection
+13778,WBA00000000000077,2017-09-02,Annual Service,BMW Leipzig Service,763.00,FALSE,Notes: software update
+13779,WBA00000000000297,2025-12-31,Inspection,BMW Frankfurt Service,391.00,FALSE,Notes: routine
+13780,WBA00000000000117,2019-02-23,Battery Service,BMW Berlin Service,578.00,FALSE,Notes: inspection
+13781,WBA00000000000053,2021-08-21,Brake Service,BMW Miami Service,1136.00,FALSE,Notes: software update
+13782,WBA00000000000224,2023-04-10,Brake Service,BMW Miami Service,742.00,FALSE,Notes: software update
+13783,WBA00000000000033,2023-12-23,Annual Service,BMW New York Service,0.00,TRUE,Notes: software update
+13784,WBA00000000000119,2023-01-27,Battery Service,BMW Miami Service,969.00,FALSE,Notes: inspection
+13785,WBA00000000000125,2022-04-09,Oil Service,BMW New York Service,0.00,TRUE,Notes: routine
+13786,WBA00000000000016,2018-11-30,Annual Service,BMW Dallas Service,825.00,FALSE,Notes: inspection
+13808,WBA00000000000097,2017-12-05,Brake Service,BMW Dallas Service,82.00,FALSE,Notes: inspection
+13809,WBA00000000000067,2020-07-20,Inspection,BMW Berlin Service,514.00,FALSE,Notes: routine
+13810,WBA00000000000139,2016-09-26,Oil Service,BMW Frankfurt Service,449.00,FALSE,Notes: inspection
+13811,WBA00000000000038,2019-07-11,Oil Service,BMW Dallas Service,223.00,FALSE,Notes: software update
+13812,WBA00000000000299,2016-10-16,Battery Service,BMW Leipzig Service,852.00,FALSE,Notes: inspection
+13813,WBA00000000000225,2025-12-31,Inspection,BMW Leipzig Service,1131.00,FALSE,Notes: routine
+13814,WBA00000000000122,2017-01-31,Brake Service,BMW Leipzig Service,301.00,FALSE,Notes: software update
+13815,WBA00000000000031,2024-05-27,Brake Service,BMW Mexico City Service,1019.00,FALSE,Notes: software update
+13816,WBA00000000000216,2025-04-27,Oil Service,BMW Los Angeles Service,450.00,FALSE,Notes: software update
+13817,WBA00000000000148,2025-08-11,Brake Service,BMW Hamburg Service,876.00,FALSE,Notes: software update
+13962,WBA00000000000245,2024-01-25,Oil Service,BMW Monterrey Service,591.00,FALSE,Notes: inspection
+13963,WBA00000000000041,2021-08-18,Inspection,BMW Mexico City Service,810.00,FALSE,Notes: software update
+13964,WBA00000000000187,2023-12-15,Oil Service,BMW Monterrey Service,353.00,FALSE,Notes: routine
+13965,WBA00000000000243,2023-01-03,Brake Service,BMW Leipzig Service,552.00,FALSE,Notes: routine
+13966,WBA00000000000273,2019-08-08,Inspection,BMW Dallas Service,0.00,TRUE,Notes: software update
+13967,WBA00000000000128,2020-03-24,Brake Service,BMW Dallas Service,493.00,FALSE,Notes: routine
+13968,WBA00000000000159,2021-05-27,Battery Service,BMW Chicago Service,0.00,TRUE,Notes: inspection
+13969,WBA00000000000201,2025-10-04,Inspection,BMW Chicago Service,596.00,FALSE,Notes: inspection
+13970,WBA00000000000084,2022-06-09,Annual Service,BMW Munich Service,316.00,FALSE,Notes: software update
+13971,WBA00000000000170,2016-05-20,Annual Service,BMW Mexico City Service,0.00,TRUE,Notes: routine
+13972,WBA00000000000162,2020-01-07,Battery Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+14034,WBA00000000000167,2022-11-21,Annual Service,BMW New York Service,0.00,TRUE,Notes: inspection
+14035,WBA00000000000071,2018-11-16,Inspection,BMW Frankfurt Service,1193.00,FALSE,Notes: inspection
+14036,WBA00000000000104,2022-07-05,Annual Service,BMW Los Angeles Service,0.00,TRUE,Notes: inspection
+14037,WBA00000000000122,2018-06-09,Oil Service,BMW Stuttgart Service,931.00,FALSE,Notes: inspection
+14038,WBA00000000000150,2025-04-09,Battery Service,BMW Los Angeles Service,0.00,TRUE,Notes: software update
+14039,WBA00000000000033,2023-03-16,Annual Service,BMW Chicago Service,574.00,FALSE,Notes: inspection
+14040,WBA00000000000251,2020-03-25,Battery Service,BMW Munich Service,0.00,TRUE,Notes: routine
+14041,WBA00000000000288,2017-08-10,Brake Service,BMW Regensburg Service,497.00,FALSE,Notes: inspection
+14042,WBA00000000000071,2017-08-09,Annual Service,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+14043,WBA00000000000262,2020-03-22,Annual Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+14044,WBA00000000000230,2021-09-12,Oil Service,BMW Stuttgart Service,229.00,FALSE,Notes: inspection
+14113,WBA00000000000300,2017-11-26,Brake Service,BMW Monterrey Service,829.00,FALSE,Notes: inspection
+14114,WBA00000000000013,2025-12-31,Annual Service,BMW Miami Service,110.00,FALSE,Notes: software update
+14115,WBA00000000000168,2018-02-12,Brake Service,BMW Leipzig Service,258.00,FALSE,Notes: software update
+14116,WBA00000000000018,2025-04-20,Annual Service,BMW Regensburg Service,688.00,FALSE,Notes: inspection
+14117,WBA00000000000124,2018-07-08,Inspection,BMW Munich Service,843.00,FALSE,Notes: routine
+14118,WBA00000000000252,2016-02-14,Oil Service,BMW Hamburg Service,165.00,FALSE,Notes: routine
+14130,WBA00000000000214,2017-06-22,Oil Service,BMW Regensburg Service,637.00,FALSE,Notes: inspection
+14131,WBA00000000000162,2019-06-19,Brake Service,BMW Cologne Service,0.00,TRUE,Notes: software update
+14132,WBA00000000000223,2018-11-06,Oil Service,BMW Munich Service,173.00,FALSE,Notes: software update
+14133,WBA00000000000193,2024-01-09,Battery Service,BMW Miami Service,0.00,TRUE,Notes: software update
+14134,WBA00000000000107,2018-12-16,Battery Service,BMW Stuttgart Service,479.00,FALSE,Notes: inspection
+14135,WBA00000000000221,2017-04-05,Battery Service,BMW Frankfurt Service,366.00,FALSE,Notes: software update
+14136,WBA00000000000173,2023-10-09,Inspection,BMW Mexico City Service,885.00,FALSE,Notes: inspection
+14137,WBA00000000000086,2023-10-15,Oil Service,BMW Leipzig Service,1140.00,FALSE,Notes: software update
+13441,WBA00000000000134,2019-09-26,Brake Service,BMW Berlin Service,269.00,FALSE,Notes: inspection
+13442,WBA00000000000009,2022-01-19,Inspection,BMW Stuttgart Service,1050.00,FALSE,Notes: routine
+13443,WBA00000000000042,2023-12-28,Brake Service,BMW Mexico City Service,158.00,FALSE,Notes: inspection
+13444,WBA00000000000178,2025-12-31,Annual Service,BMW Stuttgart Service,143.00,FALSE,Notes: software update
+13445,WBA00000000000060,2020-04-22,Oil Service,BMW Hamburg Service,1001.00,FALSE,Notes: software update
+13446,WBA00000000000129,2021-05-16,Annual Service,BMW Leipzig Service,562.00,FALSE,Notes: software update
+13563,WBA00000000000076,2019-03-31,Brake Service,BMW Regensburg Service,695.00,FALSE,Notes: routine
+13564,WBA00000000000115,2025-12-02,Brake Service,BMW Leipzig Service,574.00,FALSE,Notes: routine
+13565,WBA00000000000021,2021-11-02,Annual Service,BMW Munich Service,0.00,TRUE,Notes: routine
+13566,WBA00000000000111,2018-06-29,Annual Service,BMW Hamburg Service,1122.00,FALSE,Notes: inspection
+13567,WBA00000000000003,2017-07-15,Brake Service,BMW Regensburg Service,1065.00,FALSE,Notes: software update
+13568,WBA00000000000173,2023-09-25,Battery Service,BMW Mexico City Service,0.00,TRUE,Notes: routine
+13569,WBA00000000000103,2021-06-11,Inspection,BMW Chicago Service,1166.00,FALSE,Notes: inspection
+13570,WBA00000000000202,2024-04-30,Oil Service,BMW Stuttgart Service,1200.00,FALSE,Notes: inspection
+13571,WBA00000000000278,2024-10-05,Brake Service,BMW Regensburg Service,1141.00,FALSE,Notes: routine
+13572,WBA00000000000199,2017-01-16,Oil Service,BMW Regensburg Service,461.00,FALSE,Notes: inspection
+13573,WBA00000000000130,2019-01-09,Inspection,BMW Frankfurt Service,973.00,FALSE,Notes: routine
+13574,WBA00000000000152,2017-09-18,Inspection,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+13575,WBA00000000000016,2017-03-12,Inspection,BMW New York Service,449.00,FALSE,Notes: software update
+13576,WBA00000000000117,2017-07-31,Annual Service,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+13680,WBA00000000000243,2022-12-09,Oil Service,BMW Stuttgart Service,0.00,TRUE,Notes: inspection
+13681,WBA00000000000242,2022-01-16,Annual Service,BMW Miami Service,293.00,FALSE,Notes: software update
+13682,WBA00000000000105,2020-05-14,Brake Service,BMW Frankfurt Service,495.00,FALSE,Notes: inspection
+13683,WBA00000000000029,2025-09-12,Oil Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+13684,WBA00000000000088,2018-09-10,Oil Service,BMW Cologne Service,0.00,TRUE,Notes: software update
+13685,WBA00000000000180,2016-10-01,Oil Service,BMW Regensburg Service,1072.00,FALSE,Notes: routine
+13686,WBA00000000000079,2025-12-31,Annual Service,BMW Berlin Service,0.00,TRUE,Notes: inspection
+13687,WBA00000000000012,2022-08-07,Inspection,BMW Dallas Service,229.00,FALSE,Notes: routine
+13688,WBA00000000000129,2020-12-31,Oil Service,BMW Leipzig Service,1089.00,FALSE,Notes: software update
+13689,WBA00000000000171,2020-04-28,Inspection,BMW New York Service,732.00,FALSE,Notes: inspection
+13690,WBA00000000000213,2025-12-31,Oil Service,BMW Frankfurt Service,0.00,TRUE,Notes: routine
+13691,WBA00000000000150,2025-12-31,Inspection,BMW Miami Service,1090.00,FALSE,Notes: routine
+13692,WBA00000000000143,2021-08-23,Annual Service,BMW Munich Service,351.00,FALSE,Notes: routine
+13693,WBA00000000000140,2023-10-23,Oil Service,BMW Chicago Service,270.00,FALSE,Notes: routine
+13694,WBA00000000000268,2025-12-31,Battery Service,BMW Mexico City Service,0.00,TRUE,Notes: software update
+13695,WBA00000000000019,2016-09-28,Brake Service,BMW Stuttgart Service,351.00,FALSE,Notes: software update
+13696,WBA00000000000196,2025-12-31,Oil Service,BMW New York Service,0.00,TRUE,Notes: software update
+13697,WBA00000000000252,2016-02-12,Oil Service,BMW Cologne Service,0.00,TRUE,Notes: software update
+14091,WBA00000000000064,2023-03-04,Battery Service,BMW Leipzig Service,0.00,TRUE,Notes: software update
+14092,WBA00000000000082,2025-12-31,Inspection,BMW Spartanburg Service,628.00,FALSE,Notes: routine
+14093,WBA00000000000190,2021-12-01,Brake Service,BMW Cologne Service,112.00,FALSE,Notes: routine
+14094,WBA00000000000035,2018-04-15,Annual Service,BMW Cologne Service,125.00,FALSE,Notes: inspection
+14095,WBA00000000000044,2025-12-31,Oil Service,BMW Spartanburg Service,100.00,FALSE,Notes: software update
+14096,WBA00000000000034,2018-05-26,Battery Service,BMW Leipzig Service,303.00,FALSE,Notes: inspection
+14097,WBA00000000000128,2020-08-19,Inspection,BMW Chicago Service,0.00,TRUE,Notes: inspection
+14098,WBA00000000000226,2025-08-15,Annual Service,BMW Leipzig Service,580.00,FALSE,Notes: routine
+14119,WBA00000000000052,2023-02-07,Oil Service,BMW Frankfurt Service,685.00,FALSE,Notes: inspection
+14120,WBA00000000000182,2025-12-31,Inspection,BMW Spartanburg Service,0.00,TRUE,Notes: software update
+14121,WBA00000000000233,2019-12-27,Annual Service,BMW Chicago Service,1122.00,FALSE,Notes: software update
+14122,WBA00000000000030,2025-12-31,Inspection,BMW Stuttgart Service,623.00,FALSE,Notes: inspection
+14123,WBA00000000000054,2019-11-18,Annual Service,BMW Monterrey Service,284.00,FALSE,Notes: inspection
+14124,WBA00000000000259,2024-05-22,Annual Service,BMW Frankfurt Service,492.00,FALSE,Notes: inspection
+14125,WBA00000000000185,2022-05-06,Brake Service,BMW Stuttgart Service,478.00,FALSE,Notes: software update
+14126,WBA00000000000299,2016-05-16,Inspection,BMW Frankfurt Service,856.00,FALSE,Notes: inspection
+14127,WBA00000000000298,2025-12-31,Battery Service,BMW Stuttgart Service,926.00,FALSE,Notes: routine
+14128,WBA00000000000132,2019-08-31,Inspection,BMW Hamburg Service,332.00,FALSE,Notes: inspection
+14129,WBA00000000000211,2025-12-31,Oil Service,BMW Frankfurt Service,718.00,FALSE,Notes: inspection
+14138,WBA00000000000264,2018-05-22,Brake Service,BMW Stuttgart Service,613.00,FALSE,Notes: software update
+14139,WBA00000000000116,2025-03-25,Battery Service,BMW Cologne Service,154.00,FALSE,Notes: inspection
+14140,WBA00000000000287,2021-07-16,Inspection,BMW Hamburg Service,0.00,TRUE,Notes: routine
+14141,WBA00000000000145,2022-09-23,Brake Service,BMW Los Angeles Service,258.00,FALSE,Notes: software update
+14142,WBA00000000000096,2024-08-30,Battery Service,BMW Dallas Service,0.00,TRUE,Notes: inspection
+14143,WBA00000000000049,2017-10-10,Annual Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+14144,WBA00000000000016,2018-03-13,Oil Service,BMW Chicago Service,0.00,TRUE,Notes: routine
+14145,WBA00000000000054,2020-04-01,Battery Service,BMW Mexico City Service,1178.00,FALSE,Notes: routine
+14146,WBA00000000000116,2025-11-15,Brake Service,BMW Berlin Service,0.00,TRUE,Notes: software update
+14147,WBA00000000000231,2025-08-08,Annual Service,BMW New York Service,0.00,TRUE,Notes: software update
+14148,WBA00000000000284,2021-09-18,Oil Service,BMW Cologne Service,110.00,FALSE,Notes: software update
+14149,WBA00000000000208,2025-02-01,Oil Service,BMW Hamburg Service,639.00,FALSE,Notes: inspection
+14150,WBA00000000000163,2024-03-24,Brake Service,BMW Spartanburg Service,239.00,FALSE,Notes: routine
+14151,WBA00000000000157,2023-02-08,Annual Service,BMW Munich Service,0.00,TRUE,Notes: routine
+14152,WBA00000000000295,2018-07-17,Battery Service,BMW Guadalajara Service,296.00,FALSE,Notes: software update
+14153,WBA00000000000074,2022-12-16,Inspection,BMW Cologne Service,1138.00,FALSE,Notes: inspection
+14154,WBA00000000000039,2022-03-05,Annual Service,BMW Los Angeles Service,497.00,FALSE,Notes: routine
+14155,WBA00000000000289,2024-05-24,Inspection,BMW Berlin Service,0.00,TRUE,Notes: routine
+14156,WBA00000000000115,2025-12-31,Oil Service,BMW Leipzig Service,773.00,FALSE,Notes: software update
+14157,WBA00000000000198,2022-03-22,Inspection,BMW San Luis Potosí Service,0.00,TRUE,Notes: inspection
+14158,WBA00000000000210,2021-04-23,Battery Service,BMW Chicago Service,0.00,TRUE,Notes: software update
+14159,WBA00000000000252,2016-06-16,Brake Service,BMW Cologne Service,81.00,FALSE,Notes: routine
+14160,WBA00000000000015,2021-06-08,Oil Service,BMW Cologne Service,696.00,FALSE,Notes: routine
+14161,WBA00000000000263,2024-06-18,Inspection,BMW Leipzig Service,890.00,FALSE,Notes: inspection
+14162,WBA00000000000291,2020-03-26,Inspection,BMW Stuttgart Service,0.00,TRUE,Notes: routine
+14163,WBA00000000000136,2025-06-23,Annual Service,BMW Los Angeles Service,1196.00,FALSE,Notes: routine
+14164,WBA00000000000034,2018-06-16,Oil Service,BMW Hamburg Service,0.00,TRUE,Notes: routine
+14165,WBA00000000000050,2024-08-20,Battery Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+14166,WBA00000000000250,2017-07-02,Oil Service,BMW Regensburg Service,549.00,FALSE,Notes: software update
+14167,WBA00000000000187,2021-11-17,Annual Service,BMW Mexico City Service,1194.00,FALSE,Notes: routine
+14168,WBA00000000000001,2018-02-06,Oil Service,BMW Berlin Service,130.00,FALSE,Notes: routine
+14169,WBA00000000000108,2020-01-24,Battery Service,BMW Munich Service,0.00,TRUE,Notes: software update
+13447,WBA00000000000206,2025-12-31,Annual Service,BMW San Luis Potosí Service,0.00,TRUE,Notes: software update
+13448,WBA00000000000081,2018-06-26,Inspection,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+13449,WBA00000000000274,2025-12-31,Annual Service,BMW Frankfurt Service,334.00,FALSE,Notes: inspection
+13450,WBA00000000000038,2018-05-15,Battery Service,BMW New York Service,232.00,FALSE,Notes: inspection
+13451,WBA00000000000112,2023-07-16,Annual Service,BMW Cologne Service,844.00,FALSE,Notes: routine
+13452,WBA00000000000107,2019-09-18,Brake Service,BMW Munich Service,855.00,FALSE,Notes: routine
+13453,WBA00000000000177,2017-06-09,Annual Service,BMW Cologne Service,741.00,FALSE,Notes: software update
+13454,WBA00000000000149,2025-04-09,Annual Service,BMW Leipzig Service,610.00,FALSE,Notes: software update
+13455,WBA00000000000276,2025-03-08,Inspection,BMW Berlin Service,282.00,FALSE,Notes: routine
+13456,WBA00000000000036,2021-03-21,Brake Service,BMW Cologne Service,1081.00,FALSE,Notes: inspection
+13457,WBA00000000000047,2022-06-03,Brake Service,BMW Stuttgart Service,1097.00,FALSE,Notes: software update
+13458,WBA00000000000181,2025-12-31,Battery Service,BMW Monterrey Service,1010.00,FALSE,Notes: routine
+13459,WBA00000000000293,2025-12-31,Brake Service,BMW New York Service,1032.00,FALSE,Notes: software update
+13460,WBA00000000000163,2022-03-07,Battery Service,BMW New York Service,541.00,FALSE,Notes: inspection
+13461,WBA00000000000003,2017-09-10,Battery Service,BMW Stuttgart Service,330.00,FALSE,Notes: routine
+13462,WBA00000000000215,2019-05-29,Annual Service,BMW Chicago Service,0.00,TRUE,Notes: software update
+13463,WBA00000000000034,2017-10-09,Inspection,BMW Cologne Service,894.00,FALSE,Notes: inspection
+13464,WBA00000000000193,2024-02-04,Oil Service,BMW Chicago Service,650.00,FALSE,Notes: inspection
+13577,WBA00000000000254,2020-05-11,Inspection,BMW Los Angeles Service,486.00,FALSE,Notes: inspection
+13578,WBA00000000000271,2018-11-18,Inspection,BMW Dallas Service,973.00,FALSE,Notes: software update
+13579,WBA00000000000058,2018-03-22,Brake Service,BMW Leipzig Service,843.00,FALSE,Notes: inspection
+13580,WBA00000000000094,2020-09-17,Brake Service,BMW Frankfurt Service,1042.00,FALSE,Notes: software update
+13581,WBA00000000000136,2025-09-29,Oil Service,BMW Los Angeles Service,0.00,TRUE,Notes: software update
+13582,WBA00000000000217,2025-05-25,Inspection,BMW Berlin Service,336.00,FALSE,Notes: routine
+13583,WBA00000000000145,2023-05-28,Inspection,BMW Dallas Service,579.00,FALSE,Notes: software update
+13584,WBA00000000000131,2025-02-23,Brake Service,BMW Leipzig Service,124.00,FALSE,Notes: routine
+13585,WBA00000000000229,2017-04-10,Inspection,BMW Stuttgart Service,391.00,FALSE,Notes: routine
+13586,WBA00000000000123,2019-04-18,Oil Service,BMW Munich Service,0.00,TRUE,Notes: inspection
+13587,WBA00000000000149,2024-10-30,Annual Service,BMW Regensburg Service,1127.00,FALSE,Notes: routine
+13588,WBA00000000000010,2023-05-06,Oil Service,BMW Guadalajara Service,0.00,TRUE,Notes: software update
+13664,WBA00000000000070,2019-08-12,Oil Service,BMW Cologne Service,230.00,FALSE,Notes: inspection
+13665,WBA00000000000164,2019-03-15,Inspection,BMW Frankfurt Service,543.00,FALSE,Notes: inspection
+13666,WBA00000000000102,2018-05-20,Annual Service,BMW San Luis Potosí Service,503.00,FALSE,Notes: routine
+13667,WBA00000000000039,2020-10-20,Brake Service,BMW New York Service,1116.00,FALSE,Notes: routine
+13668,WBA00000000000113,2018-05-29,Brake Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+13669,WBA00000000000020,2017-09-01,Inspection,BMW Dallas Service,105.00,FALSE,Notes: routine
+13670,WBA00000000000125,2022-11-27,Battery Service,BMW Dallas Service,666.00,FALSE,Notes: inspection
+13671,WBA00000000000042,2024-06-19,Oil Service,BMW Mexico City Service,255.00,FALSE,Notes: routine
+13672,WBA00000000000095,2020-09-11,Battery Service,BMW Frankfurt Service,0.00,TRUE,Notes: software update
+13673,WBA00000000000172,2025-12-31,Brake Service,BMW Hamburg Service,782.00,FALSE,Notes: inspection
+13674,WBA00000000000141,2025-12-31,Annual Service,BMW Regensburg Service,877.00,FALSE,Notes: software update
+13675,WBA00000000000104,2023-05-16,Annual Service,BMW Spartanburg Service,899.00,FALSE,Notes: inspection
+13676,WBA00000000000216,2025-12-31,Brake Service,BMW Miami Service,589.00,FALSE,Notes: software update
+13677,WBA00000000000074,2022-05-07,Battery Service,BMW Cologne Service,236.00,FALSE,Notes: software update
+13678,WBA00000000000283,2019-11-14,Brake Service,BMW Chicago Service,994.00,FALSE,Notes: inspection
+13679,WBA00000000000212,2023-01-05,Annual Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13722,WBA00000000000010,2024-02-16,Annual Service,BMW Monterrey Service,785.00,FALSE,Notes: inspection
+13723,WBA00000000000274,2025-12-31,Annual Service,BMW Munich Service,0.00,TRUE,Notes: software update
+13724,WBA00000000000197,2024-01-27,Oil Service,BMW Guadalajara Service,709.00,FALSE,Notes: inspection
+13725,WBA00000000000015,2021-05-01,Oil Service,BMW Frankfurt Service,0.00,TRUE,Notes: inspection
+13726,WBA00000000000230,2022-06-14,Battery Service,BMW Regensburg Service,1177.00,FALSE,Notes: software update
+13727,WBA00000000000188,2016-09-11,Battery Service,BMW New York Service,137.00,FALSE,Notes: software update
+13728,WBA00000000000235,2021-06-18,Inspection,BMW Mexico City Service,667.00,FALSE,Notes: software update
+13729,WBA00000000000204,2022-06-09,Oil Service,BMW Regensburg Service,0.00,TRUE,Notes: software update
+13730,WBA00000000000009,2023-06-11,Annual Service,BMW Munich Service,903.00,FALSE,Notes: inspection
+13872,WBA00000000000061,2021-01-14,Oil Service,BMW Stuttgart Service,447.00,FALSE,Notes: inspection
+13873,WBA00000000000070,2020-03-26,Oil Service,BMW Berlin Service,527.00,FALSE,Notes: inspection
+13874,WBA00000000000123,2018-02-17,Inspection,BMW Hamburg Service,1128.00,FALSE,Notes: inspection
+13875,WBA00000000000149,2024-01-26,Battery Service,BMW Cologne Service,1042.00,FALSE,Notes: inspection
+13876,WBA00000000000036,2021-07-06,Brake Service,BMW Regensburg Service,474.00,FALSE,Notes: routine
+13877,WBA00000000000225,2025-12-31,Brake Service,BMW Cologne Service,513.00,FALSE,Notes: software update
+13878,WBA00000000000213,2025-12-31,Brake Service,BMW Frankfurt Service,401.00,FALSE,Notes: software update
+13879,WBA00000000000239,2017-06-25,Annual Service,BMW Dallas Service,949.00,FALSE,Notes: routine
+13880,WBA00000000000008,2023-04-03,Oil Service,BMW Stuttgart Service,0.00,TRUE,Notes: inspection
+13881,WBA00000000000183,2024-10-04,Brake Service,BMW Berlin Service,434.00,FALSE,Notes: routine
+13882,WBA00000000000165,2016-08-03,Inspection,BMW Los Angeles Service,856.00,FALSE,Notes: inspection
+13883,WBA00000000000120,2023-07-12,Annual Service,BMW Hamburg Service,937.00,FALSE,Notes: inspection
+13884,WBA00000000000176,2020-04-29,Oil Service,BMW Frankfurt Service,970.00,FALSE,Notes: inspection
+13885,WBA00000000000009,2022-08-22,Inspection,BMW Berlin Service,0.00,TRUE,Notes: routine
+13950,WBA00000000000001,2017-10-06,Oil Service,BMW Hamburg Service,766.00,FALSE,Notes: inspection
+13951,WBA00000000000169,2024-03-06,Inspection,BMW Monterrey Service,98.00,FALSE,Notes: inspection
+13952,WBA00000000000266,2017-06-26,Brake Service,BMW Munich Service,1100.00,FALSE,Notes: inspection
+13953,WBA00000000000028,2020-11-29,Annual Service,BMW Berlin Service,112.00,FALSE,Notes: software update
+13954,WBA00000000000219,2023-09-07,Inspection,BMW Cologne Service,1196.00,FALSE,Notes: routine
+13955,WBA00000000000212,2022-03-27,Annual Service,BMW Munich Service,0.00,TRUE,Notes: software update
+13956,WBA00000000000118,2023-02-24,Inspection,BMW Spartanburg Service,0.00,TRUE,Notes: software update
+13957,WBA00000000000277,2025-12-31,Oil Service,BMW Berlin Service,826.00,FALSE,Notes: software update
+13958,WBA00000000000106,2023-05-10,Brake Service,BMW New York Service,0.00,TRUE,Notes: routine
+13959,WBA00000000000022,2016-12-24,Battery Service,BMW Frankfurt Service,152.00,FALSE,Notes: software update
+13960,WBA00000000000173,2023-04-18,Oil Service,BMW Monterrey Service,292.00,FALSE,Notes: software update
+13961,WBA00000000000185,2021-12-24,Oil Service,BMW Munich Service,156.00,FALSE,Notes: routine
+14022,WBA00000000000075,2024-01-25,Inspection,BMW Dallas Service,0.00,TRUE,Notes: inspection
+14023,WBA00000000000108,2019-11-27,Battery Service,BMW Munich Service,667.00,FALSE,Notes: inspection
+14024,WBA00000000000242,2021-05-02,Brake Service,BMW Chicago Service,578.00,FALSE,Notes: routine
+14025,WBA00000000000238,2020-05-24,Inspection,BMW Cologne Service,0.00,TRUE,Notes: software update
+14026,WBA00000000000046,2025-12-31,Inspection,BMW Miami Service,152.00,FALSE,Notes: software update
+14027,WBA00000000000008,2023-09-18,Battery Service,BMW Hamburg Service,285.00,FALSE,Notes: software update
+14028,WBA00000000000011,2023-11-01,Annual Service,BMW Guadalajara Service,94.00,FALSE,Notes: routine
+14029,WBA00000000000176,2020-03-28,Oil Service,BMW Munich Service,91.00,FALSE,Notes: inspection
+14030,WBA00000000000244,2018-10-19,Inspection,BMW Munich Service,0.00,TRUE,Notes: software update
+14031,WBA00000000000094,2021-06-16,Brake Service,BMW Cologne Service,139.00,FALSE,Notes: software update
+14032,WBA00000000000259,2024-06-10,Battery Service,BMW Stuttgart Service,264.00,FALSE,Notes: software update
+14033,WBA00000000000217,2024-07-14,Annual Service,BMW Leipzig Service,737.00,FALSE,Notes: routine
+14082,WBA00000000000226,2025-03-20,Annual Service,BMW Munich Service,243.00,FALSE,Notes: inspection
+14083,WBA00000000000062,2016-12-24,Oil Service,BMW Mexico City Service,543.00,FALSE,Notes: inspection
+14084,WBA00000000000088,2017-09-18,Oil Service,BMW Munich Service,1188.00,FALSE,Notes: software update
+14085,WBA00000000000196,2025-12-31,Inspection,BMW Dallas Service,0.00,TRUE,Notes: inspection
+14086,WBA00000000000058,2019-07-24,Inspection,BMW Regensburg Service,1186.00,FALSE,Notes: routine
+14087,WBA00000000000002,2016-06-14,Annual Service,BMW Regensburg Service,592.00,FALSE,Notes: routine
+14088,WBA00000000000186,2018-05-24,Inspection,BMW Berlin Service,503.00,FALSE,Notes: routine
+14089,WBA00000000000144,2020-05-24,Oil Service,BMW Miami Service,369.00,FALSE,Notes: routine
+14090,WBA00000000000037,2018-06-10,Annual Service,BMW Cologne Service,1155.00,FALSE,Notes: inspection
+13428,WBA00000000000005,2019-09-04,Oil Service,BMW Dallas Service,525.00,FALSE,Notes: routine
+13429,WBA00000000000263,2025-02-03,Battery Service,BMW Munich Service,690.00,FALSE,Notes: inspection
+13430,WBA00000000000093,2021-04-12,Battery Service,BMW Dallas Service,175.00,FALSE,Notes: software update
+13431,WBA00000000000148,2025-02-05,Brake Service,BMW Hamburg Service,829.00,FALSE,Notes: routine
+13432,WBA00000000000017,2025-10-02,Brake Service,BMW Leipzig Service,940.00,FALSE,Notes: routine
+13433,WBA00000000000078,2025-11-26,Oil Service,BMW Stuttgart Service,568.00,FALSE,Notes: software update
+13434,WBA00000000000253,2022-06-15,Annual Service,BMW Monterrey Service,581.00,FALSE,Notes: inspection
+13435,WBA00000000000212,2022-07-05,Inspection,BMW Cologne Service,641.00,FALSE,Notes: routine
+13436,WBA00000000000172,2025-12-31,Battery Service,BMW Berlin Service,771.00,FALSE,Notes: software update
+13437,WBA00000000000222,2020-03-01,Brake Service,BMW Dallas Service,238.00,FALSE,Notes: routine
+13438,WBA00000000000274,2025-12-31,Annual Service,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+13439,WBA00000000000295,2018-03-05,Annual Service,BMW Guadalajara Service,526.00,FALSE,Notes: routine
+13440,WBA00000000000248,2024-03-07,Battery Service,BMW Berlin Service,208.00,FALSE,Notes: inspection
+13589,WBA00000000000111,2016-11-07,Oil Service,BMW Berlin Service,824.00,FALSE,Notes: routine
+13590,WBA00000000000218,2017-11-25,Inspection,BMW Cologne Service,388.00,FALSE,Notes: inspection
+13591,WBA00000000000134,2019-07-27,Brake Service,BMW Berlin Service,315.00,FALSE,Notes: software update
+13592,WBA00000000000104,2022-08-27,Brake Service,BMW Chicago Service,0.00,TRUE,Notes: inspection
+13593,WBA00000000000204,2022-06-18,Battery Service,BMW Leipzig Service,1169.00,FALSE,Notes: inspection
+13594,WBA00000000000048,2024-02-26,Annual Service,BMW Stuttgart Service,919.00,FALSE,Notes: routine
+13595,WBA00000000000023,2022-02-14,Annual Service,BMW Leipzig Service,115.00,FALSE,Notes: routine
+13596,WBA00000000000250,2017-08-16,Annual Service,BMW Munich Service,971.00,FALSE,Notes: routine
+13597,WBA00000000000080,2025-05-03,Battery Service,BMW Los Angeles Service,0.00,TRUE,Notes: inspection
+13598,WBA00000000000290,2019-09-06,Oil Service,BMW Spartanburg Service,0.00,TRUE,Notes: routine
+13599,WBA00000000000073,2021-08-01,Inspection,BMW Stuttgart Service,697.00,FALSE,Notes: inspection
+13600,WBA00000000000091,2020-10-31,Inspection,BMW Berlin Service,0.00,TRUE,Notes: inspection
+13601,WBA00000000000061,2021-03-16,Battery Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+13602,WBA00000000000167,2022-08-19,Inspection,BMW Los Angeles Service,673.00,FALSE,Notes: routine
+13698,WBA00000000000067,2019-08-07,Brake Service,BMW Cologne Service,169.00,FALSE,Notes: inspection
+13699,WBA00000000000288,2018-01-18,Inspection,BMW Stuttgart Service,0.00,TRUE,Notes: routine
+13700,WBA00000000000011,2021-06-21,Battery Service,BMW Monterrey Service,1190.00,FALSE,Notes: software update
+13701,WBA00000000000272,2022-06-23,Battery Service,BMW Los Angeles Service,1086.00,FALSE,Notes: software update
+13702,WBA00000000000298,2025-05-04,Battery Service,BMW Cologne Service,1001.00,FALSE,Notes: inspection
+13703,WBA00000000000295,2019-07-21,Battery Service,BMW Guadalajara Service,0.00,TRUE,Notes: inspection
+13704,WBA00000000000274,2025-12-31,Inspection,BMW Frankfurt Service,167.00,FALSE,Notes: inspection
+13705,WBA00000000000164,2019-12-19,Battery Service,BMW Munich Service,708.00,FALSE,Notes: inspection
+13706,WBA00000000000257,2021-05-23,Brake Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13707,WBA00000000000078,2025-12-31,Brake Service,BMW Cologne Service,0.00,TRUE,Notes: software update
+13708,WBA00000000000137,2021-09-10,Brake Service,BMW San Luis Potosí Service,723.00,FALSE,Notes: software update
+13886,WBA00000000000024,2018-12-23,Oil Service,BMW Leipzig Service,330.00,FALSE,Notes: software update
+13887,WBA00000000000016,2016-12-30,Annual Service,BMW Spartanburg Service,842.00,FALSE,Notes: inspection
+13888,WBA00000000000017,2025-07-29,Inspection,BMW Munich Service,529.00,FALSE,Notes: software update
+13889,WBA00000000000161,2015-11-07,Annual Service,BMW Regensburg Service,1126.00,FALSE,Notes: software update
+13890,WBA00000000000245,2023-01-09,Inspection,BMW Mexico City Service,555.00,FALSE,Notes: software update
+13891,WBA00000000000261,2021-01-22,Oil Service,BMW Miami Service,0.00,TRUE,Notes: inspection
+13892,WBA00000000000226,2025-01-14,Inspection,BMW Hamburg Service,174.00,FALSE,Notes: software update
+13893,WBA00000000000266,2017-12-23,Oil Service,BMW Hamburg Service,1198.00,FALSE,Notes: software update
+13894,WBA00000000000147,2025-10-08,Oil Service,BMW Cologne Service,123.00,FALSE,Notes: software update
+13895,WBA00000000000189,2024-03-21,Battery Service,BMW Berlin Service,872.00,FALSE,Notes: software update
+13896,WBA00000000000191,2020-11-02,Battery Service,BMW Hamburg Service,0.00,TRUE,Notes: inspection
+13897,WBA00000000000184,2024-03-22,Inspection,BMW Leipzig Service,452.00,FALSE,Notes: software update
+13898,WBA00000000000115,2025-12-31,Annual Service,BMW Regensburg Service,0.00,TRUE,Notes: inspection
+13899,WBA00000000000083,2021-04-13,Inspection,BMW New York Service,312.00,FALSE,Notes: routine
+13900,WBA00000000000251,2019-03-22,Oil Service,BMW Frankfurt Service,161.00,FALSE,Notes: routine
+13901,WBA00000000000214,2016-02-29,Brake Service,BMW Stuttgart Service,835.00,FALSE,Notes: software update
+13902,WBA00000000000040,2018-06-24,Brake Service,BMW Cologne Service,530.00,FALSE,Notes: routine
+13903,WBA00000000000176,2018-07-07,Brake Service,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+13922,WBA00000000000069,2019-04-22,Inspection,BMW Frankfurt Service,0.00,TRUE,Notes: software update
+13923,WBA00000000000084,2021-11-12,Inspection,BMW Cologne Service,586.00,FALSE,Notes: software update
+13924,WBA00000000000268,2025-12-31,Oil Service,BMW Monterrey Service,897.00,FALSE,Notes: routine
+13925,WBA00000000000146,2017-03-02,Annual Service,BMW Hamburg Service,988.00,FALSE,Notes: inspection
+13926,WBA00000000000027,2018-07-11,Battery Service,BMW Berlin Service,589.00,FALSE,Notes: routine
+13927,WBA00000000000055,2023-07-16,Battery Service,BMW Spartanburg Service,0.00,TRUE,Notes: routine
+13928,WBA00000000000179,2025-07-07,Inspection,BMW Stuttgart Service,0.00,TRUE,Notes: software update
+13929,WBA00000000000029,2025-12-27,Battery Service,BMW Leipzig Service,0.00,TRUE,Notes: routine
+13930,WBA00000000000026,2022-10-22,Battery Service,BMW Munich Service,1198.00,FALSE,Notes: software update
+13931,WBA00000000000201,2025-12-31,Brake Service,BMW Miami Service,722.00,FALSE,Notes: inspection
+13981,WBA00000000000287,2023-02-24,Battery Service,BMW Frankfurt Service,738.00,FALSE,Notes: inspection
+13982,WBA00000000000012,2021-09-05,Battery Service,BMW Spartanburg Service,0.00,TRUE,Notes: routine
+13983,WBA00000000000206,2025-12-31,Oil Service,BMW Guadalajara Service,706.00,FALSE,Notes: inspection
+13984,WBA00000000000234,2024-10-14,Battery Service,BMW Chicago Service,152.00,FALSE,Notes: inspection
+14053,WBA00000000000293,2025-12-31,Oil Service,BMW Chicago Service,0.00,TRUE,Notes: inspection
+14054,WBA00000000000163,2021-12-23,Inspection,BMW Los Angeles Service,0.00,TRUE,Notes: routine
+14055,WBA00000000000089,2019-09-06,Oil Service,BMW San Luis Potosí Service,713.00,FALSE,Notes: inspection
+14056,WBA00000000000202,2025-12-31,Battery Service,BMW Cologne Service,889.00,FALSE,Notes: routine
+14057,WBA00000000000192,2025-04-27,Battery Service,BMW Miami Service,837.00,FALSE,Notes: software update
+14058,WBA00000000000128,2019-11-29,Oil Service,BMW Miami Service,0.00,TRUE,Notes: inspection
+14059,WBA00000000000098,2020-02-18,Brake Service,BMW Berlin Service,190.00,FALSE,Notes: inspection
+14060,WBA00000000000185,2023-07-22,Brake Service,BMW Cologne Service,684.00,FALSE,Notes: software update
+14061,WBA00000000000132,2020-09-11,Inspection,BMW Hamburg Service,449.00,FALSE,Notes: software update
+14062,WBA00000000000249,2025-12-31,Brake Service,BMW Regensburg Service,983.00,FALSE,Notes: routine
+14063,WBA00000000000144,2020-07-26,Brake Service,BMW Dallas Service,0.00,TRUE,Notes: inspection
+14064,WBA00000000000037,2018-01-13,Battery Service,BMW Cologne Service,362.00,FALSE,Notes: inspection
+14065,WBA00000000000154,2025-12-31,Annual Service,BMW Frankfurt Service,132.00,FALSE,Notes: routine
+14066,WBA00000000000105,2022-02-16,Battery Service,BMW Hamburg Service,793.00,FALSE,Notes: software update
+14099,WBA00000000000217,2024-06-05,Annual Service,BMW Frankfurt Service,756.00,FALSE,Notes: inspection
+14100,WBA00000000000042,2024-11-27,Oil Service,BMW Guadalajara Service,936.00,FALSE,Notes: routine
+14101,WBA00000000000108,2019-07-15,Annual Service,BMW Cologne Service,0.00,TRUE,Notes: inspection
+14102,WBA00000000000036,2023-05-06,Battery Service,BMW Stuttgart Service,229.00,FALSE,Notes: inspection
+14103,WBA00000000000256,2024-01-22,Annual Service,BMW Cologne Service,279.00,FALSE,Notes: routine
+14104,WBA00000000000279,2018-03-29,Annual Service,BMW Spartanburg Service,1036.00,FALSE,Notes: inspection
+14105,WBA00000000000234,2023-08-02,Battery Service,BMW Dallas Service,0.00,TRUE,Notes: software update
+14106,WBA00000000000127,2017-10-16,Brake Service,BMW New York Service,426.00,FALSE,Notes: inspection
+14107,WBA00000000000151,2017-03-04,Brake Service,BMW Leipzig Service,498.00,FALSE,Notes: routine
+14108,WBA00000000000268,2025-12-31,Annual Service,BMW Monterrey Service,739.00,FALSE,Notes: software update
+14109,WBA00000000000034,2018-02-15,Brake Service,BMW Berlin Service,0.00,TRUE,Notes: software update
+14110,WBA00000000000286,2022-02-08,Inspection,BMW New York Service,0.00,TRUE,Notes: inspection
+14111,WBA00000000000005,2019-12-20,Brake Service,BMW Dallas Service,545.00,FALSE,Notes: software update
+14112,WBA00000000000076,2019-07-02,Battery Service,BMW Cologne Service,203.00,FALSE,Notes: inspection
+14501,RAWVIN001,2024-08-01,Inspection,Munich Center,250.00,TRUE,Initial inspection
+14502,RAWVIN002,2025-01-20,Brake,Berlin Center,480.00,FALSE,Rear brake replacement

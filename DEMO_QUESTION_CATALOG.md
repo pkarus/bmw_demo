@@ -5,6 +5,27 @@ Each entry is a question SHAPE - a pattern that lands well in front of an
 audience and showcases the named reasoner. Pick one shape per question,
 adapt the domain.
 
+## The injection rule (read this first)
+
+For every question you pick from this catalog, write down the **exact
+expected answer** before you move to Phase 2. The answer is what makes
+the demo interesting; the data is engineered backwards to produce it.
+
+- Don't write "Q1 will show some flights in violation". Write
+  "Q1 will show KLG=7, AGS=5, DNATA=3, MENZIES=2".
+- Don't write "Q4 will route through cheaper suppliers". Write
+  "Q4 OPTIMAL routes 60% through Supplier B (Bangalore) and 40% through
+  Supplier S (Suzhou), saving $412K over the status-quo split".
+- Don't write "Q5 will change the answer". Write "Q5 with
+  `PreservedFlight(KL691)` added drops KL691's delay from 22 min to 4
+  min and pushes KL2014 from 8 min to 14 min".
+
+These are the **anchored numbers**. Phase 2's data generator injects the
+entities + relationships + cost structure that produce them exactly.
+Phase 8's `prep_demo.py` gate asserts them as SQL. The talk track
+quotes them verbatim. If any of these drift between sessions, the demo
+lies; the script fails the gate; you fix the data, not the talk track.
+
 ## Rules (derived properties)
 
 The "show me everywhere X is true" or "classify these into A vs B" pattern.

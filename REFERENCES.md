@@ -125,8 +125,13 @@ measured, not aspirational.
 ## What NOT to copy
 
 - The exact concept names. They're domain-specific.
-- The exact engine names - yours follow the `<model>_logic_l` /
-  `<model>_prescriptive_m` pattern with YOUR model name.
+- The exact engine names and sizes - the reference demos sized up to
+  `_logic_l` / `_prescriptive_m` for warm showtime performance. Your
+  template default is `<model>_logic_xs` / `<model>_prescriptive_xs` at
+  `HIGHMEM_X64_XS` to keep dev costs low. Size up only when measured
+  (see CLAUDE.md > "Engine sizing"). When you grep the reference demos
+  and see `acdm_logic_l` or `supply_chain_logic_l`, that's a final tune,
+  not a starting point.
 - The hard-coded anchored numbers. Pick your own in Phase 2 and back them
   with your own validation SQL.
 - The `supply_chain_demo/rai_code/modeler/` directory - it's empty; was
