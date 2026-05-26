@@ -74,6 +74,14 @@ the part list".** Change the `part_id` argument from `PRT-IBS-ECU` to
 `PRT-IBS-WIRE` (the harness). The cascade re-traverses in under a
 second. The ontology is the cascade, not a precomputed query.
 
+**Speaker note - if you have an extra minute and the audience is
+visual.** Pivot to Act 2b in the notebook. Same data, different
+reasoner: Louvain community detection on the BOM-sharing graph.
+~190 VINs cluster into 4 natural communities. The largest cluster
+contains the Continental IBS exposure; the second is the Dingolfing
+HV-battery cohort. The Plotly graph view shows the structural
+boundaries between exposure groups that no SQL query exposes.
+
 ## Act 3 - Heuristic: per-VIN urgency ranking (3 minutes)
 
 **The question.** "Of the ~120 Open recall jobs across all active

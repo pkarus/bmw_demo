@@ -90,10 +90,20 @@ The arc:
 | Suppliers | 11 | `dim_supplier` |
 | Parts | 19 | `dim_part` |
 | BOM nodes | 11 | `dim_bom_node` |
+| Act 2b: vehicle cohort communities (Louvain) | structure stable; labels non-deterministic | `q7_vehicle_communities()` - graph-reasoner output |
 
 `data/out/cars_demo_validation.sql` reproduces every anchor as a
 standalone SQL query. `prep_demo.py` asserts all six talk-track
 sentinels and exits non-zero if any drift.
+
+The vehicle-cohort graph (Act 2b) adds a Graph-reasoner perspective on
+the same data: vehicles connected by shared BOM nodes, Louvain
+communities identify natural cohorts. Not an anchored number because
+Louvain is non-deterministic, but the graph structure (number of
+communities, dominant model per community) is stable. The notebook
+renders this as a force-directed Plotly figure with nodes coloured by
+community, sized by degree, and hover-rich (VIN, model, plant, fuel,
+mileage, campaigns, open recalls, accident history).
 
 ## Domain choices and why
 

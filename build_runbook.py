@@ -63,10 +63,14 @@ def main():
     extra_rows = """        <tr><td>Open recalls</td><td>121</td><td><code>WHERE status='Open'</code></td></tr>
         <tr><td>SLA-breached Open (Act 1)</td><td>19</td><td>IBS-2024-A 8, HVB-2024-A 7, EGR-2023-B 3, AIRBAG-2022-A 1</td></tr>
         <tr><td>Continental MK C1 cascade (Act 2)</td><td>67 VINs</td><td>EU 53, NA 12, LATAM 2 - three plant-date cohorts</td></tr>
+        <tr><td>Vehicle cohort communities (Act 2b)</td><td>190 VINs, 4 communities</td><td>Louvain on shared-BOM graph (non-deterministic labels; sizes stable)</td></tr>
         <tr><td>Priority VINs (Act 5)</td><td>15</td><td>Open recall + prior accident</td></tr>
         <tr><td>Recall campaigns</td><td>5</td><td>IBS / HVB / EGR / AIRBAG / STARTER</td></tr>
         <tr><td>Service centres</td><td>15</td><td>EU 8 + US 6 + MX 1</td></tr>
         <tr><td>BOM membership edges</td><td>531</td><td>vehicle x bom_node junctions</td></tr>"""
+
+    # Act 2b card is now baked into the template directly; no
+    # injection needed here.
     out = out.replace(
         "        <!-- add rows as needed -->",
         extra_rows + "\n        <!-- add rows as needed -->",

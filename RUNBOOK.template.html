@@ -7,9 +7,12 @@
   :root {
     --bg: #0f1115;
     --panel: #161a22;
+    --panel-2: #1c2230;
     --ink: #e6e6e6;
     --muted: #9aa0a6;
+    --subtle: #6b7280;
     --accent: #6ea8fe;
+    --accent-2: #8b5cf6;
     --rules: #2a6db0;
     --graph: #8a4fbe;
     --heuristic: #d4a017;
@@ -22,66 +25,154 @@
     --bad: #c0392b;
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
-  body { margin: 0; background: var(--bg); color: var(--ink); }
-  header {
-    padding: 32px 40px 24px;
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.55; }
+
+  /* Sticky nav */
+  nav.toc {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(15, 17, 21, 0.92);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-  }
-  header h1 { margin: 0 0 4px; font-size: 28px; font-weight: 600; }
-  header p.lede { margin: 0; color: var(--muted); max-width: 720px; }
-  header .meta {
-    margin-top: 12px;
-    display: flex;
-    gap: 16px;
-    color: var(--muted);
+    padding: 12px 40px;
+    display: flex; gap: 18px; flex-wrap: wrap;
     font-size: 13px;
   }
-  main { padding: 24px 40px 80px; max-width: 1080px; }
-  section { margin-top: 32px; }
-  section h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  nav.toc a {
+    color: var(--muted); text-decoration: none;
+    padding: 4px 8px; border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
   }
+  nav.toc a:hover { background: var(--panel-2); color: var(--ink); }
+  nav.toc .brand { color: var(--accent); font-weight: 600; margin-right: 8px; }
+
+  header {
+    padding: 56px 40px 36px;
+    background: linear-gradient(180deg, #181d28 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { margin: 0 0 8px; font-size: 34px; font-weight: 600; letter-spacing: -0.5px; }
+  header p.lede { margin: 0; color: var(--muted); max-width: 760px; font-size: 15px; }
+  header .meta {
+    margin-top: 18px;
+    display: flex;
+    gap: 18px; flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+  header .meta code { color: var(--accent); }
+
+  main { padding: 16px 40px 80px; max-width: 1180px; }
+  section { margin-top: 40px; scroll-margin-top: 80px; }
+  section h2 {
+    font-size: 22px; font-weight: 600;
+    margin: 0 0 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  section h2 .sub {
+    font-size: 13px; font-weight: 400; color: var(--muted);
+  }
+
+  /* Pillars (4-card grid) */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .pillar {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .pillar.problem { border-left-color: #c0392b; }
+  .pillar.hard    { border-left-color: var(--heuristic); }
+  .pillar.rai     { border-left-color: var(--accent); }
+  .pillar.alt     { border-left-color: var(--subtle); }
+  .pillar h3 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+  .pillar h3 .icon { margin-right: 6px; }
+  .pillar p { margin: 0; color: var(--ink); font-size: 14px; }
+  .pillar p + p { margin-top: 8px; }
+  .pillar .stat {
+    display: inline-block; margin-top: 10px;
+    padding: 2px 8px; border-radius: 4px;
+    font-size: 12px; color: var(--muted);
+    background: var(--code-bg);
+  }
+
   .badge {
     display: inline-block;
     padding: 2px 10px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: white;
+    text-transform: uppercase; letter-spacing: 0.5px;
   }
-  .badge.rules { background: var(--rules); }
-  .badge.graph { background: var(--graph); }
+  .badge.rules    { background: var(--rules); }
+  .badge.graph    { background: var(--graph); }
   .badge.heuristic { background: var(--heuristic); color: #1a1a1a; }
-  .badge.solver { background: var(--solver); }
-  .badge.rule5 { background: var(--rule5); color: #1a1a1a; }
+  .badge.solver   { background: var(--solver); }
+  .badge.rule5    { background: var(--rule5); color: #1a1a1a; }
+
   .card {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 20px;
+    padding: 22px;
     margin-bottom: 16px;
   }
-  .card h3 { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
-  .card .why { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .card h3 {
+    margin: 0 0 10px; font-size: 17px; font-weight: 600;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .card .why    { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .card .lay    {
+    background: var(--panel-2);
+    padding: 12px 14px; border-radius: 6px;
+    border-left: 3px solid var(--accent-2);
+    margin-bottom: 12px; font-size: 14px;
+  }
+  .card .lay .lay-label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-2); margin-bottom: 4px; font-weight: 600; }
   .card .beat {
     font-style: italic;
     color: var(--accent);
     margin-bottom: 12px;
     border-left: 3px solid var(--accent);
-    padding-left: 12px;
+    padding: 8px 12px;
+    background: rgba(110, 168, 254, 0.06);
+    border-radius: 4px;
+    font-size: 14px;
   }
-  .card .figure { text-align: center; margin: 16px 0; }
-  .card .figure img { max-width: 100%; border-radius: 4px; border: 1px solid var(--border); }
-  .card .figure-caption { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .card .figure { text-align: center; margin: 18px 0 8px; }
+  .card .figure img { max-width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+  .card .figure-caption { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  details.deep {
+    border-top: 1px dashed var(--border);
+    margin-top: 14px; padding-top: 12px;
+  }
+  details.deep summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 13px;
+    list-style: none;
+    user-select: none;
+  }
+  details.deep summary::before {
+    content: "▸ ";
+    transition: transform 0.15s;
+    display: inline-block;
+  }
+  details.deep[open] summary::before { content: "▾ "; }
+  details.deep > div { margin-top: 10px; font-size: 13px; color: var(--muted); }
+
   .anchored {
     width: 100%;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 13px;
   }
   .anchored td, .anchored th {
     border: 1px solid var(--border);
@@ -89,53 +180,60 @@
     text-align: left;
   }
   .anchored th { background: var(--code-bg); color: var(--muted); font-weight: 500; }
+  .anchored td:nth-child(2) { font-family: ui-monospace, monospace; color: var(--accent); white-space: nowrap; }
+
   pre {
     background: var(--code-bg);
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 12px 16px;
     overflow-x: auto;
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--ink);
   }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-  .checklist { list-style: none; padding: 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent); }
+  pre code { color: var(--ink); }
+  .checklist { list-style: none; padding: 0; margin: 0; }
   .checklist li {
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-left: 3px solid var(--border);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    background: var(--panel-2);
+    border-radius: 0 4px 4px 0;
+    font-size: 13.5px;
   }
   .checklist li.good { border-left-color: var(--good); }
   .checklist li.warn { border-left-color: var(--warn); }
-  .checklist li.bad { border-left-color: var(--bad); }
-  .tabs { display: flex; gap: 4px; margin: 24px 0 16px; }
-  .tabs input[type=radio] { display: none; }
-  .tabs label {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 8px 16px;
-    cursor: pointer;
-    color: var(--muted);
-  }
-  .tabs input[type=radio]:checked + label {
-    background: var(--accent);
-    color: #0f1115;
-    border-color: var(--accent);
-  }
+  .checklist li.bad  { border-left-color: var(--bad); }
+
   footer {
-    margin-top: 48px;
-    padding-top: 16px;
+    margin-top: 60px; padding: 20px 0;
     border-top: 1px solid var(--border);
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
+  }
+  a { color: var(--accent); }
+  @media (max-width: 720px) {
+    .pillars { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+
+<nav class="toc">
+  <span class="brand">{{AGENT_NAME}}</span>
+  <a href="#why">Why this exists</a>
+  <a href="#what">What you'll see</a>
+  <a href="#preflight">Pre-flight</a>
+  <a href="#numbers">Anchored numbers</a>
+  <a href="#acts">The {{N}} acts</a>
+  <a href="#act2b">Act 2b (graph)</a>
+  <a href="#troubleshooting">If things break</a>
+</nav>
+
 <header>
-  <h1>{{DOMAIN_TITLE}} - Demo runbook</h1>
-  <p class="lede">{{DOMAIN_SUBTITLE}} {{N}}-act RelationalAI demo against the SE Snowflake account.</p>
+  <h1>{{DOMAIN_TITLE}}</h1>
+  <p class="lede">{{DOMAIN_SUBTITLE}} A {{N}}-act RelationalAI demo against the sales-engineering Snowflake account.</p>
   <div class="meta">
     <span>Engines: <code>{{LOGIC_ENGINE}}</code>, <code>{{PRESCRIPTIVE_ENGINE}}</code></span>
     <span>Database: <code>{{DATABASE}}</code></span>
@@ -145,22 +243,63 @@
 
 <main>
 
-<section>
-  <h2>Pre-flight (10 minutes before showtime)</h2>
+<section id="why">
+  <h2>Why this demo exists <span class="sub">- non-expert primer</span></h2>
+  <div class="pillars">
+    <div class="pillar problem">
+      <h3><span class="icon">🚨</span>The customer problem</h3>
+      <p>A Tier-1 supplier flags a defect on Tuesday morning. By end of day the after-sales lead at a major car manufacturer needs concrete answers: how many VINs are affected, which owners we must write to, which service centres are about to be overrun, and whether we can finish the work before the regulator's window expires.</p>
+      <p>Today this conversation spans <strong>six different systems</strong>: a parts catalogue, an as-built BOM database, a dealer-network capacity sheet, a parts logistics spreadsheet, an owner-notification ledger, and a senior manager's spreadsheet of "always pull these VINs first" rules.</p>
+      <span class="stat">5 active campaigns · 121 open recalls · 19 already past their SLA</span>
+    </div>
+    <div class="pillar hard">
+      <h3><span class="icon">🧩</span>Why it's hard</h3>
+      <p>The connections that matter cut <em>across</em> systems: supplier → part → bill-of-materials cohort → VIN → owner → service centre → region. Each step is a different team and a different join key. The "always prioritise VINs with a prior collision" rule lives in one person's head.</p>
+      <p>Doing this in SQL alone means manually re-deriving the cascade every time and re-hardcoding the priority rule into every report. Doing it with bespoke scripts means three or four hand-stitched data products that drift apart within a quarter.</p>
+      <span class="stat">Touch six systems, get the answer wrong 5-10% of the time, ship in 3 days</span>
+    </div>
+    <div class="pillar rai">
+      <h3><span class="icon">⚡</span>How RelationalAI helps</h3>
+      <p>One <strong>ontology</strong> over the same Snowflake data captures the relationships, the rules, and the policies in one place. Five different reasoners then share that ontology:</p>
+      <p>Rules audit the open recalls, a Graph reasoner walks the supplier→VIN cascade, a Heuristic ranks urgency, a Prescriptive MIP schedules jobs to centres, and a Persistent-rule capability lets the operator write the priority policy <em>into the ontology</em> so every downstream reasoner respects it without redeployment.</p>
+      <span class="stat">Same model, five reasoners, sub-minute answers, the policy survives</span>
+    </div>
+    <div class="pillar alt">
+      <h3><span class="icon">🏗️</span>What the alternative looks like</h3>
+      <p>Without RAI you'd assemble: a data engineer to wire the six joins, a data scientist to build the urgency model, an OR analyst to formulate the LP, and a senior product manager to keep the priority rules in a runbook. Three weeks of work, four maintenance owners, and the policies don't propagate when the data changes.</p>
+      <p>The talk track shows the <em>same</em> question landed in the agent that touches one model, in natural language, in under 90 seconds per question.</p>
+      <span class="stat">3 weeks + 4 owners → one ontology, one schema, an agent that answers in natural language</span>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <h2>What you'll see <span class="sub">- one ontology, five reasoners</span></h2>
+  <div class="card">
+    <p class="why" style="margin-bottom: 0;">The demo runs against <code>{{DATABASE}}</code> on the sales-engineering Snowflake account. 325 vehicles, 762 service events, 254 recall assignments across 5 active campaigns. A <strong>single PyRel ontology</strong> backs every act below; the Cortex agent <code>{{AGENT_NAME}}</code> answers all the same questions in natural language.</p>
+  </div>
+</section>
+
+<section id="preflight">
+  <h2>Pre-flight <span class="sub">- 10 minutes before showtime</span></h2>
   <div class="card">
     <h3>Run the gate</h3>
     <p class="why">One command. If anything fails, the script tells you what and why.</p>
     <pre>.venv/bin/python prep_demo.py</pre>
-    <p class="why">Useful flags:</p>
-    <pre>--skip-figures      # don't regenerate PNGs
+    <details class="deep">
+      <summary>Useful flags</summary>
+      <div>
+<pre>--skip-figures      # don't regenerate PNGs
 --skip-chat         # don't smoke-test the SI agent
 --skip-snowsight    # don't upload the Snowsight notebook
 --redeploy          # force agent redeploy</pre>
+      </div>
+    </details>
   </div>
 </section>
 
-<section>
-  <h2>Anchored numbers</h2>
+<section id="numbers">
+  <h2>Anchored numbers <span class="sub">- reproduce exactly from raw SQL</span></h2>
   <div class="card">
     <p class="why">These reproduce exactly under <code>data/{{DOMAIN}}_demo_validation.sql</code>. If the gate is green, all of these are live.</p>
     <table class="anchored">
@@ -174,21 +313,27 @@
   </div>
 </section>
 
-<section>
-  <h2>The {{N}} acts</h2>
+<section id="acts">
+  <h2>The {{N}} acts <span class="sub">- one slide per reasoner</span></h2>
 
-  <div class="card">
+  <div id="act1" class="card">
     <h3><span class="badge rules">Rules</span> Act 1 - {{ACT1_TITLE}}</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>Look at every Open recall whose owner-notification age has slipped past the campaign's regulator-defined completion window. The rule lives in the ontology as a derived predicate; the audit query just counts.</div>
     <p class="why">{{ACT1_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT1_BEAT}}</p>
     <div class="figure">
       <img src="build/figures/act1_{{ACT1_SLUG}}.png" alt="{{ACT1_TITLE}}">
       <div class="figure-caption">Expected result. Bars / rows / shape.</div>
     </div>
+    <details class="deep">
+      <summary>What changes if the audience disputes a number</summary>
+      <div>Both the rule and the result reproduce from the ontology. Run <code>data/out/cars_demo_validation.sql</code> in Snowsight to confirm the underlying SQL counts; if the numbers drift, the data has changed under us and <code>bash data/load_to_snowflake.sh</code> rebuilds from seed=42.</div>
+    </details>
   </div>
 
-  <div class="card">
+  <div id="act2" class="card">
     <h3><span class="badge graph">Graph</span> Act 2 - {{ACT2_TITLE}}</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>A supplier flags a part. The ontology walks the cascade from supplier to part to bill-of-materials node to affected VIN to owner to nearest service centre in a single query - the join that today takes six handoffs across six teams.</div>
     <p class="why">{{ACT2_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT2_BEAT}}</p>
     <div class="figure">
@@ -196,18 +341,35 @@
     </div>
   </div>
 
-  <div class="card">
+  <div id="act2b" class="card">
+    <h3><span class="badge graph">Graph</span> Act 2b - Vehicle cohort communities (Louvain)</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>Same data as Act 2, structural view. Two VINs share a tie when they share a BOM node. Louvain - a community-detection algorithm - finds the natural cohorts: the groups of vehicles that will move together if a supplier widens any defect notice. Operations now sees portfolio risk, not per-campaign tickets.</div>
+    <p class="why">A graph reasoner running Louvain on the BOM-sharing graph identifies the 4 natural exposure cohorts among ~190 BOM-participating VINs. The largest cluster is the Continental IBS exposure (Munich + Regensburg + Spartanburg X-series + G21 LCI). The second clusters Dingolfing iX / i7 EVs around the Samsung SDI HV battery campaign.</p>
+    <p class="beat">Speaker beat: pivot here from Act 2 when the audience wants the picture, not the table. The force-directed Plotly view colours nodes by community and sizes them by degree. Hover any node for VIN / model / plant / fuel / mileage / community / degree / campaign count / open recalls / accident type.</p>
+    <div class="figure">
+      <img src="build/figures/act2b_vehicle_communities.png" alt="Vehicle cohort communities">
+      <div class="figure-caption">Louvain is non-deterministic. Community labels may shuffle between runs; the cohort sizes and dominant-model-per-cohort are stable.</div>
+    </div>
+    <details class="deep">
+      <summary>Why this isn't just a fancy chart</summary>
+      <div>The communities are derived structure on the same ontology that backs Act 1's SLA audit, Act 3's urgency score, Act 4's MIP, and Act 5's policy rule. Adding a downstream rule like "alert when more than N priority VINs land in the same community" is one PyRel derived property - it lights up in every reasoner that touches the model.</div>
+    </details>
+  </div>
+
+  <div id="act3" class="card">
     <h3><span class="badge heuristic">Heuristic</span> Act 3 - {{ACT3_TITLE}}</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>Of the ~120 Open recall jobs, give me the top 20 to act on this week. The score weights mileage (how much the car is driven), notification age (how long the owner has had the letter), prior accident severity, and distance to the nearest equipped centre.</div>
     <p class="why">{{ACT3_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT3_BEAT}}</p>
-    <p class="why"><em>Note: the predictive reasoner (GNN) is preview. This is a deterministic fit-score expressed in PyRel.</em></p>
+    <p class="why"><em>Note: the predictive (GNN) reasoner is still preview. This is a deterministic fit-score expressed entirely as PyRel-derived properties - auditable and defensible to insurance / compliance reviewers in a way a black-box model is not.</em></p>
     <div class="figure">
       <img src="build/figures/act3_{{ACT3_SLUG}}.png" alt="{{ACT3_TITLE}}">
     </div>
   </div>
 
-  <div class="card">
+  <div id="act4" class="card">
     <h3><span class="badge solver">Prescriptive</span> Act 4 - {{ACT4_TITLE}}</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>Schedule the next four weeks of recall work. Every open job goes to exactly one centre in exactly one week. Respect technician hours, parts on hand, and tooling certification. Minimise total weighted lateness. A mixed-integer program (HiGHS solver) finds the optimum.</div>
     <p class="why">{{ACT4_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT4_BEAT}} Budget 2-3 min of dead air for the solver - use it to narrate.</p>
     <div class="figure">
@@ -215,32 +377,38 @@
     </div>
   </div>
 
-  <div class="card">
+  <div id="act5" class="card">
     <h3><span class="badge rule5">Persistent rule</span> Act 5 - {{ACT5_TITLE}}</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>The senior recall manager says "VINs that already had a collision must go to weeks 1 or 2; we absorb the slip elsewhere." Today that rule lives in her spreadsheet. We write it into the ontology in ~10 lines of PyRel and re-solve. Every downstream reasoner picks it up without code changes.</div>
     <p class="why">{{ACT5_WHY}}</p>
-    <p class="beat">Speaker beat: {{ACT5_BEAT}} Live-add the rule. Re-solve. Audience sees the answer flip.</p>
+    <p class="beat">Speaker beat: {{ACT5_BEAT}} Live-add the rule. Re-solve. Audience sees the answer flip - and crucially the rule stays in the ontology for everything else that reads from it.</p>
     <div class="figure">
       <img src="build/figures/act5_{{ACT5_SLUG}}.png" alt="{{ACT5_TITLE}}">
     </div>
+    <details class="deep">
+      <summary>The closing one-liner</summary>
+      <div>"We just moved institutional knowledge from a person to a data model." Pause. That's the demo.</div>
+    </details>
   </div>
 
 </section>
 
-<section>
-  <h2>If things break</h2>
+<section id="troubleshooting">
+  <h2>If things break <span class="sub">- demo-day triage</span></h2>
   <div class="card">
     <ul class="checklist">
-      <li class="warn"><strong>Engine not READY.</strong> <code>.venv/bin/rai reasoners list</code> to confirm. The gate auto-resumes them.</li>
-      <li class="warn"><strong>Stale notebook in Snowsight.</strong> <code>.venv/bin/python prep_demo.py --skip-chat --skip-figures</code> re-uploads it.</li>
+      <li class="warn"><strong>Engine not READY.</strong> <code>.venv/bin/rai reasoners list</code> to confirm. The gate auto-resumes them, but it can take 3-5 minutes cold.</li>
+      <li class="warn"><strong>Stale notebook in Snowsight.</strong> <code>bash data/upload_snowsight_notebook.sh</code> re-uploads.</li>
       <li class="warn"><strong>Agent answering with stale schema.</strong> <code>.venv/bin/python -m agent.deploy update</code> refreshes sprocs without re-registering.</li>
-      <li class="bad"><strong>Solver returning INFEASIBLE.</strong> Not a runtime problem - your formulation drifted. Check <code>data/{{DOMAIN}}_demo_validation.sql</code> first; if the data changed under you, regenerate. Otherwise the formulation needs <code>/rai-prescriptive-problem-formulation</code>.</li>
+      <li class="bad"><strong>Solver returning INFEASIBLE.</strong> Not a runtime problem - the formulation drifted. Check <code>data/out/cars_demo_validation.sql</code> first; if data changed under you, regenerate. Otherwise the formulation needs <code>/rai-prescriptive-problem-formulation</code>.</li>
       <li class="bad"><strong>Snowflake credentials.</strong> <code>snow connection test -c rai</code>. Profile lives in <code>~/.snowflake/connections.toml</code>.</li>
+      <li class="good"><strong>Cortex agent dies mid-demo.</strong> Fall back to <code>.venv/bin/python -m agent.deploy chat "&lt;question&gt;"</code> from the terminal. Slower (~90s per answer) but functional.</li>
     </ul>
   </div>
 </section>
 
 <footer>
-  Generated from <code>RUNBOOK.template.html</code>. Last regenerated: <code>{{LAST_GENERATED}}</code>. Figures live under <code>build/figures/</code>. See <code>HANDOFF_BRIEFING.md</code> for design rationale.
+  Generated from <code>RUNBOOK.template.html</code> via <code>build_runbook.py</code>. Last regenerated: <code>{{LAST_GENERATED}}</code>. Figures live under <code>build/figures/</code>. See <code>HANDOFF_BRIEFING.md</code> for design rationale and <code>CARS_TALK_TRACK.md</code> for the speaker script.
 </footer>
 
 </main>

@@ -99,6 +99,8 @@ def init_tools():
             queries.schedule_recall_jobs_chart,
             queries.schedule_recall_jobs_priority,
             queries.schedule_recall_jobs_priority_chart,
+            queries.vehicle_cohort_communities,
+            queries.vehicle_cohort_communities_chart,
         ),
     )
 

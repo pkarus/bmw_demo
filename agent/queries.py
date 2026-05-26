@@ -19,6 +19,7 @@ from rai_code.manual.demo_queries import (
     q3_urgency_top20,
     q4_assign_recall_jobs,
     q5_assign_recall_jobs_priority,
+    q7_vehicle_communities,
 )
 
 
@@ -164,4 +165,26 @@ def schedule_recall_jobs_priority_chart():
     return _wrap_chart(
         pivot, chart_type="bar", x="centre", y="jobs", color="week",
         title="Recall jobs scheduled by centre and week (Act 5 with priority rule)",
+    )
+
+
+# =============================================================================
+# Q7 - Vehicle cohort communities (Graph reasoner, Louvain)
+# =============================================================================
+def vehicle_cohort_communities():
+    """Act 2b. Louvain community detection on the vehicle-cohort graph
+    (two vehicles connected by shared BOM nodes). Returns one row per
+    community with: community label, count of VINs, dominant model.
+    These cohorts are the structural groupings that would move together
+    when a supplier-defect cascade widens. Non-deterministic; sizes are
+    stable but labels may shuffle between runs."""
+    return q7_vehicle_communities()
+
+
+def vehicle_cohort_communities_chart():
+    """Chart variant of the cohort-community summary."""
+    df = q7_vehicle_communities()[["community", "vins"]]
+    return _wrap_chart(
+        df, chart_type="bar", x="community", y="vins",
+        title="Vehicle cohort communities (Louvain on shared-BOM graph)",
     )

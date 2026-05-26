@@ -44,6 +44,21 @@ go?"**
 
 ---
 
+## Q2b. Act 2b (Graph reasoner, follow-up) - Vehicle cohort communities
+
+**"The cascade list is useful but I want to see the *structure*. Run
+Louvain community detection on the vehicle-cohort graph - two VINs are
+connected when they share at least one BOM node - and show me the
+natural clusters."**
+
+| Why it matters | The Act 2 cascade returned a list. The agent can pivot to a structural view that shows which VINs move *together* under any supplier expansion - not just the current one. The communities are the natural "exposure cohorts": replace one part on any VIN in a community and the rest are downstream risk. Helps the recall manager think about portfolio-level supplier risk, not per-campaign work tickets. |
+|----------------|---|
+| Reasoner | Graph (Louvain on a weighted undirected graph). `cars_logic_l` builds the vehicle-cohort graph from `in_bom`, runs Louvain, and binds the per-VIN community label as `Vehicle.cohort_community`. |
+| Expected shape | ~190 VINs participate in the BOM-sharing graph (the others have no BOM membership). 4 communities at typical Louvain output: large clusters around (1) Munich + Regensburg + Spartanburg X-series + 3 Series sharing the Continental IBS BOM nodes; (2) Dingolfing iX / i7 EVs sharing the Samsung SDI HV battery BOM; (3) the cross-plant IBS-WIRE harness cohort; (4) smaller clusters (EGR diesel, Takata airbag vintage). Non-deterministic by design - report community structure, not exact IDs. |
+| Visualisation | The notebook renders a force-directed Plotly graph: nodes coloured by community, sized by degree, hover-rich with VIN / model / plant / fuel / mileage / campaign count / open-recall count / accident type. The static PNG is at `build/figures/act2b_vehicle_communities.png`. |
+
+---
+
 ## Q3. Act 3 (Heuristic) - Per-VIN recall urgency ranking
 
 **"Of the ~270 Open recall jobs across all active campaigns, rank

@@ -455,6 +455,304 @@ def q5_assign_recall_jobs_priority():
 
 
 # =============================================================================
+# Q2 follow-up graph queries (Graph reasoner)
+# Three additional graph constructions on the same ontology, each
+# answering a different "structural" question the Cortex agent can
+# pivot to after the headline Act 2 cascade. None of these change the
+# 5-act narrative; they are extra surface for agent Q&A.
+# =============================================================================
+
+def _ensure_centre_coload_graph():
+    """Undirected weighted graph of ServiceCentres. Two centres share an
+    edge for every Open recall whose nearest_centre is one of them and
+    whose campaign also has Open recalls on a vehicle nearest the other
+    centre. Edge weight = count of co-exposed VINs. Cached on the
+    `model` object so multiple algorithms can reuse it."""
+    if hasattr(model, "_cars_centre_graph"):
+        return model._cars_centre_graph
+    from relationalai.semantics.std import floats as floats_mod
+    g = Graph(model, directed=False, weighted=True, node_concept=ServiceCentre,
+              aggregator="sum")
+    # Edges: for each pair of distinct centres (c1, c2) that both serve at
+    # least one Open recall on the same campaign, add an edge weighted by
+    # the count of VINs the centres jointly cover. Implemented as a
+    # co-occurrence over (vehicle.nearest_centre, recall.campaign).
+    _r1 = RecallAssignment.ref()
+    _r2 = RecallAssignment.ref()
+    _v1 = Vehicle.ref()
+    _v2 = Vehicle.ref()
+    _c1 = ServiceCentre.ref()
+    _c2 = ServiceCentre.ref()
+    model.where(
+        _r1.status == "Open",
+        _r2.status == "Open",
+        _r1.campaign == _r2.campaign,
+        _r1.vehicle == _v1,
+        _r2.vehicle == _v2,
+        _v1.nearest_centre == _c1,
+        _v2.nearest_centre == _c2,
+        _c1.centre_id < _c2.centre_id,
+    ).define(g.Edge.new(src=_c1, dst=_c2, weight=1.0))
+    model._cars_centre_graph = g
+    return g
+
+
+def q6_centre_centrality():
+    """Top service centres by eigenvector centrality on the co-exposure
+    graph (two centres connected when they share an Open recall
+    campaign via shared vehicle population). Identifies the structural
+    hubs of the recall-absorbing network."""
+    g = _ensure_centre_coload_graph()
+    g.Node.coload_centrality = g.eigenvector_centrality()
+    df = (
+        model.select(
+            ServiceCentre.centre_id.alias("centre_id"),
+            ServiceCentre.name.alias("centre"),
+            ServiceCentre.country.alias("country"),
+            ServiceCentre.coload_centrality.alias("centrality"),
+        )
+        .to_df()
+        .sort_values("centrality", ascending=False)
+        .head(10)
+        .reset_index(drop=True)
+    )
+    if "centrality" in df.columns:
+        df["centrality"] = [float(v) if v is not None else 0.0 for v in df["centrality"]]
+    return df
+
+
+def _ensure_vehicle_cohort_graph():
+    """Undirected weighted graph of Vehicles. Two vehicles share an
+    edge if they share at least one BOM node. Edge weight = count of
+    shared BOM nodes. Used for Louvain community detection: VINs that
+    cluster together are exposed to the same supplier-defect cascades.
+
+    Caches the graph AND runs Louvain once (the Property assignment is
+    not idempotent so subsequent re-runs blow up).
+    """
+    if hasattr(model, "_cars_vehicle_graph"):
+        return model._cars_vehicle_graph
+    g = Graph(model, directed=False, weighted=True, node_concept=Vehicle,
+              aggregator="sum")
+    _v1 = Vehicle.ref()
+    _v2 = Vehicle.ref()
+    _b = BomNode.ref()
+    model.where(
+        in_bom(_v1, _b),
+        in_bom(_v2, _b),
+        _v1.vin < _v2.vin,
+    ).define(g.Edge.new(src=_v1, dst=_v2, weight=1.0))
+    # Louvain attached once; subsequent reads pull cached values from
+    # the materialised Property.
+    g.Node.cohort_community = g.louvain()
+    model._cars_vehicle_graph = g
+    return g
+
+
+def q7_vehicle_communities():
+    """Louvain communities on the vehicle-cohort graph. VINs that share
+    BOM nodes cluster together. Result: each vehicle gets a community
+    label; the demo returns the per-community count + an example
+    model name per community. Non-deterministic by algorithm; report
+    structure not exact IDs."""
+    g = _ensure_vehicle_cohort_graph()
+    df = (
+        model.select(
+            Vehicle.vin.alias("vin"),
+            Vehicle.model.alias("model"),
+            Vehicle.factory.alias("plant"),
+            Vehicle.cohort_community.alias("community"),
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if "community" in df.columns:
+        df["community"] = [int(v) for v in df["community"]]
+    # Summarise: count + dominant model per community
+    summary = (
+        df.groupby("community")
+        .agg(vins=("vin", "size"), dominant_model=("model", lambda s: s.mode().iloc[0] if not s.mode().empty else ""))
+        .reset_index()
+        .sort_values("vins", ascending=False)
+        .reset_index(drop=True)
+    )
+    return summary
+
+
+def q7_vehicle_communities_nodes_and_edges():
+    """Return (nodes_df, edges_df) for the vehicle-cohort graph
+    visualisation. Each node carries vin, model, plant, fuel_type,
+    community label, mileage, accident_type, campaign count, and
+    degree in the BOM-sharing graph. Each edge is a (vin1, vin2,
+    shared_boms) tuple. The downstream notebook cell turns this into
+    a colour-coded force-directed Plotly figure.
+
+    Note: this query is expensive on the vehicle-cohort graph (~325
+    nodes, several thousand edges). Cached on the model after first run.
+    """
+    g = _ensure_vehicle_cohort_graph()
+
+    # Nodes: one row per Vehicle that participates in any BOM edge.
+    _v = Vehicle.ref()
+    _b = BomNode.ref()
+    nodes = (
+        model.where(in_bom(_v, _b))
+        .select(
+            distinct(
+                _v.vin.alias("vin"),
+                _v.model.alias("model"),
+                _v.factory.alias("plant"),
+                _v.fuel_type.alias("fuel"),
+                _v.mileage.alias("mileage"),
+                _v.cohort_community.alias("community"),
+            )
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if "community" in nodes.columns:
+        nodes["community"] = [int(c) for c in nodes["community"]]
+    if "mileage" in nodes.columns:
+        nodes["mileage"] = [int(m) if m is not None else 0 for m in nodes["mileage"]]
+
+    # Per-vehicle: accident type, campaign count, open-recall count.
+    # Cheap PyRel aggregates joined back as pandas merges.
+    acc = (
+        model.where(_v.vin, _v.accident_type)
+        .select(_v.vin.alias("vin"), _v.accident_type.alias("accident"))
+        .to_df()
+        .reset_index(drop=True)
+    )
+
+    _r = RecallAssignment.ref()
+    camps = (
+        model.where(_r.vehicle == _v)
+        .select(
+            distinct(
+                _v.vin.alias("vin"),
+                aggs.count(distinct(_r.campaign)).per(_v.vin).alias("campaign_count"),
+            )
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if "campaign_count" in camps.columns:
+        camps["campaign_count"] = [int(c) for c in camps["campaign_count"]]
+
+    open_count = (
+        model.where(_r.vehicle == _v, _r.status == "Open")
+        .select(
+            distinct(
+                _v.vin.alias("vin"),
+                aggs.count(_r).per(_v.vin).alias("open_count"),
+            )
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if "open_count" in open_count.columns:
+        open_count["open_count"] = [int(c) for c in open_count["open_count"]]
+
+    import pandas as pd
+    nodes = nodes.merge(acc, on="vin", how="left")
+    nodes = nodes.merge(camps, on="vin", how="left")
+    nodes = nodes.merge(open_count, on="vin", how="left")
+    nodes["accident"] = nodes["accident"].fillna("none")
+    nodes["campaign_count"] = nodes["campaign_count"].fillna(0).astype(int)
+    nodes["open_count"] = nodes["open_count"].fillna(0).astype(int)
+
+    # Edges: re-query from in_bom + group-by per (v1, v2).
+    _v1 = Vehicle.ref()
+    _v2 = Vehicle.ref()
+    _b2 = BomNode.ref()
+    edges = (
+        model.where(
+            in_bom(_v1, _b2),
+            in_bom(_v2, _b2),
+            _v1.vin < _v2.vin,
+        )
+        .select(
+            distinct(
+                _v1.vin.alias("v1"),
+                _v2.vin.alias("v2"),
+                aggs.count(_b2).per(_v1.vin, _v2.vin).alias("shared_boms"),
+            )
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if "shared_boms" in edges.columns:
+        edges["shared_boms"] = [int(s) for s in edges["shared_boms"]]
+
+    # Degree in the BOM-sharing graph: number of distinct neighbours.
+    # Stack v1/v2 ends, count occurrences per VIN.
+    end1 = edges[["v1"]].rename(columns={"v1": "vin"})
+    end2 = edges[["v2"]].rename(columns={"v2": "vin"})
+    ends = pd.concat([end1, end2], ignore_index=True)
+    deg = ends.groupby("vin").size().rename("degree").reset_index()
+    nodes = nodes.merge(deg, on="vin", how="left")
+    nodes["degree"] = nodes["degree"].fillna(0).astype(int)
+
+    return nodes, edges
+
+
+def _ensure_campaign_to_centre_graph():
+    """Directed weighted graph: RecallCampaign -> ServiceCentre. Edge
+    weight = number of Open VINs in the campaign whose nearest_centre
+    is the destination centre. Used for PageRank: centres with the
+    highest inbound from many campaigns are the busiest network
+    workshops."""
+    if hasattr(model, "_cars_campaign_centre_graph"):
+        return model._cars_campaign_centre_graph
+    # Use Pattern 1 so we can mix the two node concepts on the same
+    # graph. The graph reasoner accepts heterogeneous nodes as long as
+    # they are bound via Edge.new.
+    g = Graph(model, directed=True, weighted=True)
+    _r = RecallAssignment.ref()
+    _v = Vehicle.ref()
+    _c = ServiceCentre.ref()
+    _cmp = RecallCampaign.ref()
+    # Register one node per campaign and one per centre. (The graph
+    # reasoner auto-registers endpoints from Edge.new, but explicit
+    # is cleaner for downstream queries.)
+    model.where(
+        _r.status == "Open",
+        _r.campaign == _cmp,
+        _r.vehicle == _v,
+        _v.nearest_centre == _c,
+    ).define(g.Edge.new(src=_cmp, dst=_c, weight=1.0))
+    model._cars_campaign_centre_graph = g
+    return g
+
+
+def q8_centre_pagerank():
+    """PageRank on the directed campaign -> centre graph (weighted by
+    Open-VIN count). The top centres absorb the most cascading work
+    summed across all 5 active recall campaigns. Pairs naturally with
+    Act 4's scheduling MIP."""
+    g = _ensure_campaign_to_centre_graph()
+    g.Node.cascade_rank = g.pagerank()
+    # Project back onto ServiceCentre only - filter out campaign
+    # nodes by joining graph.Node to ServiceCentre.
+    _c = ServiceCentre.ref()
+    df = (
+        model.where(g.Node == _c)
+        .select(
+            _c.name.alias("centre"),
+            _c.country.alias("country"),
+            g.Node.cascade_rank.alias("pagerank"),
+        )
+        .to_df()
+        .sort_values("pagerank", ascending=False)
+        .head(10)
+        .reset_index(drop=True)
+    )
+    if "pagerank" in df.columns:
+        df["pagerank"] = [float(v) if v is not None else 0.0 for v in df["pagerank"]]
+    return df
+
+
+# =============================================================================
 # Driver
 # =============================================================================
 def main():
