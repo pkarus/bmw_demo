@@ -796,6 +796,78 @@ def _build_capacity_and_stock(rng: random.Random,
     return cap, stock
 
 
+@dataclass
+class CentreHandoff:
+    """3-way ternary: (from_centre, to_centre, campaign). Captures the
+    historical overflow-referral pattern: centre F regularly hands off
+    monthly_handoffs vehicles to centre T for campaign K when F lacks
+    parts or tech certification. Used by Pathfinder for chain
+    enumeration."""
+    from_centre_id: str
+    to_centre_id: str
+    campaign_id: str
+    monthly_handoffs: int
+
+
+def _build_centre_handoffs() -> list[CentreHandoff]:
+    """Generate the ternary handoff matrix. Hand-picked to form an
+    interesting graph: a few hub-and-spoke chains, one multi-hop chain
+    (SC-MTY -> SC-DAL -> SC-SPB) that path-traversal will showcase."""
+    # IBS-2024-A (Continental brake-booster firmware): IBS-cert
+    # centres receive from non-IBS-cert centres. Munich is the EU hub,
+    # Spartanburg is the US hub.
+    handoffs: list[CentreHandoff] = []
+    # IBS-2024-A spokes -> hubs
+    ibs_handoffs = [
+        ("SC-LEI", "SC-MUN", 4),   # Leipzig has no IBS cert
+        ("SC-LEI", "SC-COL", 3),   # backup route
+        ("SC-MTY", "SC-DAL", 5),   # Monterrey -> Dallas
+        ("SC-DAL", "SC-SPB", 2),   # Dallas overflow -> Spartanburg (3-hop chain via SC-MTY)
+        ("SC-MIA", "SC-NYC", 3),   # Miami overflow -> NY
+        ("SC-CHI", "SC-NYC", 2),   # Chicago -> NY
+        ("SC-LAX", "SC-SPB", 2),   # LA -> Spartanburg
+        ("SC-REG", "SC-MUN", 5),   # Regensburg gets HQ allocation
+        ("SC-BER", "SC-HAM", 3),   # Berlin -> Hamburg
+        ("SC-STU", "SC-FRA", 4),   # Stuttgart -> Frankfurt
+        ("SC-FRA", "SC-COL", 3),   # Frankfurt overflow -> Cologne
+    ]
+    for f, t, vol in ibs_handoffs:
+        handoffs.append(CentreHandoff(f, t, "IBS-2024-A", vol))
+
+    # HVB-2024-A (HV battery): only HV-cert centres can do this work.
+    # Non-HV centres refer everything.
+    hvb_handoffs = [
+        ("SC-MTY", "SC-LAX", 4),   # Monterrey has no HV -> LA
+        ("SC-REG", "SC-MUN", 6),   # Regensburg has no HV -> Munich (heavy traffic)
+        ("SC-LEI", "SC-DIN" if False else "SC-MUN", 3),  # Leipzig -> Munich
+        ("SC-CHI", "SC-DAL", 3),   # Chicago -> Dallas
+        ("SC-LEI", "SC-COL", 2),
+        ("SC-STU", "SC-MUN", 4),
+        ("SC-NYC", "SC-SPB", 2),   # NY -> Spartanburg backup
+    ]
+    for f, t, vol in hvb_handoffs:
+        handoffs.append(CentreHandoff(f, t, "HVB-2024-A", vol))
+
+    # AIRBAG-2022-A (body-shop required)
+    airbag_handoffs = [
+        ("SC-REG", "SC-MUN", 3),   # Regensburg has no body-shop -> Munich
+        ("SC-LEI", "SC-COL", 2),   # Leipzig -> Cologne
+        ("SC-STU", "SC-FRA", 3),
+        ("SC-MTY", "SC-DAL", 2),
+        ("SC-CHI", "SC-NYC", 2),
+    ]
+    for f, t, vol in airbag_handoffs:
+        handoffs.append(CentreHandoff(f, t, "AIRBAG-2022-A", vol))
+
+    # EGR + STARTER are smaller campaigns; minimal handoff pattern.
+    handoffs.append(CentreHandoff("SC-REG", "SC-MUN", "EGR-2023-B", 2))
+    handoffs.append(CentreHandoff("SC-MIA", "SC-DAL", "STARTER-2024-A", 2))
+    handoffs.append(CentreHandoff("SC-CHI", "SC-DAL", "STARTER-2024-A", 1))
+    handoffs.append(CentreHandoff("SC-LAX", "SC-DAL", "STARTER-2024-A", 1))
+
+    return handoffs
+
+
 # ---------------------------------------------------------------------------
 # 10. Emit SQL and CSV
 # ---------------------------------------------------------------------------
@@ -968,6 +1040,22 @@ CREATE OR REPLACE TABLE parts_stock (
     week_index            INTEGER,
     on_hand_units         INTEGER
 );
+
+-- ----- 3-way relationship: centre overflow handoffs by campaign -------
+-- Captures the real-world after-sales pattern where, when one centre
+-- is overcommitted on a campaign (parts shortage, tech-cert gap), it
+-- formally hands the work off to a partner centre. The same (from,
+-- to) pair carries different volumes per campaign, so the natural
+-- grain is ternary (from_centre, to_centre, campaign). Used by the
+-- Pathfinder query (Q11) to enumerate referral chains, and by the
+-- multi-reasoner query (Q12) as graph input to the MIP.
+CREATE OR REPLACE TABLE centre_handoff (
+    from_centre_id        VARCHAR(10),
+    to_centre_id          VARCHAR(10),
+    campaign_id           VARCHAR(20),
+    monthly_handoffs      INTEGER,
+    PRIMARY KEY (from_centre_id, to_centre_id, campaign_id)
+);
 """
     return ddl
 
@@ -985,7 +1073,8 @@ def _qd(s: Optional[str]) -> str:
 
 
 def _emit_reference_sql(owners: list[Owner], capacities: list[CapacityRow],
-                         stocks: list[PartsStockRow]) -> str:
+                         stocks: list[PartsStockRow],
+                         handoffs: list[CentreHandoff]) -> str:
     parts: list[str] = []
     parts.append(f"USE DATABASE {DB_NAME};\nUSE SCHEMA {SCHEMA_NAME};\n")
     # dim_supplier
@@ -1061,6 +1150,12 @@ def _emit_reference_sql(owners: list[Owner], capacities: list[CapacityRow],
         for s in stocks
     )
     parts.append(f"DELETE FROM parts_stock;\nINSERT INTO parts_stock (centre_id, campaign_id, week_index, on_hand_units) VALUES\n{rows};\n")
+    # centre_handoff (3-way ternary)
+    rows = ",\n".join(
+        f"  ('{h.from_centre_id}', '{h.to_centre_id}', '{h.campaign_id}', {h.monthly_handoffs})"
+        for h in handoffs
+    )
+    parts.append(f"DELETE FROM centre_handoff;\nINSERT INTO centre_handoff (from_centre_id, to_centre_id, campaign_id, monthly_handoffs) VALUES\n{rows};\n")
     return "\n".join(parts)
 
 
@@ -1181,6 +1276,7 @@ ALTER TABLE bom_membership       SET CHANGE_TRACKING = TRUE;
 ALTER TABLE recall_assignment    SET CHANGE_TRACKING = TRUE;
 ALTER TABLE centre_capacity      SET CHANGE_TRACKING = TRUE;
 ALTER TABLE parts_stock          SET CHANGE_TRACKING = TRUE;
+ALTER TABLE centre_handoff       SET CHANGE_TRACKING = TRUE;
 
 SELECT
   (SELECT COUNT(*) FROM dim_supplier)         AS suppliers,
@@ -1195,6 +1291,7 @@ SELECT
   (SELECT COUNT(*) FROM bom_membership)       AS bom_edges,
   (SELECT COUNT(*) FROM recall_assignment)    AS recalls,
   (SELECT COUNT(*) FROM centre_capacity)      AS capacity_rows,
+  (SELECT COUNT(*) FROM centre_handoff)       AS handoffs,
   (SELECT COUNT(*) FROM parts_stock)          AS stock_rows;
 """
 
@@ -1342,10 +1439,15 @@ def main():
     # Capacity + stock
     capacities, stocks = _build_capacity_and_stock(rng)
 
+    # 3-way ternary: centre x centre x campaign handoffs
+    handoffs = _build_centre_handoffs()
+
     # Emit DDL
     (OUT_DIR / "cars_demo_ddl.sql").write_text(_emit_ddl())
     # Emit reference SQL
-    (OUT_DIR / "cars_demo_reference.sql").write_text(_emit_reference_sql(owners, capacities, stocks))
+    (OUT_DIR / "cars_demo_reference.sql").write_text(
+        _emit_reference_sql(owners, capacities, stocks, handoffs)
+    )
     # Emit CSVs
     _emit_vehicles_csv(enriched)
     _emit_services_csv()

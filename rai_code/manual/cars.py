@@ -89,6 +89,22 @@ PartsStock = model.Concept(
     identify_by={"centre": ServiceCentre, "campaign": RecallCampaign, "week": Week},
 )
 
+# --- 3-way ternary: centre handoffs by campaign. Captures the
+# historical referral pattern - when centre F is overcommitted on
+# campaign K (parts shortage, cert gap), it forwards vehicles to
+# centre T. Same (F, T) carries different volumes per campaign, so
+# the natural grain is (from_centre, to_centre, campaign). Used by
+# Pathfinder (Q11) for chain enumeration and by Q12 as graph input
+# to the MIP.
+CentreHandoff = model.Concept(
+    "CentreHandoff",
+    identify_by={
+        "from_centre": ServiceCentre,
+        "to_centre": ServiceCentre,
+        "campaign": RecallCampaign,
+    },
+)
+
 # --- BOM membership: Vehicle x BomNode junction
 # Represented as a relationship; many-to-many.
 in_bom = model.Relationship(
@@ -294,6 +310,11 @@ PartsStock.on_hand_units = model.Property(
     f"{PartsStock} has {Integer:on_hand_units}"
 )
 
+# --- CentreHandoff (3-way ternary)
+CentreHandoff.monthly_handoffs = model.Property(
+    f"{CentreHandoff} has {Integer:monthly_handoffs}"
+)
+
 # --- JobAssignment decision variable
 # `assign_base` for Act 4 (no persistent rule); `assign_priority` for
 # Act 5 (with priority constraint). Two Properties because a Problem
@@ -303,6 +324,12 @@ JobAssignment.assign_base = model.Property(
 )
 JobAssignment.assign_priority = model.Property(
     f"{JobAssignment} assign_priority {Float:assign_priority}"
+)
+# Third decision-variable property for Q12 (multi-reasoner: Louvain
+# communities feed into MIP). Declared at module load so the typed
+# Float surface registers before solve_for() is called.
+JobAssignment.assign_balanced = model.Property(
+    f"{JobAssignment} assign_balanced {Float:assign_balanced}"
 )
 # Pre-computed urgency and labour-hour coefficients per JobAssignment.
 # These are materialised in the ontology so the prescriptive LP's
@@ -348,6 +375,7 @@ class Sources:
     recall     = model.Table(f"{DB}.RECALL_ASSIGNMENT")
     capacity   = model.Table(f"{DB}.CENTRE_CAPACITY")
     stock      = model.Table(f"{DB}.PARTS_STOCK")
+    handoff    = model.Table(f"{DB}.CENTRE_HANDOFF")
 
 
 # =============================================================================
@@ -618,6 +646,39 @@ model.where(
     ps := PartsStock.new(centre=_ps_centre, campaign=_ps_camp, week=_ps_week),
     ps.on_hand_units(Sources.stock.ON_HAND_UNITS),
 )
+
+
+# =============================================================================
+# LOAD: CentreHandoff (3-way ternary)
+# =============================================================================
+_h_from = ServiceCentre.ref()
+_h_to = ServiceCentre.ref()
+_h_camp = RecallCampaign.ref()
+model.where(
+    _h_from.centre_id == Sources.handoff.FROM_CENTRE_ID,
+    _h_to.centre_id == Sources.handoff.TO_CENTRE_ID,
+    _h_camp.campaign_id == Sources.handoff.CAMPAIGN_ID,
+).define(
+    ho := CentreHandoff.new(from_centre=_h_from, to_centre=_h_to, campaign=_h_camp),
+    ho.monthly_handoffs(Sources.handoff.MONTHLY_HANDOFFS),
+)
+
+# Adapter: N-arity edge for Pathfinder. Per the rai-pathfinder skill
+# (Adapter Pattern A), declaring an explicit ternary relationship
+# `ServiceCentre.refers_for(from, CentreHandoff, to)` lets path() walk
+# centre-to-centre while preserving the campaign as auxiliary middle
+# field accessible via PathTraversal.relationship_fields.
+ServiceCentre.refers_for = model.Relationship(
+    f"{ServiceCentre:from_centre} refers (via {CentreHandoff:via}) to {ServiceCentre:to_centre}",
+    short_name="refers_for",
+)
+_rf_from = ServiceCentre.ref()
+_rf_via = CentreHandoff.ref()
+_rf_to = ServiceCentre.ref()
+model.where(
+    _rf_via.from_centre == _rf_from,
+    _rf_via.to_centre == _rf_to,
+).define(ServiceCentre.refers_for(_rf_from, _rf_via, _rf_to))
 
 
 # =============================================================================

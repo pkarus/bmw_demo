@@ -16,10 +16,12 @@ from relationalai.semantics import Float, Integer, distinct
 from relationalai.semantics.reasoners.prescriptive import Problem
 from relationalai.semantics.reasoners.graph import Graph
 from relationalai.semantics.std import aggregates as aggs
+from relationalai.semantics.std.paths import path as rai_path
 
 try:
     from .cars import (
         BomNode,
+        CentreHandoff,
         JobAssignment,
         OpenRecall,
         Owner,
@@ -44,6 +46,7 @@ try:
 except ImportError:
     from cars import (
         BomNode,
+        CentreHandoff,
         JobAssignment,
         OpenRecall,
         Owner,
@@ -750,6 +753,295 @@ def q8_centre_pagerank():
     if "pagerank" in df.columns:
         df["pagerank"] = [float(v) if v is not None else 0.0 for v in df["pagerank"]]
     return df
+
+
+# =============================================================================
+# Q11. Pathfinder: enumerate centre referral chains
+#
+# Uses the N-arity edge ServiceCentre.refers_for(from, CentreHandoff,
+# to) declared on the ontology in cars.py. The middle field is the
+# CentreHandoff row, which carries (campaign, monthly_handoffs). We
+# enumerate variable-length walks (1..3 hops) from a seed centre,
+# optionally filtered to a single campaign so the chain has a
+# coherent story.
+# =============================================================================
+def q11_handoff_chain_summary(seed_centre_id: str = "SC-MTY",
+                              max_hops: int = 3,
+                              campaign_filter: str = "IBS-2024-A"):
+    """Demo-friendly summary of the Pathfinder result: count of
+    distinct chains by length and the deepest reachable centre.
+    Pairs with q11_handoff_chains for the full row-per-hop dump."""
+    src = ServiceCentre.ref().filter_by(centre_id=seed_centre_id)
+    # Form A: chain off the typed ref so the src actually constrains
+    # the path source. Using ServiceCentre.refers_for separately would
+    # leave src and the chain as independent variables.
+    p = rai_path(src.refers_for.repeat(1, max_hops)).all_paths()
+    df = (
+        model.where(p)
+        .select(
+            p.length.alias("path_length"),
+            p.nodes["index"].alias("hop"),
+            ServiceCentre(p.nodes).centre_id.alias("centre"),
+            CentreHandoff(p.relationship_fields).campaign.campaign_id.alias("hop_campaign"),
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if df.empty:
+        return None
+    df["path_length"] = [int(v) for v in df["path_length"]]
+    df["hop"] = [int(v) for v in df["hop"]]
+    if campaign_filter:
+        df = df[df["hop_campaign"] == campaign_filter].reset_index(drop=True)
+    # Summarise: per (path_length), how many distinct chains exist
+    # and what is the deepest reachable centre at the final hop.
+    # Distinct chains identified by tuple of centres along the way.
+    chains = (
+        df.sort_values(["path_length", "hop"])
+          .groupby(["path_length"], as_index=False)
+          .apply(lambda g: g, include_groups=False)
+    )
+    by_len = (
+        df[df["hop"] == df["path_length"]]
+          .groupby("path_length", as_index=False)
+          .agg(distinct_endpoints=("centre", "nunique"),
+               endpoints=("centre", lambda s: sorted(set(s))))
+    )
+    return by_len
+
+
+def q11_handoff_chains(seed_centre_id: str = "SC-MTY",
+                       max_hops: int = 3,
+                       campaign_filter: str = "IBS-2024-A"):
+    """For a given seed centre, enumerate the multi-hop referral chains
+    it sits at the head of. Each row is one (path, hop): the hop
+    index, the from/to centre at that hop, and the campaign carried
+    in the auxiliary middle field. Multiple rows per path build the
+    full chain.
+
+    Demonstrates Pathfinder: variable-length traversal of an N-arity
+    edge (centre via CentreHandoff to centre) with auxiliary middle-
+    field accessed via PathTraversal.relationship_fields.
+    """
+    src = ServiceCentre.ref().filter_by(centre_id=seed_centre_id)
+    # Form A: chain off the typed ref so the src actually constrains
+    # the path source. Using ServiceCentre.refers_for separately would
+    # leave src and the chain as independent variables.
+    p = rai_path(src.refers_for.repeat(1, max_hops)).all_paths()
+
+    # One row per (path, hop). Columns: path length, hop index,
+    # from-centre at hop, to-centre at hop, campaign at hop.
+    df = (
+        model.where(p)
+        .select(
+            p.length.alias("path_length"),
+            p.nodes["index"].alias("hop"),
+            ServiceCentre(p.nodes).centre_id.alias("centre"),
+            CentreHandoff(p.relationship_fields).campaign.campaign_id.alias("hop_campaign"),
+        )
+        .to_df()
+        .reset_index(drop=True)
+    )
+    if df.empty:
+        return None
+    for c in ("path_length", "hop"):
+        if c in df.columns:
+            df[c] = [int(v) for v in df[c]]
+    if campaign_filter:
+        df = df[df["hop_campaign"] == campaign_filter].reset_index(drop=True)
+    return df
+
+
+# =============================================================================
+# Q12. Multi-reasoner: Graph (Louvain) -> Prescriptive (MIP)
+#
+# The cleanest "multi-reasoner" demo moment: Louvain finds natural
+# vehicle-cohort communities from the BOM-sharing graph (Q7). We
+# then feed the community labels into a NEW MIP that minimises
+# urgency-weighted lateness AND enforces fair load distribution
+# across communities - no single community absorbs more than the
+# `max_share` fraction of week-3+ jobs.
+#
+# Without this constraint, the MIP can dump an entire community to
+# the late slots, leaving one cohort of owners systematically worse-
+# off. The constraint is one line; the value lands because it's
+# clearly a graph-then-prescriptive composition that you cannot
+# replicate in plain SQL.
+# =============================================================================
+def q12_balanced_schedule(max_late_share: float = 0.40):
+    """Multi-reasoner: take Louvain community labels (Graph) and use
+    them as a constraint in the MIP (Prescriptive). For each
+    community, the fraction of its jobs landing in weeks 3+ is capped
+    at `max_late_share` (default 40%). Returns (df, solve_info,
+    per_community_late_pct).
+    """
+    # Ensure Louvain has been materialised on the vehicle-cohort graph
+    # by calling Q7's underlying helper.
+    _ = _ensure_vehicle_cohort_graph()
+
+    # Decision variable: JobAssignment.assign_balanced (declared at
+    # module load in cars.py with a Float type so solve_for accepts it).
+    assign = JobAssignment.assign_balanced
+
+    problem = Problem(model, Float)
+    problem.solve_for(assign, where=[], lower=0.0, upper=1.0, type="bin")
+
+    # (a) Each Open recall scheduled exactly once.
+    _r1 = RecallAssignment.ref()
+    problem.satisfy(
+        model.where(_r1.status == "Open").require(
+            aggs.sum(assign).where(JobAssignment.recall == _r1).per(_r1) == 1
+        ),
+        name=["one-slot"],
+    )
+
+    # (b) Per-centre per-week labour-hour capacity.
+    problem.satisfy(
+        model.where(
+            CentreCapacity.centre == ServiceCentre,
+            CentreCapacity.week == Week,
+        ).require(
+            aggs.sum(assign * JobAssignment.labour_hours)
+            .where(JobAssignment.centre == ServiceCentre,
+                   JobAssignment.week == Week)
+            .per(ServiceCentre, Week)
+            <= CentreCapacity.tech_hours_available
+        ),
+        name=["labour-cap"],
+    )
+
+    # (c) Parts stock.
+    problem.satisfy(
+        model.where(
+            PartsStock.centre == ServiceCentre,
+            PartsStock.campaign == RecallCampaign,
+            PartsStock.week == Week,
+        ).require(
+            aggs.sum(assign).where(
+                JobAssignment.centre == ServiceCentre,
+                JobAssignment.week == Week,
+                JobAssignment.recall == RecallAssignment,
+                RecallAssignment.campaign == RecallCampaign,
+            ).per(ServiceCentre, RecallCampaign, Week)
+            <= PartsStock.on_hand_units
+        ),
+        name=["parts-stock"],
+    )
+
+    # (d) THE multi-reasoner constraint. For each community label C,
+    # late jobs in C <= max_late_share * total open recalls in C.
+    # Total open recalls in C is data-derived (community sizes are
+    # known after Louvain), so we compute the absolute cap in pandas
+    # and pass per-community caps as constants. This keeps the LP
+    # constraint single-aggregate and clean.
+    #
+    # The community label is materialised on RecallAssignment as
+    # community_label = vehicle.cohort_community.
+    if not hasattr(RecallAssignment, "community_label"):
+        RecallAssignment.community_label = model.Property(
+            f"{RecallAssignment} community_label {Integer:community_label}"
+        )
+    _cd_r = RecallAssignment.ref()
+    _cd_v = Vehicle.ref()
+    model.where(
+        _cd_r.status == "Open",
+        _cd_r.vehicle == _cd_v,
+        _cd_v.cohort_community,
+    ).define(_cd_r.community_label(_cd_v.cohort_community))
+
+    # Query the community sizes so we can compute per-community caps.
+    _sz_r = RecallAssignment.ref()
+    sizes_df = (
+        model.where(_sz_r.status == "Open", _sz_r.community_label)
+        .select(
+            distinct(
+                _sz_r.community_label.alias("community"),
+                aggs.count(_sz_r).per(_sz_r.community_label).alias("size"),
+            )
+        )
+        .to_df()
+    )
+    sizes_df["community"] = [int(v) for v in sizes_df["community"]]
+    sizes_df["size"] = [int(v) for v in sizes_df["size"]]
+    # Cap per community = floor(max_late_share * size). Materialise as
+    # a Property on Vehicle.cohort_community so the LP constraint can
+    # read it as a single Property predicate.
+    if not hasattr(RecallAssignment, "late_cap"):
+        RecallAssignment.late_cap = model.Property(
+            f"{RecallAssignment} late_cap {Integer:late_cap}"
+        )
+    # Define late_cap per RecallAssignment based on its community size.
+    # Each recall in community C gets the same cap value = community
+    # cap. The LP constraint then aggregates by community_label and
+    # bounds by late_cap.
+    for _, row in sizes_df.iterrows():
+        cap = max(1, int(row["size"] * max_late_share))
+        _cap_r = RecallAssignment.ref()
+        model.where(
+            _cap_r.community_label == int(row["community"]),
+        ).define(_cap_r.late_cap(cap))
+
+    # Constraint: sum of late assignments per community <= late_cap.
+    # All Open recalls carry community_label + late_cap (defined above);
+    # filter on status to keep the outer where clause to a single
+    # equality predicate (the rewriter rejects raw Property predicates
+    # in top-level where for require-aggregate constraints).
+    _r = RecallAssignment.ref()
+    problem.satisfy(
+        model.where(_r.status == "Open").require(
+            aggs.sum(assign).where(
+                JobAssignment.recall == _r,
+                JobAssignment.week_index >= 3,
+            ).per(_r.community_label)
+            <= _r.late_cap
+        ),
+        name=["community-balance"],
+    )
+
+    # Objective: minimise urgency * (week-1) - same as Q4/Q5.
+    problem.minimize(
+        aggs.sum(
+            assign * JobAssignment.urgency * (JobAssignment.week_index - 1)
+        )
+    )
+
+    problem.solve("highs")
+    si = problem.solve_info()
+
+    df = (
+        model.where(
+            assign > 0.5,
+            JobAssignment.recall == RecallAssignment,
+            JobAssignment.centre == ServiceCentre,
+            JobAssignment.week == Week,
+            RecallAssignment.vehicle == Vehicle,
+            RecallAssignment.campaign == RecallCampaign,
+        )
+        .select(
+            RecallAssignment.recall_id.alias("recall_id"),
+            Vehicle.vin.alias("vin"),
+            Vehicle.cohort_community.alias("community"),
+            RecallCampaign.campaign_id.alias("campaign"),
+            ServiceCentre.name.alias("centre"),
+            Week.week_index.alias("week"),
+            RecallAssignment.urgency.alias("urgency"),
+        )
+        .to_df()
+        .sort_values(["week", "urgency"], ascending=[True, False])
+        .reset_index(drop=True)
+    )
+    for col in ("week", "community"):
+        if col in df.columns:
+            df[col] = [int(v) for v in df[col]]
+    if "urgency" in df.columns:
+        df["urgency"] = [float(v) if v is not None else 0.0 for v in df["urgency"]]
+
+    # Per-community late% summary
+    by_comm = df.groupby("community").apply(
+        lambda g: (g["week"] >= 3).sum() / len(g) if len(g) else 0,
+        include_groups=False,
+    ).reset_index().rename(columns={0: "late_share"})
+    return df, si, by_comm
 
 
 # =============================================================================

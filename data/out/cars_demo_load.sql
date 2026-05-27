@@ -45,6 +45,7 @@ ALTER TABLE bom_membership       SET CHANGE_TRACKING = TRUE;
 ALTER TABLE recall_assignment    SET CHANGE_TRACKING = TRUE;
 ALTER TABLE centre_capacity      SET CHANGE_TRACKING = TRUE;
 ALTER TABLE parts_stock          SET CHANGE_TRACKING = TRUE;
+ALTER TABLE centre_handoff       SET CHANGE_TRACKING = TRUE;
 
 SELECT
   (SELECT COUNT(*) FROM dim_supplier)         AS suppliers,
@@ -59,4 +60,5 @@ SELECT
   (SELECT COUNT(*) FROM bom_membership)       AS bom_edges,
   (SELECT COUNT(*) FROM recall_assignment)    AS recalls,
   (SELECT COUNT(*) FROM centre_capacity)      AS capacity_rows,
+  (SELECT COUNT(*) FROM centre_handoff)       AS handoffs,
   (SELECT COUNT(*) FROM parts_stock)          AS stock_rows;

@@ -618,3 +618,33 @@ INSERT INTO parts_stock (centre_id, campaign_id, week_index, on_hand_units) VALU
   ('SC-MIA', 'STARTER-2024-A', 2, 3),
   ('SC-MIA', 'STARTER-2024-A', 3, 3),
   ('SC-MIA', 'STARTER-2024-A', 4, 3);
+
+DELETE FROM centre_handoff;
+INSERT INTO centre_handoff (from_centre_id, to_centre_id, campaign_id, monthly_handoffs) VALUES
+  ('SC-LEI', 'SC-MUN', 'IBS-2024-A', 4),
+  ('SC-LEI', 'SC-COL', 'IBS-2024-A', 3),
+  ('SC-MTY', 'SC-DAL', 'IBS-2024-A', 5),
+  ('SC-DAL', 'SC-SPB', 'IBS-2024-A', 2),
+  ('SC-MIA', 'SC-NYC', 'IBS-2024-A', 3),
+  ('SC-CHI', 'SC-NYC', 'IBS-2024-A', 2),
+  ('SC-LAX', 'SC-SPB', 'IBS-2024-A', 2),
+  ('SC-REG', 'SC-MUN', 'IBS-2024-A', 5),
+  ('SC-BER', 'SC-HAM', 'IBS-2024-A', 3),
+  ('SC-STU', 'SC-FRA', 'IBS-2024-A', 4),
+  ('SC-FRA', 'SC-COL', 'IBS-2024-A', 3),
+  ('SC-MTY', 'SC-LAX', 'HVB-2024-A', 4),
+  ('SC-REG', 'SC-MUN', 'HVB-2024-A', 6),
+  ('SC-LEI', 'SC-MUN', 'HVB-2024-A', 3),
+  ('SC-CHI', 'SC-DAL', 'HVB-2024-A', 3),
+  ('SC-LEI', 'SC-COL', 'HVB-2024-A', 2),
+  ('SC-STU', 'SC-MUN', 'HVB-2024-A', 4),
+  ('SC-NYC', 'SC-SPB', 'HVB-2024-A', 2),
+  ('SC-REG', 'SC-MUN', 'AIRBAG-2022-A', 3),
+  ('SC-LEI', 'SC-COL', 'AIRBAG-2022-A', 2),
+  ('SC-STU', 'SC-FRA', 'AIRBAG-2022-A', 3),
+  ('SC-MTY', 'SC-DAL', 'AIRBAG-2022-A', 2),
+  ('SC-CHI', 'SC-NYC', 'AIRBAG-2022-A', 2),
+  ('SC-REG', 'SC-MUN', 'EGR-2023-B', 2),
+  ('SC-MIA', 'SC-DAL', 'STARTER-2024-A', 2),
+  ('SC-CHI', 'SC-DAL', 'STARTER-2024-A', 1),
+  ('SC-LAX', 'SC-DAL', 'STARTER-2024-A', 1);

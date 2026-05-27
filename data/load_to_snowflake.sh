@@ -63,6 +63,7 @@ ALTER TABLE bom_membership       SET CHANGE_TRACKING = TRUE;
 ALTER TABLE recall_assignment    SET CHANGE_TRACKING = TRUE;
 ALTER TABLE centre_capacity      SET CHANGE_TRACKING = TRUE;
 ALTER TABLE parts_stock          SET CHANGE_TRACKING = TRUE;
+ALTER TABLE centre_handoff       SET CHANGE_TRACKING = TRUE;
 SELECT
   (SELECT COUNT(*) FROM vehicle) AS vehicles,
   (SELECT COUNT(*) FROM service_event) AS services,
