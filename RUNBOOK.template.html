@@ -146,6 +146,29 @@
     border-radius: 4px;
     font-size: 14px;
   }
+  .card .si-prompt {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rule5);
+    border-radius: 6px;
+    padding: 10px 14px 12px;
+    margin-bottom: 14px;
+  }
+  .card .si-prompt .si-label {
+    display: block;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--rule5);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .card .si-prompt p {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    color: var(--ink);
+    white-space: pre-wrap;
+    user-select: all;
+  }
   .card .figure { text-align: center; margin: 18px 0 8px; }
   .card .figure img { max-width: 100%; border-radius: 6px; border: 1px solid var(--border); }
   .card .figure-caption { font-size: 12px; color: var(--muted); margin-top: 8px; }
@@ -321,6 +344,10 @@
     <div class="lay"><span class="lay-label">In plain language</span>Look at every Open recall whose owner-notification age has slipped past the campaign's regulator-defined completion window. The rule lives in the ontology as a derived predicate; the audit query just counts.</div>
     <p class="why">{{ACT1_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT1_BEAT}}</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT1_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act1_{{ACT1_SLUG}}.png" alt="{{ACT1_TITLE}}">
       <div class="figure-caption">Expected result. Bars / rows / shape.</div>
@@ -336,6 +363,10 @@
     <div class="lay"><span class="lay-label">In plain language</span>A supplier flags a part. The ontology walks the cascade from supplier to part to bill-of-materials node to affected VIN to owner to nearest service centre in a single query - the join that today takes six handoffs across six teams.</div>
     <p class="why">{{ACT2_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT2_BEAT}}</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT2_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act2_{{ACT2_SLUG}}.png" alt="{{ACT2_TITLE}}">
     </div>
@@ -346,6 +377,10 @@
     <div class="lay"><span class="lay-label">In plain language</span>Same data as Act 2, structural view. Two VINs share a tie when they share a BOM node. Louvain - a community-detection algorithm - finds the natural cohorts: the groups of vehicles that will move together if a supplier widens any defect notice. Operations now sees portfolio risk, not per-campaign tickets.</div>
     <p class="why">A graph reasoner running Louvain on the BOM-sharing graph identifies the 4 natural exposure cohorts among ~190 BOM-participating VINs. The largest cluster is the Continental IBS exposure (Munich + Regensburg + Spartanburg X-series + G21 LCI). The second clusters Dingolfing iX / i7 EVs around the Samsung SDI HV battery campaign.</p>
     <p class="beat">Speaker beat: pivot here from Act 2 when the audience wants the picture, not the table. The force-directed Plotly view colours nodes by community and sizes them by degree. Hover any node for VIN / model / plant / fuel / mileage / community / degree / campaign count / open recalls / accident type.</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT2B_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act2b_vehicle_communities.png" alt="Vehicle cohort communities">
       <div class="figure-caption">Louvain is non-deterministic. Community labels may shuffle between runs; the cohort sizes and dominant-model-per-cohort are stable.</div>
@@ -362,6 +397,10 @@
     <p class="why">{{ACT3_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT3_BEAT}}</p>
     <p class="why"><em>Note: the predictive (GNN) reasoner is still preview. This is a deterministic fit-score expressed entirely as PyRel-derived properties - auditable and defensible to insurance / compliance reviewers in a way a black-box model is not.</em></p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT3_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act3_{{ACT3_SLUG}}.png" alt="{{ACT3_TITLE}}">
     </div>
@@ -372,6 +411,10 @@
     <div class="lay"><span class="lay-label">In plain language</span>Schedule the next four weeks of recall work. Every open job goes to exactly one centre in exactly one week. Respect technician hours, parts on hand, and tooling certification. Minimise total weighted lateness. A mixed-integer program (HiGHS solver) finds the optimum.</div>
     <p class="why">{{ACT4_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT4_BEAT}} Budget 2-3 min of dead air for the solver - use it to narrate.</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT4_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act4_{{ACT4_SLUG}}.png" alt="{{ACT4_TITLE}}">
     </div>
@@ -382,6 +425,10 @@
     <div class="lay"><span class="lay-label">In plain language</span>The senior recall manager says "VINs that already had a collision must go to weeks 1 or 2; we absorb the slip elsewhere." Today that rule lives in her spreadsheet. We write it into the ontology in ~10 lines of PyRel and re-solve. Every downstream reasoner picks it up without code changes.</div>
     <p class="why">{{ACT5_WHY}}</p>
     <p class="beat">Speaker beat: {{ACT5_BEAT}} Live-add the rule. Re-solve. Audience sees the answer flip - and crucially the rule stays in the ontology for everything else that reads from it.</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>{{ACT5_SI_PROMPT}}</p>
+    </div>
     <div class="figure">
       <img src="build/figures/act5_{{ACT5_SLUG}}.png" alt="{{ACT5_TITLE}}">
     </div>
