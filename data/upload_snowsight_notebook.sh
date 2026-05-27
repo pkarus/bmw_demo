@@ -20,6 +20,7 @@ NB_SOURCES=(
   "$ROOT/rai_code/manual/cars_demo_snowsight.ipynb"
   "$ROOT/rai_code/manual/cars.py"
   "$ROOT/rai_code/manual/demo_queries.py"
+  "$ROOT/rai_code/manual/requirements.txt"
 )
 
 echo "==> [1/4] Schema + stage"

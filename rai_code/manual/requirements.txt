@@ -1,0 +1,5 @@
+protobuf>=5.29,<6
+relationalai==1.7.1
+plotly
+networkx
+pandas
