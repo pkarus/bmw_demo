@@ -10,11 +10,14 @@ USE ROLE ACCOUNTADMIN;
 
 CREATE COMPUTE POOL IF NOT EXISTS CARS_DEMO_NB_POOL
   MIN_NODES = 1
-  MAX_NODES = 1
+  MAX_NODES = 3
   INSTANCE_FAMILY = CPU_X64_XS
   AUTO_RESUME = TRUE
   AUTO_SUSPEND_SECS = 1800
-  COMMENT = 'Notebook runtime for the cars_demo BMW recall propagation demo. Auto-suspends at 30 min idle to match the named-engine and notebook-idle settings.';
+  COMMENT = 'Notebook runtime for the cars_demo BMW recall propagation demo. Scales 1-3 nodes so a single user can run the headless execute and the browser session in parallel, plus headroom for one demo-day audience member following along. Auto-suspends at 30 min idle to match the named-engine and notebook-idle settings.';
+
+-- If the pool already existed with the old MAX_NODES = 1 limit, bump it.
+ALTER COMPUTE POOL CARS_DEMO_NB_POOL SET MIN_NODES = 1 MAX_NODES = 3;
 
 GRANT USAGE ON COMPUTE POOL CARS_DEMO_NB_POOL TO ROLE RAI_DEMO_CARS;
 GRANT MONITOR ON COMPUTE POOL CARS_DEMO_NB_POOL TO ROLE RAI_DEMO_CARS;
