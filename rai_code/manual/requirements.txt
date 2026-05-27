@@ -1,4 +1,5 @@
-protobuf>=5.29,<6
+protobuf==5.29.6
+lqp==0.5.2
 relationalai==1.7.1
 plotly
 networkx
