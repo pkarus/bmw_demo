@@ -43,6 +43,14 @@ PUT file://$f @$DB.$NB_SCHEMA.$NB_STAGE/$NB_FOLDER/ AUTO_COMPRESS=FALSE OVERWRIT
 done
 
 echo "==> [3/4] CREATE OR REPLACE NOTEBOOK"
+# SYSTEM\$BASIC_RUNTIME is the container runtime - same as airplanes_demo.
+# Warehouse runtime's Anaconda channel doesn't include relationalai, so
+# container runtime is required for PyRel-using notebooks. Headless
+# `snow notebook execute` then needs a compute pool grant; the normal
+# demo flow is: user opens the notebook in Snowsight, adds plotly +
+# networkx via the Packages panel on first open, clicks Run All.
+# IDLE_AUTO_SHUTDOWN_TIME_SECONDS = 1800 = 30 min matches the named
+# engine idle setting so the demo session stays warm.
 snow sql -c "$CONN" --role "$ROLE" -q "
 USE DATABASE $DB; USE SCHEMA $NB_SCHEMA;
 CREATE OR REPLACE NOTEBOOK $DB.$NB_SCHEMA.$NB_NAME
@@ -50,6 +58,7 @@ CREATE OR REPLACE NOTEBOOK $DB.$NB_SCHEMA.$NB_NAME
   MAIN_FILE = '$NB_MAIN'
   QUERY_WAREHOUSE = RAI_XS
   RUNTIME_NAME = 'SYSTEM\$BASIC_RUNTIME'
+  IDLE_AUTO_SHUTDOWN_TIME_SECONDS = 1800
   COMMENT = 'OEM fleet recall propagation - 5-act PyRel demo. Stage folder: $NB_FOLDER/';
 " >/dev/null
 

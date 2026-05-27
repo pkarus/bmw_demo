@@ -28,6 +28,12 @@ from relationalai.semantics.std import aggregates as aggs
 _LOGIC_NAME, _LOGIC_SIZE = "cars_logic_l", "HIGHMEM_X64_L"
 _PRESC_NAME, _PRESC_SIZE = "cars_prescriptive_m", "HIGHMEM_X64_M"
 
+# Both engines have auto-suspend set to 30 minutes (set once via:
+#   .venv/bin/rai reasoners alter --name cars_logic_l       --type Logic        --auto-suspend-mins 30
+#   .venv/bin/rai reasoners alter --name cars_prescriptive_m --type Prescriptive --auto-suspend-mins 30
+# This is a native-app-level setting; PyRel's create_config() does not
+# override it, so the value sticks across model loads.
+
 
 def _build_config():
     """Auto-discover config (active Snowpark session inside Snowflake, or
