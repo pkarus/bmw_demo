@@ -299,7 +299,8 @@
 <section id="what">
   <h2>What you'll see <span class="sub">- one ontology, five reasoners</span></h2>
   <div class="card">
-    <p class="why" style="margin-bottom: 0;">The demo runs against <code>{{DATABASE}}</code> on the sales-engineering Snowflake account. 325 vehicles, 762 service events, 254 recall assignments across 5 active campaigns. A <strong>single PyRel ontology</strong> backs every act below; the Cortex agent <code>{{AGENT_NAME}}</code> answers all the same questions in natural language.</p>
+    <p class="why">The demo runs against <code>{{DATABASE}}</code> on the sales-engineering Snowflake account. 325 vehicles, 762 service events, 254 recall assignments across 5 active campaigns. A <strong>single PyRel ontology</strong> backs every act below; the Cortex agent <code>{{AGENT_NAME}}</code> answers all the same questions in natural language.</p>
+    <p class="why" style="margin-bottom: 0;">The fleet and service history come from two real BMW CSVs (<code>BMW_VEHICLES_V1.csv</code>, <code>BMW_VEHICLES_SERVICES.csv</code> - real WMIs, model codes, plants, mileages, accident records); the recall / supplier / BOM / service-centre / parts-stock layer is synthesised deterministically (seed=42) by <code>data/build_cars_demo_data.py</code>. The result is 14 tables across six data domains - product (vehicle, parts, BOM, plant), ownership (owner, region), risk (5 recall campaigns, 254 per-VIN assignments, 11 Tier-1 suppliers), service (15 service centres with HV/IBS/body-shop certifications, weekly capacity, per-week parts stock) - all wired together via the supplier -> part -> BOM-node -> VIN -> owner -> centre chain that the demo's reasoners traverse. Full schema in <a href="DATA_DICTIONARY.md"><code>DATA_DICTIONARY.md</code></a>.</p>
   </div>
 </section>
 
