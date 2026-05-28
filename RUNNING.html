@@ -116,6 +116,10 @@
   .badge.heuristic { background: var(--heuristic); color: #1a1a1a; }
   .badge.solver   { background: var(--solver); }
   .badge.rule5    { background: var(--rule5); color: #1a1a1a; }
+  .badge.composite {
+    background: linear-gradient(90deg, var(--rules) 0%, var(--graph) 50%, var(--solver) 100%);
+    color: white;
+  }
 
   .card {
     background: var(--panel);
@@ -251,6 +255,7 @@
   <a href="#numbers">Anchored numbers</a>
   <a href="#acts">The 5 acts</a>
   <a href="#act2b">Act 2b (graph)</a>
+  <a href="#composite">Composite</a>
   <a href="#troubleshooting">If things break</a>
 </nav>
 
@@ -447,6 +452,21 @@
     </details>
   </div>
 
+  <div id="composite" class="card">
+    <h3><span class="badge composite">Rules + Graph + Prescriptive</span> Composite - SLA breach to scheduled fix, in one question</h3>
+    <div class="lay"><span class="lay-label">In plain language</span>One question that no single reasoner can answer alone. Rules surface the SLA-breached open recalls; the graph walks each one back to the responsible supplier; the MIP says when and where it will be cleared - and which ones still slip past week 4 because Continental cannot ship enough booster ECUs in the planning horizon.</div>
+    <p class="why">This is the composability proof. The same ontology that defined <code>SLABreached</code> in Act 1, the supplier-to-VIN cascade in Act 2, and the binary <code>JobAssignment</code> in Act 4 is queried in one natural-language turn. Acts 1-4 weren't four siloed demos - they were four views of the same model, and the agent composes them on demand.</p>
+    <p class="beat">Speaker beat: ask this after Act 4 lands and before Act 5. Expected output: 19 rows (the SLA breaches), each carrying supplier name, assigned centre, assigned week, and a flag for "deferred past horizon". The deferred-row count is the bridge into Act 5, where the operator writes a rule that reshapes the schedule.</p>
+    <div class="si-prompt">
+      <span class="si-label">Paste into Snowflake Intelligence</span>
+      <p>For every SLA-breached open recall, walk back to the responsible supplier and tell me when the current 4-week schedule will close it - which centre, which week, and which jobs slip past week 4 due to parts stock.</p>
+    </div>
+    <details class="deep">
+      <summary>If the agent doesn't return all three in one turn</summary>
+      <div>The agent's one-turn composition is still maturing. If it answers with only the SLA breaches, follow up with: <em>"Now join each one to its supplier and to the assigned centre + week from the latest schedule."</em> The composition still works - it just takes two prompts instead of one. The point lands either way: the ontology supports the composite query; the agent's UX is the only thing that varies.</div>
+    </details>
+  </div>
+
 </section>
 
 <section id="troubleshooting">
@@ -464,7 +484,7 @@
 </section>
 
 <footer>
-  Generated from <code>RUNBOOK.template.html</code> via <code>build_runbook.py</code>. Last regenerated: <code>2026-05-28 09:32 UTC</code>. Figures live under <code>build/figures/</code>. See <code>HANDOFF_BRIEFING.md</code> for design rationale and <code>CARS_TALK_TRACK.md</code> for the speaker script.
+  Generated from <code>RUNBOOK.template.html</code> via <code>build_runbook.py</code>. Last regenerated: <code>2026-05-28 11:55 UTC</code>. Figures live under <code>build/figures/</code>. See <code>HANDOFF_BRIEFING.md</code> for design rationale and <code>CARS_TALK_TRACK.md</code> for the speaker script.
 </footer>
 
 </main>
