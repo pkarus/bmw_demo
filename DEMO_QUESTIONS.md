@@ -1,4 +1,4 @@
-# DEMO_QUESTIONS.md - The 5 acts as plain-English questions
+# DEMO_QUESTIONS.md - The 7 acts as plain-English questions
 
 These are the questions a recall-campaign manager would type into a
 Snowflake Intelligence search box, or that a head of after-sales would
@@ -106,6 +106,33 @@ week 2 of the four-week horizon.' Show me what changes."**
 
 ---
 
+## Q11. Act 6 (Pathfinder) - Centre-to-centre handoff chains
+
+**"When a centre runs out of parts on an active campaign, where does
+the workload actually flow - one hop downstream, or three? Trace the
+referral chains seeded at Monterrey (SC-MTY) for the Continental
+IBS-2024-A campaign."**
+
+| Why it matters | When a centre is parts-saturated for a campaign, it refers downstream. Most network analyses today stop at "what is your direct overflow centre?" - one hop. Real recall logistics chain through 2 or 3 centres before parts and capacity rebalance, and the chain is campaign-specific (the Continental ECU flows along one network, the Samsung SDI battery flows along another). A spreadsheet view of one-hop relationships hides the actual depth of dependency, which means the planner under-orders parts at the *end* of the chain. |
+|----------------|---|
+| Reasoner | Pathfinder (variable-length traversal). The data layer adds a true 3-way relationship `CentreHandoff(from_centre, to_centre, campaign)`; the ontology exposes it as the N-arity adapter relationship `ServiceCentre.refers_for`. PyRel's `path(src.refers_for.repeat(1, n)).all_paths()` enumerates every chain of length 1..n from a seed centre in a single declarative expression. Plain SQL would need a recursive CTE. |
+| Expected shape | 18 rows (one per (path, hop)) covering chains of length 1, 2, and 3 originating at SC-MTY on IBS-2024-A. The 3-hop chain `SC-MTY -> SC-LAX -> SC-DAL -> SC-SPB` appears in the output - the data ships with that path planted so the demo always returns a non-trivial cascade. Set `max_hops=5` to walk deeper without changing the query. |
+
+---
+
+## Q12. Act 7 (Multi-reasoner) - Louvain cohorts feed a fair-share MIP
+
+**"Use the cohorts the graph found in Act 2b to balance the schedule.
+No single cohort can absorb more than 40% of week-3-and-later jobs.
+Re-solve."**
+
+| Why it matters | This is the explicit multi-reasoner moment. The Graph reasoner already discovered cohort structure in Act 2b (which VINs share BOMs). Act 4 schedules without using that structure, which means a single cohort can be pushed entirely to the end of the horizon while others get their jobs done in week 1. That is a fairness problem the OEM will hear about from customers in the back of the queue. The fix is one constraint on top of the existing MIP - but the constraint references a property (`Vehicle.cohort_community`) that the Graph reasoner produced. Two reasoners cooperating through the same ontology is what separates RAI from any single-purpose tool. |
+|----------------|---|
+| Reasoner | Graph + Prescriptive. Louvain labels are materialised onto `Vehicle.cohort_community` (same call as Act 2b). The labels propagate onto recalls as `RecallAssignment.community_label`. The MIP adds one constraint: `sum(assign.week >= 3) per community <= floor(0.40 * community_size)`. The cap is materialised as `RecallAssignment.late_cap` (a workaround for the PyRel 1.7.1 multi-Concept arithmetic rewriter limitation - see `CLAUDE.md`). Solves with HiGHS in <1s on `cars_prescriptive_m`. |
+| Expected shape | OPTIMAL, objective comparable to Q4 (the constraint is non-binding in the current data because most jobs fit in week 1 - the same Act 4/Act 5 pattern flagged in CLAUDE.md). The visualisation shows jobs per (community, week) and confirms no community is pushed to weeks 3-4 above the cap. The story value is in the *composition*, not the obj-value delta. |
+
+---
+
 ## Anti-patterns avoided
 
 - A graph question with only one hop (that's a join). Act 2's cascade is
@@ -126,4 +153,7 @@ cannot do in SQL today. Act 3 turns the cascade output into a workable
 queue. Act 4 prescribes - the LP closes the loop from "what's wrong"
 through to "what should we do". Act 5 cements the punchline that
 RelationalAI is not a one-shot tool: the rules live in the ontology
-and propagate.
+and propagate. Acts 6 and 7 are the structural payoff: the same
+ontology supports variable-length path traversal over a 3-way
+relationship (Pathfinder), and direct composition of Graph + Prescriptive
+reasoners with no intermediate handoff format.

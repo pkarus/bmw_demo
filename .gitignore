@@ -11,6 +11,7 @@ __pycache__/
 # build/generate_demo_figures.py which IS source code.
 build/cache/
 build/figures/
+build/runs/
 build/debug.jsonl
 build/metadata.json
 build/spans.jsonl

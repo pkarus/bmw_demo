@@ -179,8 +179,8 @@ def check_engines(resume: bool = True) -> tuple[bool, str]:
 
 
 def check_smoke_queries() -> tuple[bool, str]:
-    """Run all five demo queries end-to-end. Slowest gate; ~3 min cold,
-    ~90 s warm."""
+    """Run all seven demo queries end-to-end. Slowest gate; ~4 min cold,
+    ~2 min warm."""
     smoke = ROOT / "_prep_smoke_queries.py"
     smoke.write_text(
         "from rai_code.manual import demo_queries\n"
@@ -199,9 +199,18 @@ def check_smoke_queries() -> tuple[bool, str]:
         "    df5, si5 = demo_queries.q5_assign_recall_jobs_priority()\n"
         "    assert si5.termination_status == 'OPTIMAL', f'Q5 status={si5.termination_status}'\n"
         "except Exception as e: errors.append(f'Q5: {e}')\n"
+        "try:\n"
+        "    df11 = demo_queries.q11_handoff_chains()\n"
+        "    assert df11 is not None and len(df11) >= 10, f'Q11 rows={0 if df11 is None else len(df11)}'\n"
+        "except Exception as e: errors.append(f'Q11: {e}')\n"
+        "try:\n"
+        "    df12, si12, by_comm = demo_queries.q12_balanced_schedule()\n"
+        "    assert si12.termination_status == 'OPTIMAL', f'Q12 status={si12.termination_status}'\n"
+        "    assert len(by_comm) >= 1, f'Q12 communities={len(by_comm)}'\n"
+        "except Exception as e: errors.append(f'Q12: {e}')\n"
         "if errors:\n"
         "    print('|'.join(errors)); raise SystemExit(1)\n"
-        "print(f'Q1 ok | Q2 ok | Q3 ok | Q4 obj={si4.objective_value:.2f} {si4.solve_time_sec:.1f}s | Q5 obj={si5.objective_value:.2f} {si5.solve_time_sec:.1f}s')\n"
+        "print(f'Q1 ok | Q2 ok | Q3 ok | Q4 obj={si4.objective_value:.2f} {si4.solve_time_sec:.1f}s | Q5 obj={si5.objective_value:.2f} {si5.solve_time_sec:.1f}s | Q11 hops={len(df11)} | Q12 obj={si12.objective_value:.2f} {si12.solve_time_sec:.1f}s')\n"
     )
     try:
         proc = subprocess.run(
@@ -268,8 +277,8 @@ def main() -> int:
     phases.append(p2)
     _print_phase(p2)
 
-    p3 = Phase("3 - Demo queries Q1-Q5")
-    p3.checks.append(_check("Q1-Q5 smoke test", check_smoke_queries))
+    p3 = Phase("3 - Demo queries Q1-Q5, Q11, Q12")
+    p3.checks.append(_check("Q1-Q5 + Q11/Q12 smoke test", check_smoke_queries))
     phases.append(p3)
     _print_phase(p3)
 

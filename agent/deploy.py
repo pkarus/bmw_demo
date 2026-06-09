@@ -101,6 +101,10 @@ def init_tools():
             queries.schedule_recall_jobs_priority_chart,
             queries.vehicle_cohort_communities,
             queries.vehicle_cohort_communities_chart,
+            queries.handoff_chains_from_monterrey,
+            queries.handoff_chain_summary_from_monterrey,
+            queries.balanced_schedule_by_community,
+            queries.balanced_schedule_by_community_chart,
         ),
     )
 

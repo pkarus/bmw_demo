@@ -20,6 +20,9 @@ from rai_code.manual.demo_queries import (
     q4_assign_recall_jobs,
     q5_assign_recall_jobs_priority,
     q7_vehicle_communities,
+    q11_handoff_chains,
+    q11_handoff_chain_summary,
+    q12_balanced_schedule,
 )
 
 
@@ -187,4 +190,49 @@ def vehicle_cohort_communities_chart():
     return _wrap_chart(
         df, chart_type="bar", x="community", y="vins",
         title="Vehicle cohort communities (Louvain on shared-BOM graph)",
+    )
+
+
+# =============================================================================
+# Q11 - Centre-to-centre handoff chains (Pathfinder over 3-way relationship)
+# =============================================================================
+def handoff_chains_from_monterrey():
+    """Act 6. Variable-length path traversal seeded at Monterrey (SC-MTY)
+    for the Continental IBS-2024-A campaign. Returns one row per (path,
+    hop) up to length 3, traversing the 3-way CentreHandoff relationship
+    via the N-arity adapter ServiceCentre.refers_for. Columns:
+    path_length, hop, centre, hop_campaign."""
+    return q11_handoff_chains(seed_centre_id="SC-MTY", max_hops=3,
+                              campaign_filter="IBS-2024-A")
+
+
+def handoff_chain_summary_from_monterrey():
+    """Act 6 summary view. One row per path with all centres concatenated
+    in order. Use when the audience wants a chain view rather than the
+    per-hop dump. Columns: path_length, chain, campaign."""
+    return q11_handoff_chain_summary(seed_centre_id="SC-MTY", max_hops=3,
+                                     campaign_filter="IBS-2024-A")
+
+
+# =============================================================================
+# Q12 - Multi-reasoner: Louvain communities + MIP load-balance
+# =============================================================================
+def balanced_schedule_by_community():
+    """Act 7. Multi-reasoner: Louvain community labels (Graph reasoner)
+    feed a per-community late-share cap into a fresh MIP (Prescriptive
+    reasoner). No cohort absorbs more than 40% of week-3+ jobs. Returns
+    the full schedule (one row per assigned job). Columns: recall_id,
+    vin, community, campaign, centre, week, urgency."""
+    df, _si, _by_comm = q12_balanced_schedule(max_late_share=0.40)
+    return df
+
+
+def balanced_schedule_by_community_chart():
+    """Act 7 chart variant: jobs per (community, week) as a stacked bar
+    chart. Shows the late-share cap visually."""
+    df, _si, _by_comm = q12_balanced_schedule(max_late_share=0.40)
+    pivot = df.groupby(["community", "week"]).size().reset_index(name="jobs")
+    return _wrap_chart(
+        pivot, chart_type="bar", x="community", y="jobs", color="week",
+        title="Multi-reasoner schedule by Louvain community x week (Act 7)",
     )

@@ -729,38 +729,47 @@ def _build_capacity_and_stock(rng: random.Random,
     # ship enough booster ECUs in the 4-week horizon, so the deferred
     # jobs from Act 4 land here.
     profiles = {
-        # campaign_id: per-centre (w1,w2,w3,w4) stock arriving
+        # campaign_id: per-centre (w1,w2,w3,w4) stock arriving.
+        # Stock is intentionally back-loaded for IBS and HVB so that
+        # week-1 capacity cannot absorb all Open jobs - the MIP has to
+        # push ~25% of work into weeks 3-4. That spread is what makes
+        # the priority rule (Act 5) and the community-balance cap
+        # (Act 7) bind. Totals across the 4-week horizon are unchanged
+        # so the rest of the demo still solves to OPTIMAL.
         "IBS-2024-A": {
-            # IBS-certified centres only - others have zero
-            "SC-MUN": (6, 6, 5, 5),    # Munich is HQ-adjacent; gets first allocation
-            "SC-COL": (5, 5, 4, 4),
-            "SC-HAM": (4, 4, 4, 4),
-            "SC-STU": (4, 4, 3, 3),
-            "SC-FRA": (4, 4, 4, 4),
-            "SC-BER": (3, 3, 3, 3),
-            "SC-REG": (3, 3, 3, 3),
-            "SC-DAL": (4, 4, 3, 3),
-            "SC-MIA": (3, 3, 3, 3),
-            "SC-NYC": (3, 3, 3, 3),
-            "SC-LAX": (3, 3, 3, 3),
-            "SC-SPB": (4, 4, 4, 4),
-            "SC-CHI": (3, 3, 2, 2),
+            # IBS-certified centres only - others have zero.
+            # Weeks 1-2 are intentionally undersupplied (23 + 11 = 34
+            # vs 42 Open IBS jobs) so ~8 jobs spill to weeks 3-4.
+            "SC-MUN": (3, 2, 7, 8),    # Munich gets the bulk arriving late
+            "SC-COL": (2, 1, 6, 7),
+            "SC-HAM": (2, 1, 6, 7),
+            "SC-STU": (2, 1, 5, 5),
+            "SC-FRA": (2, 1, 6, 7),
+            "SC-BER": (2, 1, 5, 5),
+            "SC-REG": (2, 1, 5, 5),
+            "SC-DAL": (2, 1, 5, 5),
+            "SC-MIA": (1, 1, 5, 5),
+            "SC-NYC": (1, 1, 5, 5),
+            "SC-LAX": (1, 1, 5, 5),
+            "SC-SPB": (2, 1, 6, 7),
+            "SC-CHI": (1, 1, 4, 4),
         },
         "HVB-2024-A": {
-            # HV-certified centres only
-            "SC-MUN": (3, 3, 3, 3),
-            "SC-COL": (3, 3, 3, 3),
-            "SC-HAM": (3, 3, 3, 3),
-            "SC-STU": (2, 2, 2, 2),
-            "SC-FRA": (3, 3, 3, 3),
-            "SC-BER": (2, 2, 2, 2),
-            "SC-LEI": (2, 2, 2, 2),
-            "SC-DAL": (3, 3, 2, 2),
-            "SC-MIA": (2, 2, 2, 2),
-            "SC-NYC": (2, 2, 2, 2),
-            "SC-LAX": (3, 3, 3, 3),
-            "SC-SPB": (3, 3, 3, 3),
-            "SC-CHI": (2, 2, 2, 2),
+            # HV-certified centres only - back-loaded; weeks 1-2 = 33
+            # vs 43 Open HVB jobs so ~10 jobs spill to weeks 3-4.
+            "SC-MUN": (2, 2, 5, 5),
+            "SC-COL": (2, 2, 5, 5),
+            "SC-HAM": (1, 2, 5, 5),
+            "SC-STU": (1, 1, 4, 4),
+            "SC-FRA": (1, 2, 5, 5),
+            "SC-BER": (1, 1, 4, 4),
+            "SC-LEI": (1, 1, 4, 4),
+            "SC-DAL": (1, 2, 5, 5),
+            "SC-MIA": (1, 1, 4, 4),
+            "SC-NYC": (1, 1, 4, 4),
+            "SC-LAX": (2, 2, 5, 5),
+            "SC-SPB": (1, 2, 5, 5),
+            "SC-CHI": (1, 1, 4, 4),
         },
         "EGR-2023-B": {
             "SC-REG": (3, 3, 2, 2),
